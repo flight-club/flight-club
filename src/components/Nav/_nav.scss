@@ -29,13 +29,17 @@
         }
 
         i {
-            font-size: 18px;
+            font-size: 15px;
+            padding-left: 5px;
+            transform: rotate(2deg)
+            translateY(-3px);
+            color: white;
         }
     }
 
     .page-links {
         display: flex;
-        margin-left: 25px;
+        margin-left: 35px;
 
         p {
             margin-left: 15px;
@@ -62,5 +66,9 @@
         background: $secondary-color;
         border: none;
         margin-left: 15px;
+
+        &:hover {
+            background: #8B2232;
+        } 
     }
 }

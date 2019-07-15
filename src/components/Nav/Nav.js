@@ -7,8 +7,8 @@ class Nav extends Component {
             <div className='nav'>
                 <div className='nav--left'>
                     <div className='logo'>
-                        <i class="fas fa-plane-departure"></i>
                         <h1>ALPHA</h1>
+                        <i class="far fa-paper-plane"></i>
                     </div>
 
                     <div className='page-links'>

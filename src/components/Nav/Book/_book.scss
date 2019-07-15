@@ -1,19 +1,63 @@
 .book {
-    // i {
-    //     font-size: 90px;
-    //     color: $secondary-color;
-    //     transform: 
-    //     rotate(29.9deg)
-    //     translateX(-15px)
-    //     translateY(-16.8px);
-    // }
+    display: flex;
+}
 
-    i {
+.logo {
+    display: flex;
+    width: 100px;
+    .fa-paper-plane {
         font-size: 90px;
         color: $secondary-color;
         transform: 
         rotate(30deg)
-        translateX(-15px)
-        translateY(-19.5px); 
+        translateX(-35px)
+        translateY(-15px); 
     }
 }
+
+.fields {
+    display: flex;
+    height: 150px;
+    width: 100%;
+    margin-left: 47px;
+}
+
+.destination {
+    display: flex;
+    align-items: center;
+
+    input {
+        background: none;
+        border: none;
+        width: 160px;
+        height: 80px;
+    }
+
+    ::-webkit-input-placeholder { 
+        color: white;
+        font-size: 60px;
+        font-weight: 300;
+        align-self: auto;
+        transform: translateY(12px);
+        text-align: center; 
+      }
+
+    i {
+        font-size: 40px;
+        color: $secondary-color;
+    }
+}
+
+.trip-type {
+    width: 160px;
+    height: 50px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    font-weight: 250;
+    outline: none;
+
+    -webkit-appearance: menulist-button;
+}
+
