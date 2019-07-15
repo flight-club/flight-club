@@ -1,1 +1,66 @@
-@import './c'
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 15px;
+    padding-left: 150px;
+    padding-right: 150px;
+    border-bottom: 1px solid #283043;
+    font-size: 16px;
+    font-family: $primary-font;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.nav--left {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        h1 {
+            margin-left: 10px;
+            font-size: 22px;
+            letter-spacing: 5px;
+        }
+
+        i {
+            font-size: 18px;
+        }
+    }
+
+    .page-links {
+        display: flex;
+        margin-left: 25px;
+
+        p {
+            margin-left: 15px;
+        }
+    }
+}
+
+.nav--right {
+    button {
+        font-family: $primary-font;
+        font-weight: bolder;
+        font-size: 16px;
+        letter-spacing: 1px;
+        color: white;
+    }
+    #sign-up {
+        background: none;
+        border: none;
+    }
+
+    #log-in {
+        width: 70px;
+        height: 30px;
+        background: $secondary-color;
+        border: none;
+        margin-left: 15px;
+    }
+}
