@@ -14,7 +14,7 @@ import Checkout from './components/Checkout/Checkout';
 export default (
     <Switch>
         <Route exact path='/' component={ Landing }/>
-        <Route path='auth/login' exact component={ Login }/>
+        <Route path='/auth/login' exact component={ Login }/>
         <Route path='/auth/signup' component={ SignUp }/>
         <Route path='/dashboard' exact component={ Dashboard }/>
         <Route path='/dashboard/snapshot' exact component={ Snapshot }/>

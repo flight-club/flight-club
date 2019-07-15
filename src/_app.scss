@@ -1,8 +1,18 @@
-// @import './components/Landing/landing';
-// @import './components/Nav/nav';
-// @import './components/SignUp/signup';
-// @import './components/Login/login';
-// @import './components/Dashboard/dashboard';
-// @import './components/Results/results';
-// @import './components/Footer/footer';
-// @import './components/Checkout/checkout';
+@import './variables.scss';
+@import './components/Landing/landing';
+@import './components/Nav/nav';
+@import './components/Nav/Book/book';
+@import './components/Nav/Checkin/checkin';
+@import './components/Nav/FlightStatus/flightstatus';
+@import './components/SignUp/signup';
+@import './components/Login/login';
+@import './components/Dashboard/dashboard';
+@import './components/Results/results';
+@import './components/Footer/footer';
+@import './components/Checkout/checkout';
+
+main {
+    width: 100vw;
+    height: 100vh;
+    background: $primary-color;
+}
