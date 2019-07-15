@@ -8,11 +8,19 @@ const app = express()
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 const dataController = require('./controllers/dataController');
 const flightController = require('./controllers/flightController');
-const authController = require('./controllers/authController');
+const {register, login} = require('./controllers/authController');
 
-app.use( express.static( `${__dirname}/../build` ) )
+// app.use( express.static( `${__dirname}/../build` ) )
 
 app.use(express.json())
+
+massive(CONNECTION_STRING)
+    .then(db => {
+        console.log('Database Connected')
+        app.set('db', db)
+    }).catch(err => {
+        console.log(err)
+    })
 
 app.use(session({
     secret: SESSION_SECRET,
@@ -23,13 +31,9 @@ app.use(session({
     }
 }))
 
-massive(CONNECTION_STRING)
-    .then(db => {
-        console.log('Database Connected')
-        app.set('db', db)
-    }).catch(err => {
-        console.log(err)
-    })
+// Authentication
+app.post('/register', register)
+app.post('/login', login)
 
 app.listen(SERVER_PORT, () => {
     console.log(`The server is listening on Port ${SERVER_PORT}`)
