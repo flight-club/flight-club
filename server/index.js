@@ -8,7 +8,7 @@ const app = express()
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 const dataController = require('./controllers/dataController');
 const flightController = require('./controllers/flightController');
-const {register, login} = require('./controllers/authController');
+const {register, login, logout, getMember} = require('./controllers/authController');
 
 // app.use( express.static( `${__dirname}/../build` ) )
 
@@ -34,7 +34,9 @@ app.use(session({
 // Authentication
 app.post('/register', register)
 app.post('/login', login)
-
+app.post('/logout', logout)
+app.get('/member/:id', getMember)
+ 
 app.listen(SERVER_PORT, () => {
     console.log(`The server is listening on Port ${SERVER_PORT}`)
 })
