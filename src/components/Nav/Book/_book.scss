@@ -1,5 +1,6 @@
 .book {
     display: flex;
+    background: $primary-color;
 }
 
 .logo {
@@ -17,6 +18,7 @@
 
 .fields {
     display: flex;
+    align-content: center;
     height: 150px;
     width: 100%;
     margin-left: 47px;
@@ -31,6 +33,7 @@
         border: none;
         width: 160px;
         height: 80px;
+        outline: none;
     }
 
     ::-webkit-input-placeholder { 
@@ -49,15 +52,21 @@
 }
 
 .trip-type {
+    display: flex;
+    align-items: center;
+
+    select {
     width: 160px;
-    height: 50px;
+    height: 70px;
     background: none;
     border: none;
+    margin-right: 15px;
+    transform: translateY(-5px);
     color: white;
     font-size: 28px;
     font-weight: 250;
     outline: none;
-
-    -webkit-appearance: menulist-button;
+    }
 }
+
 
