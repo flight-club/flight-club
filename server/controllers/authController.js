@@ -46,5 +46,19 @@ module.exports = {
                 res.status(200).json(req.session.member)
             }
         }
+    },
+
+    getMember: async (req, res) => {
+        const db = req.app.get('db')
+        let id = req.params.id
+        console.log(req.params.id)
+
+        const member = await db.getMember(id)
+        return res.status(200).json(member)
+    },
+      
+    logout: (req, res) => {
+        req.session.destroy()
+        res.status(200).send(req.session)
     }
 }
