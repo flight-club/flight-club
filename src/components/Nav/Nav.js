@@ -20,7 +20,7 @@ class Nav extends Component {
 
                 <div className='nav--right'>
                     <Link to='/auth/signup' style={{textDecoration:'none'}}><button id='sign-up'>SIGN UP</button></Link>
-                    <button id='log-in'>LOG IN</button>
+                    <Link to='/auth/login'><button id='log-in'>LOG IN</button></Link>
                 </div>
             </div>
         )
