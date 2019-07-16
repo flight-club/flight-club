@@ -1,22 +1,17 @@
 import React, {Component} from 'react';
 import { Input } from 'reactstrap';
-// import { arrowRenderer } from 'bootstrap';
 
 class Book extends Component {
     constructor() {
         super();
         this.state = {
-            classes: ''
+
         }
+
     }
 
-    // arrowRenderer() {
-    //     return <div className={arrowRenderer}><i class="fas fa-chevron-down"></i></div>
-    // }
     
     render() {
-        const {classes} = this.state;
-
         return (
             <div className='book'>
                 <div className='logo'>
@@ -30,8 +25,8 @@ class Book extends Component {
                         <input placeholder='LAX'></input>
                     </div>
 
-                    <div>
-                        <Input className='trip-type' type='select' arrowRenderer={this.arrowRenderer}>
+                    <div className='trip-type'>
+                        <Input type='select'>
                             <option>One Way</option>
                             <option>Round Trip</option>
                         </Input>

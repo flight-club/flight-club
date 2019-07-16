@@ -1,11 +1,9 @@
 .background {
     display: flex;
     align-items: center;
-    position: absolute;
-    top: 250px;
-    bottom: 75px;
+    position: relative;
     width: 100vw;
-    height: 65vh;
+    height: 66vh;
     background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80');
     background-size: cover;
     background-position: center;
