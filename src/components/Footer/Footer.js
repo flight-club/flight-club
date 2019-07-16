@@ -15,11 +15,11 @@ class Footer extends Component {
                         <i class="far fa-paper-plane"></i>
                     </div>
                             <div className='social-icons'>
-                                <SocialIcon url='https://www.instagram.com/instagram/' style={{ height: 25, width: 25 }} bgColor="transparent" fgColor='white' />
-                                <SocialIcon className='facebook' url='https://www.facebook.com/facebook/?brand_redir=726281677519881' style={{ height: 25, width: 25 }} bgColor="transparent" fgColor='white' border='solid white 1px'/>
+                                <SocialIcon url='https://www.instagram.com/instagram/' style={{ height: 25, width: 25 }} bgColor="white" />
+                                <SocialIcon className='facebook' url='https://www.facebook.com/facebook/?brand_redir=726281677519881' style={{ height: 25, width: 25 }} bgColor="white"/>
                             </div>
 
-                    <div className="copyright">&copy; 2019 ALPHA AIRLINES</div>
+                    <div className="copyright">&copy; 2019 ALPHA AIRLINES, Inc.</div>
                 </div>
 
                     <div>

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { Input } from 'reactstrap';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class Book extends Component {
     constructor() {
@@ -7,8 +9,8 @@ class Book extends Component {
         this.state = {
 
         }
-
     }
+
 
     
     render() {
@@ -25,11 +27,28 @@ class Book extends Component {
                         <input placeholder='LAX'></input>
                     </div>
 
-                    <div className='trip-type'>
+                    <div className='input-type-dropdown'>
                         <Input type='select'>
                             <option>One Way</option>
                             <option>Round Trip</option>
                         </Input>
+                    </div>
+
+                    <div className='book'>
+                        <Input className='calendar' type='date'/>
+                    </div>
+
+                    <div className='input-passenger-dropdown'>
+                        <Input type='select'>
+                            <option>1 Passenger</option>
+                            <option>2 Passengers</option>
+                            <option>3 Passengers</option>
+                            <option>4 Passengers</option>
+                        </Input>
+                    </div>
+
+                    <div className='search-button'>
+                        <button><i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
