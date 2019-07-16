@@ -3,9 +3,18 @@
     background: $primary-color;
 }
 
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 150px;
+    width: 100vw;
+}
+
 .logo {
     display: flex;
     width: 100px;
+
+
     .fa-paper-plane {
         font-size: 90px;
         color: $secondary-color;
@@ -21,7 +30,11 @@
     align-content: center;
     align-items: center;
     height: 150px;
-    width: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 150px;
+    width: 100vw;
     margin-left: 47px;
 }
 
