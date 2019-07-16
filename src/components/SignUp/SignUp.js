@@ -24,69 +24,13 @@ class SignUp extends Component {
             redirect: false
         }
         
-        // this.handleFirst_name = this.handleFirst_name.bind(this)
-        // this.handleLast_name = this.handleLast_name.bind(this)
-        // this.handleGender = this.handleGender.bind(this)
-        // this.handleBirthdate = this.handleBirthdate.bind(this)
-        // this.handleAddress = this.handleAddress.bind(this)
-        // this.handleAddress2 = this.handleAddress2.bind(this)
-        // this.handleCity = this.handleCity.bind(this)
-        // this.handleState = this.handleState.bind(this)
-        // this.handleZip = this.handleZip.bind(this)
-        // this.handlePhone = this.handlePhone.bind(this)
-        // this.handleEmail = this.handleEmail.bind(this)
-        // this.handleUsername = this.handleUsername.bind(this)
-        // this.handlePassword = this.handlePassword.bind(this)
-        // this.handleMiles = this.handleMiles.bind(this)
-        
-        // this.signupUser = this.signupUser.bind(this)
     }
 
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
       }
     
-    // handleFirst_name(e){
-    //     this.setState({first_name: e.target.value})
-    // }
-    // handleLast_name(e){
-    //     this.setState({last_name: e.target.value})
-    // }
-    // handleGender(e){
-    //     this.setState({gender: e.target.value})
-    // }
-    // handleBirthdate(e){
-    //     this.setState({birthdate: e.target.value})
-    // }
-    // handleAddress(e){
-    //     this.setState({address: e.target.value})
-    // }
-    // handleAddress2(e){
-    //     this.setState({address2: e.target.value})
-    // }
-    // handleCity(e){
-    //     this.setState({city: e.target.value})
-    // }
-    // handleState(e){
-    //     this.setState({state: e.target.value})
-    // }
-    // handleZip(e){
-    //     this.setState({zip: e.target.value})
-    // }
-    // handlePhone(e){
-    //     this.setState({phone: e.target.value})
-    // }
-    // handleEmail(e){
-    //     this.setState({email: e.target.value})
-    // }
 
-    // handleUsername(e){
-    //     this.setState({username: e.target.value})
-    // }
-
-    // handlePassword(e){
-    //     this.setState({password: e.target.value})
-    // }
 
     signupMember() {
         console.log(this.state)
@@ -95,8 +39,6 @@ class SignUp extends Component {
             email: this.state.email, username: this.state.username, password: this.state.password})
         .then(() => this.setState({redirect: true})).catch((err) => alert(err, 'Username Taken'))
     }
-
-
 
     render() {
         if(this.state.redirect){
