@@ -2,21 +2,23 @@ const bcrypt = require('bcryptjs')
 
 module.exports = {
     register: async (req, res) => {
-        const {first_name, last_name, gender, birthdate, address, address2, city, state, zip, phone, email, username, password, miles} = req.body
+        const {first_name, last_name, gender, birthdate, address, address2, city, state, zip, phone, email, username, password} = req.body
         const db = req.app.get('db')
+        console.log(req.body)
 
         const foundMember = await db.findMember(username)
         if(foundMember[0]) {
-            res.status(403).json({error: 'Username taken!'})
-            return
+            console.log('hit')
+            return res.status(403).json({error: 'Username taken!'})
         }
 
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
-        const regMember = await db.addMember(first_name, last_name, gender, birthdate, address, address2, city, state, zip, phone, email, username, hash, miles)
+        const regMember = await db.addMember(first_name, last_name, gender, birthdate, address, address2, city, state, zip, phone, email, username, hash)
 
         if(regMember[0]){
-            res.status(200).json(regMember[0])
+            console.log('hit')
+            return res.status(200).json(regMember[0])
         }
     },
 
