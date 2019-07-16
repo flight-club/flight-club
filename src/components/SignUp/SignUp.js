@@ -15,15 +15,15 @@ class SignUp extends Component {
             address2: "",
             city: "",
             state: "",
-            zip: "",
+            zip: 0,
             phone: "",
             email: "",
             username: "",
             password: "",
-            miles: "",
+            miles: 0,
             redirect: false
         }
-        
+        this.signupMember = this.signupMember.bind(this)
     }
 
     handleChange = (e) => {
@@ -33,8 +33,8 @@ class SignUp extends Component {
 
 
     signupMember() {
-        console.log(this.state)
-        axios.post("/register", { first_name: this.state.first_name, last_name: this.state.last_name, gender: this.state.gender,birthdate: this.state.birthdate,
+        // console.log(this.state)
+        axios.post("/register", { first_name: this.state.first_name, last_name: this.state.last_name, gender: this.state.gender, birthdate: this.state.birthdate,
             address: this.state.address, address2: this.state.address2, city: this.state.city, state: this.state.state, zip: this.state.zip, phone: this.state.phone,
             email: this.state.email, username: this.state.username, password: this.state.password})
         .then(() => this.setState({redirect: true})).catch((err) => alert(err, 'Username Taken'))
@@ -65,6 +65,7 @@ class SignUp extends Component {
             <input name='username' onChange={this.handleUsername} placeholder="username"/>
             <input name='password' onChange={this.handlePassword}placeholder="password" type="password"/>
         </div>
+        <button className="signup-member" onClick={this.signupMember}>Add New Account</button>
         </div>
         </div>
         )
