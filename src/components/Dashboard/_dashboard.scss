@@ -1,0 +1,194 @@
+.dashboard {
+    background-image: url('https://images.unsplash.com/photo-1428908728789-d2de25dbd4e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100%;
+}
+
+.account-container {
+    display: flex;
+    width: 950px;
+    height: 800px;
+    position: absolute;
+    top: 125px;
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 800px;
+        font-family: $primary-font;
+        font-size: 25px;
+        background: $primary-color;
+        color: white;
+
+        &--user {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            height: 150px;
+
+            h1 {
+                color: #4367AF;
+                font-weight: bold;
+                font-style: italic;
+                font-size: 35px;
+                letter-spacing: 1px;
+            }
+
+            h2 {
+                margin-top: 10px;
+                font-size: 15px;
+            }
+        }
+
+        &--box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            height: 216px;
+            border-top: 1px solid #4367AF;
+            color: white;
+        }
+    }
+
+    .account-info {
+        width: 650px;
+        height: 800px;
+        background: white;
+        font-family: $primary-font;
+        color: $primary-color;
+
+        &--top {
+            display: flex;
+            height: 150px;
+            border-bottom: solid 1px #E6E7E8;
+
+            h1 {
+                margin: 20px;
+                font-size: 25px;
+            }
+
+
+            h4 {
+                height: 20px;
+                margin: 20px;
+                margin-bottom: 0;
+                font-size: 15px;
+                font-weight: bold;
+                display: flex;
+                justify-content: flex-end;
+                color: rgb(122, 121, 121);
+            }
+
+            h2 {
+                height: 20px;
+                display: flex;
+                justify-content: flex-end;
+                margin: 20px;
+                margin-top: 5px;
+                font-size: 20px;
+            }
+        }
+
+        .top-left {
+            width: 325px;
+        }
+
+        .top-right {
+            display: flex;
+            flex-direction: column;
+            width: 325px;
+        }
+
+        &--bottom {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+
+            h2 {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            h3 {
+                font-style: italic;
+                margin-left: 10px;
+                font-size: 20px;
+            }
+
+
+            h4 {
+                height: 20px;
+                margin-top: 7px;
+                font-size: 15px;
+                font-weight: bold;
+
+                color: rgb(122, 121, 121);
+            }
+            
+
+            .bottom-top {
+                display: flex;
+                flex-direction: column;
+                height: 325px;
+
+                &--title {
+                    display: flex;
+                }
+
+                .donut-chart {
+                    display: flex;
+                    justify-content: space-around;
+                    margin-left: 60px;
+                    align-content: center;
+                    align-items: center;
+                    width: 450px;
+                    height: 250px;
+
+                    i {
+                        font-size: 160px;
+                        transform: rotate(180deg);
+                        color: #4367AF;
+                    }
+                }
+            }
+
+            .bottom-bottom {
+                display: flex;
+                flex-direction: column;
+                height: 325px;
+
+                &--title {
+                    display: flex;
+                }
+
+                .donut-chart {
+                    display: flex;
+                    justify-content: space-around;
+                    margin-left: 60px;
+                    align-content: center;
+                    align-items: center;
+                    width: 450px;
+                    height: 250px;
+
+                    i {
+                        font-size: 160px;
+                        transform: rotate(180deg);
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+    }
+}

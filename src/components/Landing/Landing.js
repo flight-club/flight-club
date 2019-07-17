@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import Footer from '../Footer/Footer';
+import Book from '../Nav/Book/Book';
 
 class Landing extends Component {
     render() {
         return (
             <div>
+                < Book/>
                 <div className='background'>
                 </div>
 
