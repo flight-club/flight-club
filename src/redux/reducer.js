@@ -9,10 +9,10 @@ const initialState = {
 
 const GET_MEMBER = "GET_MEMBER";
 
-export function getMember() {
+export function getMember(id) {
     return {
         type: GET_MEMBER,
-        payload: axios.get("/member").then(err => err)
+        payload: axios.get(`/member/${id}`).then(err => err)
     };
 }
 
@@ -23,7 +23,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        user: action.payload.data
+        member: action.payload.data
       };
 
     case `${GET_MEMBER}_PENDING`:
