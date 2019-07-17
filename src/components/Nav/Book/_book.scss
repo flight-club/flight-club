@@ -3,12 +3,6 @@
     background: $primary-color;
 }
 
-.content {
-    display: flex;
-    justify-content: space-between;
-    margin-right: 150px;
-    width: 100vw;
-}
 
 .logo {
     display: flex;
@@ -29,12 +23,9 @@
     display: flex;
     align-content: center;
     align-items: center;
-    height: 150px;
-    width: 100vw;
+    height: 125px;
     display: flex;
-    justify-content: space-between;
     margin-right: 150px;
-    width: 100vw;
     margin-left: 47px;
 }
 
@@ -78,7 +69,6 @@
     height: 70px;
     background: none;
     border: none;
-    margin-right: 15px;
     color: white;
     font-size: 28px;
     font-weight: 250;

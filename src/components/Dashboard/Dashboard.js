@@ -1,6 +1,20 @@
 import React, {Component} from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { getMember } from '../../redux/reducer';
 
 class Dashboard extends Component {
+    constructor() {
+        super() 
+        this.state = {
+        }
+    }
+
+    componentDidMount() {
+        this.props.getMember() 
+        console.log(this.props.member)
+    }
+
     render() {
         return (
             <div className='dashboard'>
@@ -76,4 +90,11 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+const mapStateToProps = reduxState => {
+    const {member} = reduxState;
+    return {
+        member
+    }
+}
+
+export default connect( mapStateToProps, {getMember})(Dashboard);
