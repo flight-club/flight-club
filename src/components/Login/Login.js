@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 
 class Login extends Component {
@@ -8,6 +9,7 @@ class Login extends Component {
         this.state= {
             username: '',
             password: '',
+            login: true,
             redirect: false
         }
     }
@@ -26,9 +28,11 @@ class Login extends Component {
     }
 
     render() {
-
-        
-
+        console.log(this.props)
+        if(this.state.redirect){
+            alert('Login successful!')
+            return <Redirect to={`/dashboard/${this.props.member.id}`} />
+        }
         return (
             <div className='login'>
                 <div>
@@ -43,4 +47,11 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = reduxState => {
+    const {member} = reduxState.reducer 
+    return {
+        member
+    } 
+}
+
+export default connect(mapStateToProps,)(Login)
