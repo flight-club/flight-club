@@ -23,7 +23,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        user: action.payload.data
+        member: action.payload.data
       };
 
     case `${GET_MEMBER}_PENDING`:
