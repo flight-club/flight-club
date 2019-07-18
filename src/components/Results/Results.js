@@ -61,6 +61,7 @@ class Results extends Component {
                             <div key={results.id}>
 
                                 <div>
+
                                 <h3 className="flightnumber">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber}</h3>
                               
                                 <h3 className="departurecity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureAirport.
@@ -83,6 +84,7 @@ class Results extends Component {
                                 <button className="firstclass"onclick={() => this.addResults(results)}>
                                 {results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.FareBasisCodes.PassengerFare.TotalFare.Amount * 2}
                                 </button> */}
+                                </div>
                                 </div>
                                 </div>
                         ))}

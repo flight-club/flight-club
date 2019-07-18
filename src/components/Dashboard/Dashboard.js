@@ -7,12 +7,17 @@ class Dashboard extends Component {
     constructor() {
         super() 
         this.state = {
+            member: []
         }
     }
 
     componentDidMount() {
-        this.props.getMember() 
-        console.log(this.props.member)
+        axios
+        .get(`/dashboard/${this.props.match.params.id}`)
+        .then(res=> {
+            console.log(res.data)
+            this.setState({member: res.data[0]})
+        })
     }
 
     render() {
@@ -21,8 +26,8 @@ class Dashboard extends Component {
                 <div className='account-container'>
                     <div className='options'>
                         <div className='options--user'>
-                            <h1>Hi, Jonny! </h1>
-                            <h2>Alpha #10001</h2>
+                            <h1>Hi, {this.state.member.first_name} </h1>
+                            <h2>Alpha #{this.state.member.id}</h2>
                         </div>
 
                         <div className='options--box'>
@@ -46,7 +51,7 @@ class Dashboard extends Component {
 
                             <div className='top-right'>
                                 <h4>Total Balance</h4>
-                                <h2>784 Miles</h2>
+                                <h2>{this.state.member.miles || 'None'}</h2>
                             </div>
                         </div>
 
@@ -91,7 +96,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = reduxState => {
-    const {member} = reduxState;
+    const {member} = reduxState.reducer;
     return {
         member
     }

@@ -8,7 +8,7 @@ const app = express()
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 const dataController = require('./controllers/dataController');
 const flightController = require('./controllers/flightController');
-const {register, login, logout, getMember} = require('./controllers/authController');
+const {register, login, logout, getMember, getDashboard} = require('./controllers/authController');
 
 // app.use( express.static( `${__dirname}/../build` ) )
 
@@ -36,6 +36,7 @@ app.post('/register', register)
 app.post('/login', login)
 app.post('/logout', logout)
 app.get('/member/:id', getMember)
+app.get('/dashboard/:id', getDashboard)
 app.post('/test', req => console.log(req))
 
 app.get('/results', dataController.getResults)

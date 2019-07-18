@@ -11,7 +11,8 @@ class Login extends Component {
             username: '',
             password: '',
             login: true,
-            redirect: false
+            redirect: false, 
+            id: ''
         }
     }
 
@@ -24,7 +25,9 @@ class Login extends Component {
         let {username, password} = this.state
         axios
         .post('/login', {username: username, password: password})
-        .then(() => this.setState({redirect: true}))
+        .then((res) => {
+            this.setState({redirect: true, id: res.data.id})
+        })
         .catch(() => {alert('Login Unsuccessful')})
     }
 
@@ -32,7 +35,7 @@ class Login extends Component {
         console.log(this.props)
         if(this.state.redirect){
             alert('Login successful!')
-            return <Redirect to={'/dashboard'} />
+            return <Redirect to={`/dashboard/${this.state.id}`} />
         }
         return (
             <div className='login'>
