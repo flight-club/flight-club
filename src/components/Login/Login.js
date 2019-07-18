@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import {connect} from 'react-redux'
+import {getMember} from '../../redux/reducer'
 import {Redirect} from 'react-router-dom'
 
 class Login extends Component {
@@ -31,7 +32,7 @@ class Login extends Component {
         console.log(this.props)
         if(this.state.redirect){
             alert('Login successful!')
-            return <Redirect to={`/dashboard/${this.props.member.id}`} />
+            return <Redirect to={'/dashboard'} />
         }
         return (
             <div className='login'>
