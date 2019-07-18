@@ -9,10 +9,10 @@ const initialState = {
 
 const GET_MEMBER = "GET_MEMBER";
 
-export function getMember() {
+export function getMember(id) {
     return {
         type: GET_MEMBER,
-        payload: axios.get("/member").then(err => err)
+        payload: axios.get(`/member/${id}`).then(err => err)
     };
 }
 

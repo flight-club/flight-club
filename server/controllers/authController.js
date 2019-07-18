@@ -58,6 +58,18 @@ module.exports = {
         const member = await db.getMember(id)
         return res.status(200).json(member)
     },
+
+    getDashboard: async (req, res) =>{
+        const db = req.app.get('db')
+        let id = req.params.id
+        if(req.session.member){
+            const member = await db.dashboard(req.session.member.id)
+            return res.status(200).json(member)
+        } else {
+            const member = await db.dashboard(id)
+            return res.status(200).json(member)
+        }
+    },
       
     logout: (req, res) => {
         req.session.destroy()

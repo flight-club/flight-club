@@ -61,10 +61,10 @@ class Results extends Component {
                             <div key={flight.id}>
                                 <div>
                                 <h3 className="flightnumber">{flight.number}</h3>
-                                <h3 className="departurecity">{departure.city}</h3>
+                                {/* <h3 className="departurecity">{departure.city}</h3>
                                 <h3 className="departuretime">{departure.time}</h3>
                                 <h3 className="arrivalcity">{arrival.city}</h3>
-                                <h3 className="arrivalcity">{arrival.time}</h3>
+                                <h3 className="arrivalcity">{arrival.time}</h3> */}
                                 <p className="duration">{flight.duration}</p>
                                 <p className="aircraft">{flight.aircraft.type}</p>
                                 </div>
@@ -79,6 +79,7 @@ class Results extends Component {
                                 <button className="firstcost"onclick={() => this.addFlight(flight)}>
                                 {flight.ticket.first.cost}
                                 </button>
+                                </div>
                                 </div>
                         ))}
                 </div>
