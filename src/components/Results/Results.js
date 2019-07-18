@@ -23,7 +23,6 @@ class Results extends Component {
             // returnDuration: "",
             // returnAircraftType: "",
             // returnTicketCost: ""
-           
         };
     }
 
@@ -48,7 +47,6 @@ class Results extends Component {
   console.log(this.state.results)
     
             return (
-               
                 <div className="flight-info-container">
 
                     <div>
@@ -61,6 +59,7 @@ class Results extends Component {
                         (
 
                             <div key={results.id}>
+
                                 <div>
                                 <h3 className="flightnumber">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber}</h3>
                               
@@ -87,14 +86,12 @@ class Results extends Component {
                                 </div>
                                 </div>
                         ))}
-                </div>
-               
 
+                </div>
+                
+                    
         )
     }
 }
-
-
-
 
 export default Results;
