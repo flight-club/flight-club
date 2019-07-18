@@ -40,4 +40,13 @@ class Results extends Component {
     }
 }
 
+// const mapStateToProps = reduxState => {
+//     const {member} = reduxState ;
+//     return {
+//         member
+//     }
+// }
+
+// export default connect ( mapStateToProps, {getMember})
+
 export default Results;

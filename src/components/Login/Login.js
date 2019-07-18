@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 
 class Login extends Component {
@@ -8,6 +9,7 @@ class Login extends Component {
         this.state= {
             username: '',
             password: '',
+            login: true,
             redirect: false
         }
     }
@@ -17,6 +19,7 @@ class Login extends Component {
     }
 
     login = () => {
+        console.log(this.state.username)
         let {username, password} = this.state
         axios
         .post('/login', {username: username, password: password})
@@ -25,16 +28,18 @@ class Login extends Component {
     }
 
     render() {
-
-        
-
+        console.log(this.props)
+        if(this.state.redirect){
+            alert('Login successful!')
+            return <Redirect to={`/dashboard/${this.props.member.id}`} />
+        }
         return (
             <div className='login'>
                 <div>
                     <h2>Log In To Alpha</h2>
                     <h4> All fields are required</h4>
-                    <input className='login-input' placeholder='Username' name='username'></input>
-                    <input className='password-input' placeholder='Password' name='password'></input>
+                    <input className='login-input' placeholder='Username' name='username' value={this.state.username} onChange={this.handleChange}></input>
+                    <input className='password-input' placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange}></input>
                     <button onClick={this.login}> Login</button>
                 </div>
             </div>
@@ -42,4 +47,11 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = reduxState => {
+    const {member} = reduxState.reducer 
+    return {
+        member
+    } 
+}
+
+export default connect(mapStateToProps,)(Login)
