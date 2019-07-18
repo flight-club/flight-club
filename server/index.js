@@ -36,6 +36,9 @@ app.post('/register', register)
 app.post('/login', login)
 app.post('/logout', logout)
 app.get('/member/:id', getMember)
+app.post('/test', req => console.log(req))
+
+app.get('/results', dataController.getResults)
  
 app.listen(SERVER_PORT, () => {
     console.log(`The server is listening on Port ${SERVER_PORT}`)

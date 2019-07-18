@@ -16,11 +16,11 @@ export default (
         <Route exact path='/' component={ Landing }/>
         <Route path='/auth/login' exact component={ Login }/>
         <Route path='/auth/signup' component={ SignUp }/>
-        <Route path='/dashboard/:id' exact component={ Dashboard }/>
+        <Route path='/dashboard' exact component={ Dashboard }/>
         <Route path='/dashboard/snapshot' exact component={ Snapshot }/>
         <Route path='/dashboard/info' exact component={ Info } />
         <Route path='/dashboard/upcoming' exact component={ Upcoming }/>
-        <Route path='/results' component={ Results }/>
+        <Route path='/results/' component={ Results }/>
         <Route path='/checkout' exact component={ Checkout }/>
     </Switch>
 )

@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
-import Axios from 'axios';
+import axios from 'axios';
+import queryString from 'query-string'
 
 class Results extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
+            results: [],
             flightInfo: []
             // flightNumber: "",
             // departureCity: "",
@@ -26,17 +28,17 @@ class Results extends Component {
         };
     }
 
-componentDidMount() {
-   
+   componentDidMount() {
+        const values = queryString.parse(this.props.location.search)
+
         axios
-        .get("/api/flightInfo")
-        .then(response => {
-            this.setState({
-                flightInfo: response.data.flightInfo
-            })
-        })
-    
-}
+        .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
+        .then(( results ) => {
+            console.log(results.data.PricedItineraries)
+            this.setState(() => ({ results: results.data.PricedItineraries }));
+          });
+    }
+
 
     render() {
         
@@ -81,8 +83,6 @@ componentDidMount() {
                         ))}
                 </div>
                
-
-
 
         )
     }
