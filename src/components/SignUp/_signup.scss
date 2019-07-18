@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     width: 100vw;
+    background: $primary-color;
 }
 
 .info-container {
@@ -11,8 +12,7 @@
     align-items: center;
     width: 800px;
     padding: 20px;
-    border-left: 10px $primary-color solid;
-    border-right: 10px $primary-color solid;
+    background: white;
     font-family: $primary-font;
 
     h1 {
@@ -85,5 +85,10 @@
         width: 200px;
         height: 50px;
         margin-top: 30px;
+
+        &:hover {
+            width: 202px;
+            height: 52px;
+        }
     }
 }
