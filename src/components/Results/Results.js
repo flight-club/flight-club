@@ -7,7 +7,6 @@ class Results extends Component {
         super(props);
         this.state = {
             results: [],
-            flightInfo: []
             // flightNumber: "",
             // departureCity: "",
             // departureTime: "",
@@ -30,56 +29,64 @@ class Results extends Component {
    componentDidMount() {
         const values = queryString.parse(this.props.location.search)
 
+       
+
         axios
         .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
         .then(( results ) => {
-            console.log(results.data.PricedItineraries)
+           
             this.setState(() => ({ results: results.data.PricedItineraries }));
           });
     }
 
 
-
-
-    render() {
+    render() 
+    {
         
-            const {flightInfo} = this.state
-            console.log(this.state.flightInfo)
+            const {results} = this.state
+  console.log(this.state.results)
     
             return (
                 <div className="flight-info-container">
 
                     <div>
-                        <div className="chooseflights">Choose flights</div>
+                        <div className="choose-flights">Choose flights</div>
                         <div className="main-cabin">Main Cabin</div>
                         <div className="First-class">First Class</div>
                     </div>
 
-                    {/* {flightInfo.map((flight, index) =>
+                    {results.map((results, index) =>
                         (
-                            <div key={flight.id}>
+
+                            <div key={results.id}>
+
                                 <div>
-                                <h3 className="flightnumber">{flight.number}</h3>
-                                <h3 className="departurecity">{departure.city}</h3>
-                                <h3 className="departuretime">{departure.time}</h3>
-                                <h3 className="arrivalcity">{arrival.city}</h3>
-                                <h3 className="arrivalcity">{arrival.time}</h3>
-                                <p className="duration">{flight.duration}</p>
-                                <p className="aircraft">{flight.aircraft.type}</p>
+                                <h3 className="flightnumber">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber}</h3>
+                              
+                                <h3 className="departurecity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureAirport.
+                                    LocationCode}</h3>
+                                <h3 className="departuretime">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime}</h3>
+                                <h3 className="arrivalcity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalAirport.
+                                    LocationCode}</h3>
+                                <h3 className="arrivaltime">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime}</h3>
+                                <p className="duration">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime}</p>
+                                <p className="aircraft">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].Equipment.AirEquipType}</p>
                                 </div>
                                 
                                 <div>
-                                    <button className="maincabin" onclick={() => this.addFlight(flight)}>
-                                     {flight.ticket.main.cost}
+                                    {/* <button className="maincabin" onclick={() => this.addResults(results)}>
+                                     {results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.FareBasisCodes.PassengerFare.TotalFare.Amount}   
                                    </button>
-                                    </div>
+                                 </div>
+
                                 <div>
-                                <button className="firstcost"onclick={() => this.addFlight(flight)}>
-                                {flight.ticket.first.cost}
-                                </button>
-                            </div>
-                            </div>
-                        ))} */}
+                                <button className="firstclass"onclick={() => this.addResults(results)}>
+                                {results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.FareBasisCodes.PassengerFare.TotalFare.Amount * 2}
+                                </button> */}
+                                </div>
+                                </div>
+                        ))}
+
                 </div>
                 
                     
