@@ -59,7 +59,6 @@ class SignUp extends Component {
     }
 
     render() {
-        console.log(this.state.yearList)
         if(this.state.redirect){
             alert("Please Log In")
             return<Redirect to="/auth/login" />

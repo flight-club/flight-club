@@ -35,14 +35,15 @@ class Results extends Component {
         .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
         .then(( results ) => {
            
-            this.setState(() => ({ results: results.data.PricedItineraries }));
+            this.setState({ results: results.data });
           });
     }
 
 
     render() 
     {
-        
+        const values = queryString.parse(this.props.location.search)
+        console.log(values)
             const {results} = this.state
   console.log(this.state.results)
     
@@ -72,6 +73,8 @@ class Results extends Component {
                                 <h3 className="arrivaltime">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime}</h3>
                                 <p className="duration">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime}</p>
                                 <p className="aircraft">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].Equipment.AirEquipType}</p>
+                                <p>{Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount)}</p>
+                                <p>{Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99)}</p>
                                 </div>
                                 
                                 <div>
@@ -86,7 +89,7 @@ class Results extends Component {
                                 </button> */}
                                 </div>
                                 </div>
-                                </div>
+                                
                         ))}
 
                 </div>

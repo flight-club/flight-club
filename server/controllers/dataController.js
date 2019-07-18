@@ -26,6 +26,9 @@ const auth = axios({
             },
         }).then((res) => token.push(res.data.access_token)).catch(e => console.log(e.response))
 
+
+
+
 getResults = (req, res) => {
     console.log('hit')
     axios({
@@ -36,11 +39,20 @@ getResults = (req, res) => {
             'Authorization': "Bearer " + `${token[0]}`,
             'Content-Type': 'application/json'
         },
-    }).then((response) => 
-    
-        // console.log(response.data.PricedItineraries)
-    res.send(response.data)
-    
+    }).then((response) => {
+        let filteredFlights = []
+        let results = response.data.PricedItineraries
+        // console.log(results)
+        for(let i = 0; i < results.length; i++) {
+            let index = filteredFlights.findIndex(obj => obj.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber === results[i].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber)
+            console.log(index)
+            if(index === -1){
+                filteredFlights.push(results[i])
+            }
+
+        }
+        res.send(filteredFlights)
+    }
     ).catch(e => res.send(e))
 }
 
