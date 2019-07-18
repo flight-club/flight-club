@@ -24,7 +24,6 @@ class Results extends Component {
             // returnDuration: "",
             // returnAircraftType: "",
             // returnTicketCost: ""
-           
         };
     }
 
@@ -40,13 +39,14 @@ class Results extends Component {
     }
 
 
+
+
     render() {
         
             const {flightInfo} = this.state
-  console.log(this.state.flightInfo)
+            console.log(this.state.flightInfo)
     
             return (
-               
                 <div className="flight-info-container">
 
                     <div>
@@ -55,9 +55,8 @@ class Results extends Component {
                         <div className="First-class">First Class</div>
                     </div>
 
-                    {flightInfo.map((flight, index) =>
+                    {/* {flightInfo.map((flight, index) =>
                         (
-
                             <div key={flight.id}>
                                 <div>
                                 <h3 className="flightnumber">{flight.number}</h3>
@@ -74,20 +73,18 @@ class Results extends Component {
                                      {flight.ticket.main.cost}
                                    </button>
                                     </div>
-
                                 <div>
                                 <button className="firstcost"onclick={() => this.addFlight(flight)}>
                                 {flight.ticket.first.cost}
                                 </button>
-                                </div>
-                        ))}
+                            </div>
+                            </div>
+                        ))} */}
                 </div>
-               
-
+                
+                    
         )
     }
 }
-
-
 
 export default Results;
