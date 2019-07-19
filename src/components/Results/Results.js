@@ -7,27 +7,12 @@ class Results extends Component {
         super(props);
         this.state = {
             results: [],
-            // flightNumber: "",
-            // departureCity: "",
-            // departureTime: "",
-            // arrivalCity: "",
-            // arrivalTime: "",
-            // duration: "",
-            // aircraftType: "",
-            // ticketCost: "",
-            // returnFlightNumber: "",
-            // returnDepartureCity: "",
-            // returnDepartureTime: "",
-            // returnArrivalCity: "",
-            // returnArrivalTime: "",
-            // returnDuration: "",
-            // returnAircraftType: "",
-            // returnTicketCost: ""
+            
         };
 
         this.changeDate = this.changeDate.bind(this);
         this.changeDuration = this.changeDuration.bind(this);
-        // this.changeTime = this.changeTime.bind(this);
+       
     }
 
    componentDidMount() {
@@ -79,6 +64,7 @@ class Results extends Component {
             console.log(this.state.results)
     
             return (
+                <div>
                 <div className="flight-results">
                     <div className='top-bar'>
                         <div>
@@ -140,7 +126,69 @@ class Results extends Component {
                             ))}
                     </div>
 
-                
+<div className="flight-results">
+<div className='top-bar'>
+    <div>
+        <h2>Choose Return flights</h2>
+    </div>
+
+    <div className='cabins'>
+        <div className="main-cabin">
+            <h3>Main Cabin</h3>
+        </div>
+        <div className="first-class">
+            <h3>First Class</h3>
+        </div>
+    </div>
+</div>
+
+    {results.map((results, index) =>
+        (
+
+            <div className='results-container' key={results.id}>
+
+                <div className='results-left'>
+                    <div className='results-left--one'>
+                        <h3 className="returnDeparturecity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureAirport.LocationCode}</h3>
+
+                        <h3 className="returnArrivalcity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode}</h3>
+                    </div>
+
+                    <div className='results-left--two'>
+                        <h3 className="returnDeparturetime">{this.changeDate(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime)}</h3>
+
+                        <i class="fas fa-arrow-right"></i>
+
+                        <h3 className="returnArrivaltime">{this.changeDate(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime)}</h3>
+
+                        <p className="returnDuration">{this.changeDuration(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime)}</p>
+
+                        <p>Nonstop</p>
+                    </div>
+
+                    <div className='results-left--three'>
+                        <h3 className="retunFlightnumber">AA#{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber}</h3>
+
+                        <i class="fas fa-square"></i>
+
+                        <p className="returnAircraft">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType}</p>
+
+                        <i class="fas fa-wifi"></i>
+
+                        <i class="fas fa-plug"></i>
+                    </div>
+                </div>
+
+                <div className='results-right'>
+                    <button className='main-cabin'>${Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount)}</button>
+                    <button>${Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99)}</button>
+                    </div>  
+                </div>
+
+        ))}
+</div>
+
+</div>
                 
                     
         )
