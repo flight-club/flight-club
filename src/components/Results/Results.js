@@ -7,12 +7,23 @@ class Results extends Component {
         super(props);
         this.state = {
             results: [],
-            
+            flightNumber: "",
+            departureCity: "",
+            departureTime: "",
+            arrivalCity: "",
+            arrivalTime: "",
+            duration: "",
+            aircraftType: "",
+            ticketCost: "",
+            returnFlightNumber: "",
+            returnDepartureCity: "",
+            returnDepartureTime: "",
+            returnArrivalCity: "",
+            returnArrivalTime: "",
+            returnDuration: "",
+            returnAircraftType: "",
+            returnTicketCost: ""
         };
-
-        this.changeDate = this.changeDate.bind(this);
-        this.changeDuration = this.changeDuration.bind(this);
-       
     }
 
    componentDidMount() {
@@ -40,7 +51,7 @@ class Results extends Component {
     // }
 
 
-    changeDate(str) {
+    changeDate = (str) => {
         let newStr = str.split('')
         newStr.splice(0, 12)
         let mins = newStr.join('')
@@ -48,20 +59,66 @@ class Results extends Component {
         return mins
     }
 
-    changeDuration(minutes) {
+    changeDuration = (minutes) => {
         var h = Math.floor(minutes / 60);
         var m = minutes % 60;
         h = h < 10 ? + h : h;
         m = m < 10 ? '0' + m : m;
         return h + 'h' + m + 'm';
-      }
+    }
 
+    departureMainCabin = (flight) => {
+        this.setState({flightNumber: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber,
+            departureCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureAirport.LocationCode,
+            departureTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime, 
+            arrivalCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalAirport.LocationCode, 
+            arrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime, 
+            duration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime, 
+            aircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].Equipment.AirEquipType,
+            ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount})
+    }
+
+    departureFirstClass = (flight) => {
+        this.setState({flightNumber: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber,
+            departureCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureAirport.LocationCode,
+            departureTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime, 
+            arrivalCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalAirport.LocationCode, 
+            arrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime, 
+            duration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime, 
+            aircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].Equipment.AirEquipType,
+            ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99})
+    }
+
+    returnMainCabin = (flight) => {
+        this.setState({flightNumber: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber,
+            departureCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureAirport.LocationCode,
+            departureTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime, 
+            arrivalCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode, 
+            arrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime, 
+            duration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime, 
+            aircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType,
+            ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount})
+    }
+
+    returnFirstClass = (flight) => {
+        this.setState({flightNumber: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber,
+            departureCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureAirport.LocationCode,
+            departureTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime, 
+            arrivalCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode, 
+            arrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime, 
+            duration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime, 
+            aircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType,
+            ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99})
+    }
+
+    
 
     render() {
+        console.log(this.state)
         const values = queryString.parse(this.props.location.search)
-        console.log(values)
+   
             const {results} = this.state
-            console.log(this.state.results)
+           
     
             return (
                 <div>
@@ -81,36 +138,36 @@ class Results extends Component {
                         </div>
                     </div>
 
-                        {results.map((results, index) =>
+                        {results.map((flight, index) =>
                             (
 
-                                <div className='results-container' key={results.id}>
+                                <div className='flight-container' key={flight.id}>
 
-                                    <div className='results-left'>
-                                        <div className='results-left--one'>
-                                            <h3 className="departurecity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureAirport.LocationCode}</h3>
+                                    <div className='flight-left'>
+                                        <div className='flight-left--one'>
+                                            <h3 className="departurecity">{flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureAirport.LocationCode}</h3>
 
-                                            <h3 className="arrivalcity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalAirport.LocationCode}</h3>
+                                            <h3 className="arrivalcity">{flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalAirport.LocationCode}</h3>
                                         </div>
 
-                                        <div className='results-left--two'>
-                                            <h3 className="departuretime">{this.changeDate(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime)}</h3>
+                                        <div className='flight-left--two'>
+                                            <h3 className="departuretime">{this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime)}</h3>
 
                                             <i class="fas fa-arrow-right"></i>
 
-                                            <h3 className="arrivaltime">{this.changeDate(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime)}</h3>
+                                            <h3 className="arrivaltime">{this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime)}</h3>
 
-                                            <p className="duration">{this.changeDuration(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime)}</p>
+                                            <p className="duration">{this.changeDuration(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime)}</p>
 
                                             <p>Nonstop</p>
                                         </div>
 
-                                        <div className='results-left--three'>
-                                            <h3 className="flightnumber">AA#{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber}</h3>
+                                        <div className='flight-left--three'>
+                                            <h3 className="flightnumber">AA#{flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber}</h3>
 
                                             <i class="fas fa-square"></i>
 
-                                            <p className="aircraft">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].Equipment.AirEquipType}</p>
+                                            <p className="aircraft">{flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].Equipment.AirEquipType}</p>
 
                                             <i class="fas fa-wifi"></i>
 
@@ -118,9 +175,9 @@ class Results extends Component {
                                         </div>
                                     </div>
 
-                                    <div className='results-right'>
-                                        <button className='main-cabin'>${Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount)}</button>
-                                        <button>${Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99)}</button>
+                                    <div className='flight-right'>
+                                        <button onClick={() => this.departureMainCabin(flight)} className='main-cabin'>${Math.round(flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount)}</button>
+                                        <button onClick={() =>this.departureFirstClass(flight)}>${Math.round(flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99)}</button>
                                         </div>  
                                     </div>
                             ))}
@@ -142,36 +199,36 @@ class Results extends Component {
     </div>
 </div>
 
-    {results.map((results, index) =>
+    {results.map((flight, index) =>
         (
 
-            <div className='results-container' key={results.id}>
+            <div className='flight-container' key={flight.id}>
 
-                <div className='results-left'>
-                    <div className='results-left--one'>
-                        <h3 className="returnDeparturecity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureAirport.LocationCode}</h3>
+                <div className='flight-left'>
+                    <div className='flight-left--one'>
+                        <h3 className="returnDeparturecity">{flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureAirport.LocationCode}</h3>
 
-                        <h3 className="returnArrivalcity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode}</h3>
+                        <h3 className="returnArrivalcity">{flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode}</h3>
                     </div>
 
-                    <div className='results-left--two'>
-                        <h3 className="returnDeparturetime">{this.changeDate(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime)}</h3>
+                    <div className='flight-left--two'>
+                        <h3 className="returnDeparturetime">{this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime)}</h3>
 
                         <i class="fas fa-arrow-right"></i>
 
-                        <h3 className="returnArrivaltime">{this.changeDate(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime)}</h3>
+                        <h3 className="returnArrivaltime">{this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime)}</h3>
 
-                        <p className="returnDuration">{this.changeDuration(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime)}</p>
+                        <p className="returnDuration">{this.changeDuration(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime)}</p>
 
                         <p>Nonstop</p>
                     </div>
 
-                    <div className='results-left--three'>
-                        <h3 className="retunFlightnumber">AA#{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber}</h3>
+                    <div className='flight-left--three'>
+                        <h3 className="retunFlightnumber">AA#{flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber}</h3>
 
                         <i class="fas fa-square"></i>
 
-                        <p className="returnAircraft">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType}</p>
+                        <p className="returnAircraft">{flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType}</p>
 
                         <i class="fas fa-wifi"></i>
 
@@ -179,9 +236,9 @@ class Results extends Component {
                     </div>
                 </div>
 
-                <div className='results-right'>
-                    <button className='main-cabin'>${Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount)}</button>
-                    <button>${Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99)}</button>
+                <div className='flight-right'>
+                    <button onClick={() => this.returnMainCabin(flight)} className='main-cabin'>${Math.round(flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount)}</button>
+                    <button onClick={() => this.returnFirstClass(flight)}>${Math.round(flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99)}</button>
                     </div>  
                 </div>
 
