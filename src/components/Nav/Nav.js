@@ -7,7 +7,7 @@ class Nav extends Component {
             <div className='nav'>
                 <div className='nav--left'>
                     <div className='logo'>
-                        <h1>ALPHA</h1>
+                        <Link to='/' style={{textDecoration:'none'}}><h1>ALPHA</h1></Link>
                         <i class="far fa-paper-plane"></i>
                     </div>
 

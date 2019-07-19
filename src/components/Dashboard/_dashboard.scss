@@ -2,21 +2,17 @@
     background-image: url('https://images.unsplash.com/photo-1428908728789-d2de25dbd4e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-position: center;
     background-size: cover;
-    position: absolute;
     display: flex;
     justify-content: center;
-    top: 0;
-    z-index: -1;
+    align-items: center;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
 }
 
 .account-container {
     display: flex;
     width: 950px;
     height: 800px;
-    position: absolute;
-    top: 125px;
 
     .options {
         display: flex;
