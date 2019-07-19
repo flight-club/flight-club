@@ -1,0 +1,100 @@
+.full-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100vw;
+    height: 92vh;
+    background-image: url('https://images.unsplash.com/photo-1495611869653-166316536321?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80');
+    background-size: cover;
+    background-position: center;
+    font-family: $primary-font;
+    color: $primary-color;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
+    height: 550px;
+    padding: 15px;
+    background: white;
+    border-radius: 3px;
+
+    button {
+        width: 260px;
+        height: 60px;
+        border-radius: 3px;
+        background: $primary-color;
+        color: white;
+        font-size: 20px;
+        outline: none;
+    }
+}
+
+.logIn-logo {
+    display: flex;
+    width: 100px;
+    height: 10px;
+
+
+    .fa-paper-plane {
+        font-size: 90px;
+        color: $secondary-color;
+        transform: 
+        rotate(30deg)
+        translateX(112px)
+        translateY(-135px); 
+    }
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-left: 65px;
+
+    h2 {
+        font-size: 25px;
+    }
+
+    h4 {
+        font-size: 13px;
+        margin-top: 10px;
+    }
+}
+
+.inputs {
+    h3 {
+        font-size: 12px;
+        font-weight: bold;
+        color: #787878;
+        margin-top: 15px;
+    }
+
+    input {
+        width: 260px;
+        height: 60px;
+        border: none;
+        border-bottom: 1px solid $primary-color;
+    }
+
+    input:focus {
+        background: white;
+        border: none;
+        color: $primary-color; 
+        font-size: 15px;
+        outline: none;
+        border-bottom: 1px solid $primary-color;
+    }
+}
+
+.link {
+    h3 {
+        color: $primary-color;
+        font-size: 15px;
+    }
+}
+

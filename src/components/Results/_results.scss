@@ -5,18 +5,18 @@
     justify-content: center;
     width: 100vw;
     font-family: $primary-font;
+    background: white;
 }
 
 .top-bar {
     display: flex;
     justify-content: space-between;
-    background: white;
     width: 900px;
     margin-top: 20px;
 
     h2 {
-        font-size: 30px;
-        margin-bottom: 20px;
+        font-size: 40px;
+        // margin-bottom: 10px;
     }
 
     .cabins {
@@ -67,14 +67,14 @@
     &--one {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
-        width: 200px;
+        align-items: center;
+        width: 250px;
         height: 100px;
-        margin-top: 10px;
+
 
 
         h3 {
-            font-size: 15px;
+            font-size: 25px;
             font-weight: bold;
             color: #787878;
         }
@@ -85,7 +85,7 @@
         width: 500px;
         height: 70px;
         justify-content: space-between;
-        align-items: baseline;
+        align-items: center;
 
         h3 {
             color: $primary-color;

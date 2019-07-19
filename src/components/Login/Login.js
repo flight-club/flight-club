@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {getMember} from '../../redux/reducer'
 import {Redirect} from 'react-router-dom'
@@ -38,13 +39,38 @@ class Login extends Component {
             return <Redirect to={`/dashboard/${this.state.id}`} />
         }
         return (
-            <div className='login'>
-                <div>
-                    <h2>Log In To Alpha</h2>
-                    <h4> All fields are required</h4>
-                    <input className='login-input' placeholder='Username' name='username' value={this.state.username} onChange={this.handleChange}></input>
-                    <input className='password-input' placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange}></input>
-                    <button onClick={this.login}> Login</button>
+            <div className='full-login'>
+                <div className='login-container'>
+
+                    <div className='logIn-logo'>
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+
+                    <div className='top'>
+                        <h2>Log In To Alpha Airlines</h2>
+                        <h4>All fields are required.</h4>
+                    </div>
+
+                    <div className='inputs'>
+                        <div>
+                            <h3>Username</h3>
+                            <input className='login-input' name='username' value={this.state.username} onChange={this.handleChange}></input>
+                        </div>
+
+                        <div>
+                            <h3>Password</h3>
+                            <input className='password-input' name='password' value={this.state.password} onChange={this.handleChange}></input>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button onClick={this.login}> Log In</button>
+                    </div>
+
+                    <div className='link'>
+                        <Link to='/auth/signup' style={{textDecoration:'none'}}><h3>Join Alpha Miles</h3></Link>
+                    </div>
+
                 </div>
             </div>
         )
