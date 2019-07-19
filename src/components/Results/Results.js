@@ -24,12 +24,14 @@ class Results extends Component {
             // returnAircraftType: "",
             // returnTicketCost: ""
         };
+
+        this.changeDate = this.changeDate.bind(this);
+        this.changeDuration = this.changeDuration.bind(this);
+        // this.changeTime = this.changeTime.bind(this);
     }
 
    componentDidMount() {
         const values = queryString.parse(this.props.location.search)
-
-       
 
         axios
         .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
@@ -39,60 +41,106 @@ class Results extends Component {
           });
     }
 
+    // changeTime(time) {
+    //         //var time = "12:23:39";
+    //         var time = time.split(':');
+    //         var hours = time[0];
+    //         var minutes = time[1];
+    //         var seconds = time[2];
+    //         $scope.timeValue = "" + ((hours >12) ? hours -12 :hours);
+    //         $scope.timeValue += (minutes < 10) ? ":0" : ":" + minutes;
+    //         $scope.timeValue += (seconds < 10) ? ":0" : ":" + seconds;
+    //         $scope.timeValue += (hours >= 12) ? " P.M." : " A.M.";
+    //         //console.log( timeValue);
+    // }
 
-    render() 
-    {
+
+    changeDate(str) {
+        let newStr = str.split('')
+        newStr.splice(0, 12)
+        let mins = newStr.join('')
+
+        return mins
+    }
+
+    changeDuration(minutes) {
+        var h = Math.floor(minutes / 60);
+        var m = minutes % 60;
+        h = h < 10 ? + h : h;
+        m = m < 10 ? '0' + m : m;
+        return h + 'h' + m + 'm';
+      }
+
+
+    render() {
         const values = queryString.parse(this.props.location.search)
         console.log(values)
             const {results} = this.state
-  console.log(this.state.results)
+            console.log(this.state.results)
     
             return (
-                <div className="flight-info-container">
+                <div className="flight-results">
+                    <div className='top-bar'>
+                        <div>
+                            <h2>Choose flights</h2>
+                        </div>
 
-                    <div>
-                        <div className="choose-flights">Choose flights</div>
-                        <div className="main-cabin">Main Cabin</div>
-                        <div className="First-class">First Class</div>
+                        <div className='cabins'>
+                            <div className="main-cabin">
+                                <h3>Main Cabin</h3>
+                            </div>
+                            <div className="first-class">
+                                <h3>First Class</h3>
+                            </div>
+                        </div>
                     </div>
 
-                    {results.map((results, index) =>
-                        (
+                        {results.map((results, index) =>
+                            (
 
-                            <div key={results.id}>
+                                <div className='results-container' key={results.id}>
 
-                                <div>
+                                    <div className='results-left'>
+                                        <div className='results-left--one'>
+                                            <h3 className="departurecity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureAirport.LocationCode}</h3>
 
-                                <h3 className="flightnumber">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber}</h3>
-                              
-                                <h3 className="departurecity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureAirport.
-                                    LocationCode}</h3>
-                                <h3 className="departuretime">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime}</h3>
-                                <h3 className="arrivalcity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalAirport.
-                                    LocationCode}</h3>
-                                <h3 className="arrivaltime">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime}</h3>
-                                <p className="duration">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime}</p>
-                                <p className="aircraft">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].Equipment.AirEquipType}</p>
-                                <p>{Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount)}</p>
-                                <p>{Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99)}</p>
-                                </div>
-                                
-                                <div>
-                                    {/* <button className="maincabin" onclick={() => this.addResults(results)}>
-                                     {results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.FareBasisCodes.PassengerFare.TotalFare.Amount}   
-                                   </button>
-                                 </div>
+                                            <h3 className="arrivalcity">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalAirport.LocationCode}</h3>
+                                        </div>
 
-                                <div>
-                                <button className="firstclass"onclick={() => this.addResults(results)}>
-                                {results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.FareBasisCodes.PassengerFare.TotalFare.Amount * 2}
-                                </button> */}
-                                </div>
-                                </div>
-                                
-                        ))}
+                                        <div className='results-left--two'>
+                                            <h3 className="departuretime">{this.changeDate(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime)}</h3>
 
-                </div>
+                                            <i class="fas fa-arrow-right"></i>
+
+                                            <h3 className="arrivaltime">{this.changeDate(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime)}</h3>
+
+                                            <p className="duration">{this.changeDuration(results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime)}</p>
+
+                                            <p>Nonstop</p>
+                                        </div>
+
+                                        <div className='results-left--three'>
+                                            <h3 className="flightnumber">AA#{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber}</h3>
+
+                                            <i class="fas fa-square"></i>
+
+                                            <p className="aircraft">{results.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].Equipment.AirEquipType}</p>
+
+                                            <i class="fas fa-wifi"></i>
+
+                                            <i class="fas fa-plug"></i>
+                                        </div>
+                                    </div>
+
+                                    <div className='results-right'>
+                                        <button className='main-cabin'>${Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount)}</button>
+                                        <button>${Math.round(results.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99)}</button>
+                                        </div>  
+                                    </div>
+                            ))}
+                    </div>
+
+                
                 
                     
         )
