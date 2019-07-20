@@ -375,3 +375,88 @@
         }
     }
 }
+
+.passenger-info {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    width: 900px;
+
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+    }
+}
+
+.passenger-info--row {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    padding: 15px;
+
+    h2 {
+        color: $primary-color;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    h3 {
+        font-size: 12px;
+        font-weight: bold;
+        color: #787878;
+        margin-bottom: 6px;
+        margin-top: 15px;
+    }
+
+    input {
+        width: 210px;
+        margin-right: 15px;
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    select {
+        width: 100px;
+        height: 45px;
+        border-top: #9A9A9A solid 1.5px;
+        border-bottom: #EEEEEE solid 1.5px;
+        border-right: #EEEEEE solid 1.5px;
+        border-left: #9A9A9A solid 1.5px;
+        margin-right: 15px;
+    }
+
+    &--row {
+        display: flex;
+        justify-content: space-between;
+        width: 650px;
+
+        .area {
+            width: 195px;
+        }
+    }
+
+    .DOB {
+        display: flex;
+        justify-content: space-between;
+        width: 305px;
+    }
+
+    .add-button {
+        display: flex;
+        align-self: flex-end;
+    }
+
+    button {
+        color: white;
+        background: $primary-color;
+        font-size: 20px;
+        width: 200px;
+        height: 50px;
+        margin-top: 30px;
+
+        &:hover {
+            width: 202px;
+            height: 52px;
+        }
+    }
+}

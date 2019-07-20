@@ -1,6 +1,39 @@
 import React, {Component} from 'react';
+import { Input } from 'reactstrap';
 
 class Checkout extends Component {
+    constructor(){
+        super()
+        this.state ={
+            first_name: "",
+            last_name: "",
+            gender: "",
+            DOBmonth: "",
+            DOBday: "",
+            DOByear: "",
+            yearList: [],
+        }
+    }
+
+    componentDidMount() {
+        this.getYears()
+    }
+
+    getYears() {
+        let yearList = []
+
+        for (let i = 2019; i >= 1919; i--) {
+            yearList.push(i)
+        }
+
+        this.setState({yearList: yearList});
+    }
+
+    handleChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+
     render() {
         return (
             <div className='full-payment'>
@@ -205,6 +238,98 @@ class Checkout extends Component {
                 <div className='flight-total'>
                     <h2>Flight Total:</h2>
                     <h1>$368.75</h1>
+                </div>
+
+
+
+
+            <div className='passenger-info'>
+                <h2>Who's flying?</h2>
+                        <div className='passenger-info--row'>
+                            <div>
+                                <h3>FIRST NAME</h3>
+                                <input name='first_name' value={this.state.first_name} onChange={this.handleChange} />
+                            </div>
+
+                            <div>
+                                <h3>LAST NAME</h3>
+                                <input name='last_name' value={this.state.last_name} onChange={this.handleChange} />
+                            </div>
+
+                            <div>
+                                <h3>GENDER</h3>
+                                <Input type='select' name='gender' value={this.state.gender} onChange={this.handleChange}> 
+                                    <option>Female</option>
+                                    <option>Male</option>
+                                </Input>
+                            </div>
+
+                            <div>
+                                <h3>DATE OF BIRTH</h3>
+                                    <div className='DOB'>
+                                        <Input type='select' value={this.state.DOBmonth} onChange={this.handleChange}>
+                                            <option>January</option>
+                                            <option>February</option>
+                                            <option>March</option>
+                                            <option>April</option>
+                                            <option>May</option>
+                                            <option>June</option>
+                                            <option>July</option>
+                                            <option>August</option>
+                                            <option>September</option>
+                                            <option>October</option>
+                                            <option>November</option>
+                                            <option>December</option>
+                                        </Input>
+
+                                        <Input type='select' value={this.state.DOBday}>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            <option>12</option>
+                                            <option>13</option>
+                                            <option>14</option>
+                                            <option>15</option>
+                                            <option>16</option>
+                                            <option>17</option>
+                                            <option>18</option>
+                                            <option>19</option>
+                                            <option>20</option>
+                                            <option>21</option>
+                                            <option>22</option>
+                                            <option>23</option>
+                                            <option>24</option>
+                                            <option>25</option>
+                                            <option>26</option>
+                                            <option>27</option>
+                                            <option>28</option>
+                                            <option>29</option>
+                                            <option>30</option>
+                                            <option>31</option>
+                                        </Input>
+
+                                        <Input type='select' value={this.state.DOByear}>
+                                            {this.state.yearList.map((year, index) => (
+                                                    <option>{year}</option>
+                                                ))}
+                                        </Input>
+                            </div>
+                        </div>
+
+                        <div className='passenger-info--row'>
+                            <div>
+                                
+                            </div>        
+                        </div>
+                    </div>
                 </div>
             </div>
 
