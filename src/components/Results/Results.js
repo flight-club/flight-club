@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import queryString from 'query-string'
+import Checkout from '../Checkout/Checkout';
+import {Link} from 'react-router-dom'
 
 class Results extends Component {
     constructor(props) {
@@ -43,7 +45,7 @@ class Results extends Component {
     //         var hours = time[0];
     //         var minutes = time[1];
     //         var seconds = time[2];
-    //         $scope.timeValue = "" + ((hours >12) ? hours -12 :hours);
+    //        .timeValue = "" + ((hours >12) ? hours -12 :hours);
     //         $scope.timeValue += (minutes < 10) ? ":0" : ":" + minutes;
     //         $scope.timeValue += (seconds < 10) ? ":0" : ":" + seconds;
     //         $scope.timeValue += (hours >= 12) ? " P.M." : " A.M.";
@@ -90,27 +92,67 @@ class Results extends Component {
     }
 
     returnMainCabin = (flight) => {
-        this.setState({flightNumber: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber,
-            departureCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureAirport.LocationCode,
-            departureTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime, 
-            arrivalCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode, 
-            arrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime, 
-            duration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime, 
-            aircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType,
-            ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount})
+        this.setState({returnFlightNumber: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber,
+            returnDepartureCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureAirport.LocationCode,
+            returnDepartureTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime, 
+            returnArrivalCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode, 
+            returnArrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime, 
+            returnDuration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime, 
+            returnAircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType,
+            returnTicketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount})
     }
 
     returnFirstClass = (flight) => {
-        this.setState({flightNumber: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber,
-            departureCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureAirport.LocationCode,
-            departureTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime, 
-            arrivalCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode, 
-            arrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime, 
-            duration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime, 
-            aircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType,
-            ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99})
+        this.setState({returnFlightNumber: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber,
+            returnDepartureCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureAirport.LocationCode,
+            returnDepartureTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime, 
+            returnArrivalCity: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode, 
+            returnArrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime, 
+            returnDuration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime, 
+            returnAircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType,
+            returnTicketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99})
     }
 
+    addToCheckout = (state) => {
+        let {flightNumber,
+        departureCity,
+        departureTime,
+        arrivalCity,
+        arrivalTime,
+        duration,
+        aircraftType,
+        ticketCost,
+        returnFlightNumber,
+        returnDepartureCity,
+        returnDepartureTime,
+        returnArrivalCity,
+        returnArrivalTime,
+        returnDuration,
+        returnAircraftType,
+        returnTicketCost} = state
+        console.log(state)
+        axios
+        .post('/api/checkout', {
+            flightNumber,
+            departureCity,
+            departureTime,
+            arrivalCity,
+            arrivalTime,
+            duration,
+            aircraftType,
+            ticketCost,
+            returnFlightNumber,
+            returnDepartureCity,
+            returnDepartureTime,
+            returnArrivalCity,
+            returnArrivalTime,
+            returnDuration,
+            returnAircraftType,
+            returnTicketCost})
+        .then(res => {
+            console.log(res.data)
+        })
+    }
     
 
     render() {
@@ -242,7 +284,13 @@ class Results extends Component {
                     </div>  
                 </div>
 
+                
+
         ))}
+</div>
+
+<div>
+  <Link to='/checkout'><button onClick={() => this.addToCheckout(this.state)}>Book Flight!</button></Link> 
 </div>
 
 </div>
