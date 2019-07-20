@@ -1,13 +1,377 @@
 .full-payment {
     display: flex;
     justify-content: center;
+    font-family: $primary-font;
 }
 
 .payment-container {
- //
+    width: 940px;
+
+    h3 {
+        font-size: 40px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-weight: bolder;
+    }
+}
+
+.top-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    align-items: center;
+    width: 900px;
+    height: 30px;
+    padding: 20px;
+    margin: 0;
+    background: #4367AF;
+
+    i {
+        color: white;
+        font-size: 30px;
+        transform: rotate(-35deg)
+        translateY(-4px);
+    }
+
+    h2 {
+        font-size: 28px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-left: 5px;
+    }
+}
+
+.full-review-container {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #E6E7E8;
+
 }
 
 .review-container {
     display: flex;
     flex-direction: column;
+    padding: 15px;
+
+
+    .flight-details {
+        display: flex;
+
+        &--left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+        }
+
+        &--middle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 150px;
+
+            h4 {
+                font-size: 15px;
+                font-weight: bolder;
+                color: #787878;
+                margin-bottom: 10px;
+                margin-top: 12px;
+                margin-left: 20px;
+            }
+        }
+
+        &--right {
+            display: flex;
+            flex-direction: column;
+
+            .top {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start !important;
+                width: 400px;
+
+                &--time {
+                    display: flex;
+                    align-items: flex-end;
+
+                    p {
+                        transform: translateY(-2.5px);
+                        margin-left: 4px;
+                    }
+                }
+
+                h1 {
+                    margin: 0;
+                    font-size: 35px;
+                    font-weight: bold;
+                }
+
+                h3 {
+                    font-size: 12px;
+                    font-weight: bolder;
+                    color: #787878;
+                    margin: 0;
+                }
+
+                .icons {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    h2 {
+                        font-size: 17px;
+                        font-weight: bold;
+                    }
+
+                    i {
+                        font-size: 12px;
+                        color: #51A866;
+                        margin-left: 8px;
+                    }
+
+                    h4 {
+                        color: #51A866;
+                        font-size: 15px;
+                        font-weight: bolder;
+                        margin: 0;
+                        margin-left: 8px;
+
+                    }
+                }
+            }
+
+            .middle {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                margin-left: 65px;
+                height: 80px;
+
+                h3 {
+                    font-size: 15px;
+                    font-style: italic;
+                    font-weight: lighter;
+                }
+
+                .line {
+                    background: #E6E7E8;
+                    width: 350px;
+                    height: 2px;
+                    margin: 10px;
+                }
+            }
+
+            .bottom {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start !important;
+                width: 400px;
+                margin-left: 65px;
+
+                &--time {
+                    display: flex;
+                    align-items: flex-end;
+
+                    p {
+                        transform: translateY(-2.5px);
+                        margin-left: 4px;
+                    }
+                }
+
+                h1 {
+                    margin: 0;
+                    font-size: 35px;
+                    font-weight: bold;
+                }
+
+                h3 {
+                    font-size: 12px;
+                    font-weight: bolder;
+                    color: #787878;
+                    margin: 0;
+                }
+
+                .travel-time {
+                    margin-left: 14px; 
+                    margin-right: 27px;
+                }
+
+                .duration {
+
+                    h2 {
+                        font-size: 17px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+
+    .plane-circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: $primary-color;
+        border-radius: 50%;
+        color: white;
+
+        i {
+            font-size: 18px;
+            transform: rotate(-35deg);
+        }
+    }
+
+    .blue-line {
+        width: 5px;
+        height: 70px;
+        background: #A4BBF2;
+    }
+
+    .departing-date {
+        display: flex;
+        align-items: center;
+        // margin-top: 10px;
+        // margin-bottom: 10px;
+
+        h2 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: lighter;
+            margin-left: 15px;
+            transform: translateY(2px)
+        }
+    }
+
+    .returning-plane-circles {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: $secondary-color;
+        border-radius: 50%;
+        color: white;
+
+        i {
+            font-size: 18px;
+            transform: rotate(-140deg);
+        }
+        
+    }
+}
+
+.review-container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 350px;
+    height: 230px;
+    background: #E8ECF9;
+    padding: 15px;
+
+    .cabin-price {
+        display: flex;
+        justify-content: space-between;
+
+        h2 {
+            font-weight: bolder;
+        }
+    }
+
+    .subtotal {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+
+        h3 {
+            font-size: 12px;
+            font-weight: bolder;
+            letter-spacing: 1px;
+            color: #787878;
+            margin-bottom: 10px;
+            margin-top: 12px;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+    }
+}
+
+.flight-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 80px;
+    padding: 15px;
+    border: 1px solid #E6E7E8;
+
+    h2 {
+        font-size: 20px;
+        font-weight: bolder;
+        transform: translateY(-10px);
+    }
+
+    h1 {
+        font-size: 40px;
+        font-weight: bolder;
+        margin-left: 145px;
+    }
+}
+
+.return-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start !important;
+    width: 400px;
+    margin-left: 65px;
+
+    &--time {
+        display: flex;
+        align-items: flex-end;
+
+        p {
+            transform: translateY(-2.5px);
+            margin-left: 4px;
+        }
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    h3 {
+        font-size: 12px;
+        font-weight: bolder;
+        color: #787878;
+        margin: 0;
+    }
+
+    .travel-time {
+        margin-left: -7px; 
+        margin-right: 20px;
+    }
+
+    .duration {
+
+        h2 {
+            font-size: 17px;
+            font-weight: 600;
+        }
+    }
 }
