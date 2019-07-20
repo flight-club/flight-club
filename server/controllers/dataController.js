@@ -45,6 +45,7 @@ getResults = (req, res) => {
         // console.log(results)
         for(let i = 0; i < results.length; i++) {
             let index = filteredFlights.findIndex(obj => obj.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber === results[i].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber)
+            
             if(index === -1){
                 filteredFlights.push(results[i])
             }

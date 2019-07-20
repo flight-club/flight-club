@@ -1,7 +1,75 @@
 import React, {Component} from 'react';
+import axios from 'axios'
 
 class Checkout extends Component {
+    constructor() {
+        super()
+        this.state ={
+            flight: {},
+            flightNumber: "",
+            departureCity: "",
+            departureTime: "",
+            arrivalCity: "",
+            arrivalTime: "",
+            duration: "",
+            aircraftType: "",
+            ticketCost: "",
+            returnFlightNumber: "",
+            returnDepartureCity: "",
+            returnDepartureTime: "",
+            returnArrivalCity: "",
+            returnArrivalTime: "",
+            returnDuration: "",
+            returnAircraftType: "",
+            returnTicketCost: ""
+        }
+    }
+
+    componentDidMount() {
+        axios
+        .get('/api/checkout')
+        .then(res => {
+            console.log(res.data[0])
+            this.setState({
+                flightNumber: res.data[0].flightNumber,
+                departureCity: res.data[0].departureCity,
+                departureTime: res.data[0].departureTime,
+                arrivalCity: res.data[0].arrivalCity,
+                arrivalTime: res.data[0].arrivalTime,
+                duration: res.data[0].duration,
+                aircraftType: res.data[0].aircraftType,
+                ticketCost: res.data[0].ticketCost,
+                returnFlightNumber: res.data[0].returnFlightNumber,
+                returnDepartureCity: res.data[0].returnDepartureCity,
+                returnDepartureTime: res.data[0].returnDepartureTime,
+                returnArrivalCity: res.data[0].returnArrivalCity,
+                returnArrivalTime: res.data[0].returnArrivalTime,
+                returnDuration: res.data[0].returnDuration,
+                returnAircraftType: res.data[0].returnAircraftType,
+                returnTicketCost: res.data[0].returnTicketCost})
+        })
+    }
+
     render() {
+        console.log(this.state)
+
+        let {flightNumber,
+            departureCity,
+            departureTime,
+            arrivalCity,
+            arrivalTime,
+            duration,
+            aircraftType,
+            ticketCost,
+            returnFlightNumber,
+            returnDepartureCity,
+            returnDepartureTime,
+            returnArrivalCity,
+            returnArrivalTime,
+            returnDuration,
+            returnAircraftType,
+            returnTicketCost} = this.state
+
         return (
             <div className='full-payment'>
                 <div className='payment-container'>
@@ -15,7 +83,7 @@ class Checkout extends Component {
                     <div className='review-container'>
                         <div className='departing-date'>
                             <h2>Departing</h2>
-                            <h3>7/25/19</h3>
+                            <h3>{departureTime}</h3>
                         </div>
 
                         <div className='flight-details'>
@@ -39,10 +107,10 @@ class Checkout extends Component {
                             <div className='flight-details--right'>
                                 <div className='top'>
                                     <div className='top--time'>
-                                        <h1>9:00</h1>
+                                        <h1>{departureTime}</h1>
                                         <p>AM</p>
                                     </div>
-                                    <h1>DAL</h1>
+                                    <h1>{departureCity}</h1>
 
                                     <div>
                                         <div>
@@ -50,7 +118,7 @@ class Checkout extends Component {
                                         </div>
 
                                         <div className='icons'>
-                                            <h2>1310</h2>
+                                            <h2>{flightNumber}</h2>
                                             <i class="fas fa-wifi"></i>
                                             <h4>+</h4>
                                             <i class="fas fa-tv"></i>
@@ -65,11 +133,11 @@ class Checkout extends Component {
 
                                 <div className='bottom'>
                                         <div className='bottom--time'>
-                                                <h1>10:05</h1>
+                                                <h1>{arrivalTime}</h1>
                                                 <p>AM</p>
                                         </div>
                                             
-                                            <h1>TUL</h1>
+                                            <h1>{arrivalCity}</h1>
 
                                         <div className='travel-time'>
                                             <div>
@@ -77,7 +145,7 @@ class Checkout extends Component {
                                             </div>
 
                                             <div className='duration'>
-                                                <h2>1hr 5min</h2>
+                                                <h2>{duration}</h2>
                                             </div>
                                         </div>
                                 </div>
@@ -96,12 +164,12 @@ class Checkout extends Component {
                     <div className='review-container-right'>
                         <div className='cabin-price'>
                             <h2>Main Cabin</h2>
-                            <h2>$200.63</h2>
+                            <h2>{ticketCost}</h2>
                         </div>
 
                         <div className='subtotal'>
                             <h3>SUBTOTAL</h3>
-                            <h2>$200.63</h2>
+                            <h2>{ticketCost}</h2>
                         </div>
                     </div>
                 </div>
@@ -111,7 +179,7 @@ class Checkout extends Component {
                     <div className='review-container'>
                         <div className='departing-date'>
                             <h2>Returning</h2>
-                            <h3>7/30/19</h3>
+                            <h3>{returnArrivalTime}</h3>
                         </div>
 
                         <div className='flight-details'>
@@ -135,10 +203,10 @@ class Checkout extends Component {
                             <div className='flight-details--right'>
                                 <div className='top'>
                                     <div className='top--time'>
-                                        <h1>5:35</h1>
+                                        <h1>{returnDepartureTime}</h1>
                                         <p>AM</p>
                                     </div>
-                                    <h1>TUL</h1>
+                                    <h1>{returnDepartureCity}</h1>
 
                                     <div>
                                         <div>
@@ -146,7 +214,7 @@ class Checkout extends Component {
                                         </div>
 
                                         <div className='icons'>
-                                            <h2>568</h2>
+                                            <h2>{returnFlightNumber}</h2>
                                             <i class="fas fa-wifi"></i>
                                             <h4>+</h4>
                                             <i class="fas fa-tv"></i>
@@ -161,11 +229,11 @@ class Checkout extends Component {
 
                                 <div className='return-bottom'>
                                         <div className='bottom--time'>
-                                                <h1>6:35</h1>
+                                                <h1>{returnArrivalTime}</h1>
                                                 <p>AM</p>
                                         </div>
                                             
-                                            <h1>DAL</h1>
+                                            <h1>{returnArrivalCity}</h1>
 
                                         <div className='travel-time'>
                                             <div>
@@ -173,10 +241,10 @@ class Checkout extends Component {
                                             </div>
 
                                             <div className='duration'>
-                                                <h2>1hr 5min</h2>
+                                                <h2>{returnDuration}</h2>
                                             </div>
                                         </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
@@ -192,12 +260,12 @@ class Checkout extends Component {
                     <div className='review-container-right'>
                         <div className='cabin-price'>
                             <h2>Main Cabin</h2>
-                            <h2>$105.75</h2>
+                            <h2>{returnTicketCost}</h2>
                         </div>
 
                         <div className='subtotal'>
                             <h3>SUBTOTAL</h3>
-                            <h2>$105.75</h2>
+                            <h2>{returnTicketCost}</h2>
                         </div>
                     </div>
                 </div>
