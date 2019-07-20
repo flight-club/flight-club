@@ -112,11 +112,44 @@ class Results extends Component {
             ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99})
     }
 
-    addToCheckout = (flight) => {
+    addToCheckout = (state) => {
+        let {flightNumber,
+        departureCity,
+        departureTime,
+        arrivalCity,
+        arrivalTime,
+        duration,
+        aircraftType,
+        ticketCost,
+        returnFlightNumber,
+        returnDepartureCity,
+        returnDepartureTime,
+        returnArrivalCity,
+        returnArrivalTime,
+        returnDuration,
+        returnAircraftType,
+        returnTicketCost} = state
+        console.log(state)
         axios
-        .get('/api/checkout', {flight})
+        .post('/api/checkout', {
+            flightNumber,
+            departureCity,
+            departureTime,
+            arrivalCity,
+            arrivalTime,
+            duration,
+            aircraftType,
+            ticketCost,
+            returnFlightNumber,
+            returnDepartureCity,
+            returnDepartureTime,
+            returnArrivalCity,
+            returnArrivalTime,
+            returnDuration,
+            returnAircraftType,
+            returnTicketCost})
         .then(res => {
-            console.log(res.data.flight)
+            console.log(res.data)
         })
     }
     
@@ -256,7 +289,7 @@ class Results extends Component {
 </div>
 
 <div>
-    <button onClick={(flight) => this.addToCheckout(flight)}>Book Flight!</button>
+    <button onClick={() => this.addToCheckout(this.state)}>Book Flight!</button>
 </div>
 
 </div>
