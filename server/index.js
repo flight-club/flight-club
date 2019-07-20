@@ -7,7 +7,7 @@ const app = express()
 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 const dataController = require('./controllers/dataController');
-const {addToCheckout} = require('./controllers/flightController');
+const {addToCheckout, getCheckout} = require('./controllers/flightController');
 const {register, login, logout, getMember, getDashboard} = require('./controllers/authController');
 
 // app.use( express.static( `${__dirname}/../build` ) )
@@ -44,6 +44,7 @@ app.get('/results', dataController.getResults)
 
 // Flight
 app.post('/api/checkout', addToCheckout)
+app.get('/api/checkout', getCheckout)
 
  
 app.listen(SERVER_PORT, () => {

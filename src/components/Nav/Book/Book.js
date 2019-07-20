@@ -53,7 +53,7 @@ class Book extends Component {
 
                         <div>
 
-                            <DateRangePicker
+                            {/* <DateRangePicker
                                 startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                                 startDateId="07-21-2019" // PropTypes.string.isRequired,
                                 endDate={this.state.returnDate} // momentPropTypes.momentObj or null,
@@ -61,19 +61,19 @@ class Book extends Component {
                                 onDatesChange={({ startDate, returnDate }) => this.setState({ startDate, returnDate })} // PropTypes.func.isRequired,
                                 focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                                 onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                            />
+                            /> */}
 
                             {/* <DatePicker 
                                 onChange={this.onChange}
                                 value={this.state.startDate}
                                 dateFormat={"yyyy-MM-dd"}/> */}
-                            {/* <div className='book'>
+                            <div className='book'>
                                 <input className='calendar' name='startDate' value={this.state.startDate} onChange={this.handleChange}/>
                             </div>
 
                             <div className='book'>
                                 <input className='calendar' name='returnDate' value={this.state.returnDate} onChange={this.handleChange}/>
-                            </div> */}
+                            </div>
                         </div>
 
                         <div className='input-passenger-dropdown'>
