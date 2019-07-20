@@ -7,7 +7,7 @@ const app = express()
 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 const dataController = require('./controllers/dataController');
-const flightController = require('./controllers/flightController');
+const {addToCheckout} = require('./controllers/flightController');
 const {register, login, logout, getMember, getDashboard} = require('./controllers/authController');
 
 // app.use( express.static( `${__dirname}/../build` ) )
@@ -39,7 +39,12 @@ app.get('/member/:id', getMember)
 app.get('/dashboard/:id', getDashboard)
 app.post('/test', req => console.log(req))
 
+// Sabre API
 app.get('/results', dataController.getResults)
+
+// Flight
+app.post('/api/checkout', addToCheckout)
+
  
 app.listen(SERVER_PORT, () => {
     console.log(`The server is listening on Port ${SERVER_PORT}`)

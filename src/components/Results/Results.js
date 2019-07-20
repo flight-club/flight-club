@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import queryString from 'query-string'
+import Checkout from '../Checkout/Checkout';
 
 class Results extends Component {
     constructor(props) {
@@ -111,6 +112,13 @@ class Results extends Component {
             ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99})
     }
 
+    addToCheckout = (flight) => {
+        axios
+        .get('/api/checkout', {flight})
+        .then(res => {
+            console.log(res.data.flight)
+        })
+    }
     
 
     render() {
@@ -242,7 +250,13 @@ class Results extends Component {
                     </div>  
                 </div>
 
+                
+
         ))}
+</div>
+
+<div>
+    <button onClick={(flight) => this.addToCheckout(flight)}>Book Flight!</button>
 </div>
 
 </div>
