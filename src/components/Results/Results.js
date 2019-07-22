@@ -35,10 +35,9 @@ class Results extends Component {
 
         axios
         .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
-        .then(( results ) => {
-           
-            this.setState({ results: results.data });
-          });
+        .then(( results ) => { this.setState({ results: results.data })
+          })
+          .catch((err) => alert(err, "loading"))
     }
 
     // changeTime(time) {

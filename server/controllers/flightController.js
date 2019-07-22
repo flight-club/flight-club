@@ -11,3 +11,12 @@ module.exports = {
         res.status(200).json(req.session.flight)
     }
 }
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripe = require("stripe")(stripeSecretKey);
+
+const postStripeCharges = res => stripeRes => {
+  res.status(200).json({ success: stripeRes });
+};
+
+
+module.export = postStripeCharges
