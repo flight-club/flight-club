@@ -24,7 +24,9 @@ class Results extends Component {
             returnArrivalTime: "",
             returnDuration: "",
             returnAircraftType: "",
-            returnTicketCost: ""
+            returnTicketCost: "",
+            cabin: "",
+            returnCabin: ""
         };
     }
 
@@ -77,7 +79,8 @@ class Results extends Component {
             arrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime, 
             duration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime, 
             aircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].Equipment.AirEquipType,
-            ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount})
+            ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount,
+            cabin: 'Main Cabin' })
     }
 
     departureFirstClass = (flight) => {
@@ -88,7 +91,8 @@ class Results extends Component {
             arrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime, 
             duration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime, 
             aircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].Equipment.AirEquipType,
-            ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99})
+            ticketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99,
+            cabin: 'First Class'})
     }
 
     returnMainCabin = (flight) => {
@@ -99,7 +103,8 @@ class Results extends Component {
             returnArrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime, 
             returnDuration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime, 
             returnAircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType,
-            returnTicketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount})
+            returnTicketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount,   
+            returnCabin: 'Main Cabin'})
     }
 
     returnFirstClass = (flight) => {
@@ -110,7 +115,8 @@ class Results extends Component {
             returnArrivalTime: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime, 
             returnDuration: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime, 
             returnAircraftType: flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].Equipment.AirEquipType,
-            returnTicketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99})
+            returnTicketCost: flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99, 
+            returnCabin: 'First Class'})
     }
 
     addToCheckout = (state) => {
@@ -129,7 +135,9 @@ class Results extends Component {
         returnArrivalTime,
         returnDuration,
         returnAircraftType,
-        returnTicketCost} = state
+        returnTicketCost,
+        cabin,
+        returnCabin } = state
         console.log(state)
         
         axios
@@ -149,7 +157,9 @@ class Results extends Component {
             returnArrivalTime,
             returnDuration,
             returnAircraftType,
-            returnTicketCost})
+            returnTicketCost,
+            cabin,
+            returnCabin})
         .then(res => {
             console.log(res.data)
         })
