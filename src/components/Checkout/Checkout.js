@@ -7,6 +7,7 @@ class Checkout extends Component {
         super()
         this.state ={
             flight: {},
+            yearList: [],
             flightNumber: "",
             departureCity: "",
             departureTime: "",
@@ -48,6 +49,10 @@ class Checkout extends Component {
 
         return mins
     }
+
+    // getDateFormat = (date) => {
+
+    // }
 
     changeDuration = (minutes) => {
         var h = Math.floor(minutes / 60);
@@ -393,11 +398,11 @@ class Checkout extends Component {
                                             <option>31</option>
                                         </Input>
 
-                                        {/* <Input type='select' value={this.state.DOByear}>
+                                        <Input type='select' value={this.state.DOByear}>
                                             {this.state.yearList.map((year, index) => (
                                                     <option>{year}</option>
                                                 ))}
-                                        </Input> */}
+                                        </Input>
                             </div>
                         </div>
 

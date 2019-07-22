@@ -11,3 +11,8 @@
 @import './components/Footer/footer';
 @import './components/Checkout/checkout';
 
+main {
+    background: $primary-color;
+    width: 100vw;
+    height: 100vh;
+}
