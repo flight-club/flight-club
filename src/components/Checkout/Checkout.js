@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import { Input } from 'reactstrap';
 
 class Checkout extends Component {
     constructor() {
@@ -21,13 +22,52 @@ class Checkout extends Component {
             returnArrivalTime: "",
             returnDuration: "",
             returnAircraftType: "",
-            returnTicketCost: ""
+            returnTicketCost: "",
+            totalCost: ""
         }
     }
 
+    getYears() {
+        let yearList = []
 
+        for (let i = 2019; i >= 1919; i--) {
+            yearList.push(i)
+        }
+
+        this.setState({yearList: yearList});
+    }
+
+    handleChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    changeDate = (str) => {
+        let newStr = str.split('')
+        newStr.splice(0, 12)
+        let mins = newStr.join('')
+
+        return mins
+    }
+
+    changeDuration = (minutes) => {
+        var h = Math.floor(minutes / 60);
+        var m = minutes % 60;
+        h = h < 10 ? + h : h;
+        m = m < 10 ? '0' + m : m;
+        return h + 'h' + m + 'm';
+    }
+
+    getTotalCost = (cost1, cost2) => {
+        let ticketCost = Number(cost1)
+        let returnTicketCost = Number(cost2)
+
+        let finalCost = ticketCost + returnTicketCost
+
+        return parseFloat(finalCost).toFixed(2)
+    }
 
     componentDidMount() {
+        this.getYears()
         axios
         .get('/api/checkout')
         .then(res => {
@@ -85,7 +125,7 @@ class Checkout extends Component {
                     <div className='review-container'>
                         <div className='departing-date'>
                             <h2>Departing</h2>
-                            <h3>{departureTime}</h3>
+                            <h3>{this.changeDate(departureTime)}</h3>
                         </div>
 
                         <div className='flight-details'>
@@ -109,7 +149,7 @@ class Checkout extends Component {
                             <div className='flight-details--right'>
                                 <div className='top'>
                                     <div className='top--time'>
-                                        <h1>{departureTime}</h1>
+                                        <h1>{this.changeDate(departureTime)}</h1>
                                         <p>AM</p>
                                     </div>
                                     <h1>{departureCity}</h1>
@@ -135,7 +175,7 @@ class Checkout extends Component {
 
                                 <div className='bottom'>
                                         <div className='bottom--time'>
-                                                <h1>{arrivalTime}</h1>
+                                                <h1>{this.changeDate(arrivalTime)}</h1>
                                                 <p>AM</p>
                                         </div>
                                             
@@ -147,7 +187,7 @@ class Checkout extends Component {
                                             </div>
 
                                             <div className='duration'>
-                                                <h2>{duration}</h2>
+                                                <h2>{this.changeDuration(duration)}</h2>
                                             </div>
                                         </div>
                                 </div>
@@ -166,12 +206,12 @@ class Checkout extends Component {
                     <div className='review-container-right'>
                         <div className='cabin-price'>
                             <h2>Main Cabin</h2>
-                            <h2>{ticketCost}</h2>
+                            <h2>${ticketCost}</h2>
                         </div>
 
                         <div className='subtotal'>
                             <h3>SUBTOTAL</h3>
-                            <h2>{ticketCost}</h2>
+                            <h2>${ticketCost}</h2>
                         </div>
                     </div>
                 </div>
@@ -205,7 +245,7 @@ class Checkout extends Component {
                             <div className='flight-details--right'>
                                 <div className='top'>
                                     <div className='top--time'>
-                                        <h1>{returnDepartureTime}</h1>
+                                        <h1>{this.changeDate(returnDepartureTime)}</h1>
                                         <p>AM</p>
                                     </div>
                                     <h1>{returnDepartureCity}</h1>
@@ -231,7 +271,7 @@ class Checkout extends Component {
 
                                 <div className='return-bottom'>
                                         <div className='bottom--time'>
-                                                <h1>{returnArrivalTime}</h1>
+                                                <h1>{this.changeDate(returnArrivalTime)}</h1>
                                                 <p>AM</p>
                                         </div>
                                             
@@ -243,10 +283,10 @@ class Checkout extends Component {
                                             </div>
 
                                             <div className='duration'>
-                                                <h2>{returnDuration}</h2>
+                                                <h2>{this.changeDuration(returnDuration)}</h2>
                                             </div>
                                         </div>
-                                </div> */}
+                                </div> 
                             </div>
                         </div>
                     </div>
@@ -262,19 +302,19 @@ class Checkout extends Component {
                     <div className='review-container-right'>
                         <div className='cabin-price'>
                             <h2>Main Cabin</h2>
-                            <h2>{returnTicketCost}</h2>
+                            <h2>${returnTicketCost}</h2>
                         </div>
 
                         <div className='subtotal'>
                             <h3>SUBTOTAL</h3>
-                            <h2>{returnTicketCost}</h2>
+                            <h2>${returnTicketCost}</h2>
                         </div>
                     </div>
                 </div>
 
                 <div className='flight-total'>
                     <h2>Flight Total:</h2>
-                    <h1>$368.75</h1>
+                    <h1>${this.getTotalCost(ticketCost, returnTicketCost)}</h1>
                 </div>
 
 
@@ -353,11 +393,11 @@ class Checkout extends Component {
                                             <option>31</option>
                                         </Input>
 
-                                        <Input type='select' value={this.state.DOByear}>
+                                        {/* <Input type='select' value={this.state.DOByear}>
                                             {this.state.yearList.map((year, index) => (
                                                     <option>{year}</option>
                                                 ))}
-                                        </Input>
+                                        </Input> */}
                             </div>
                         </div>
 

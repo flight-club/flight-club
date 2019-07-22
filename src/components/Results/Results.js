@@ -131,6 +131,7 @@ class Results extends Component {
         returnAircraftType,
         returnTicketCost} = state
         console.log(state)
+        
         axios
         .post('/api/checkout', {
             flightNumber,
@@ -164,8 +165,8 @@ class Results extends Component {
     
             return (
                 <div>
-                <div className="flight-results">
-                    <div className='top-bar'>
+                <div className="flight-flight">
+                    <div className='results-top-bar'>
                         <div>
                             <h2>Choose flights</h2>
                         </div>
@@ -225,8 +226,8 @@ class Results extends Component {
                             ))}
                     </div>
 
-<div className="flight-results">
-<div className='top-bar'>
+<div className="flight-flight">
+<div className='results-top-bar'>
     <div>
         <h2>Choose Return flights</h2>
     </div>
