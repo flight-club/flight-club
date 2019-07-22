@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Input } from 'reactstrap';
 
+
+
+  
+
 class Checkout extends Component {
     constructor() {
         super()
@@ -415,6 +419,7 @@ class Checkout extends Component {
                     </div>
                 </div>
             </div>
+            
 
         </div>
         )
