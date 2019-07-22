@@ -23,7 +23,9 @@ class Checkout extends Component {
             returnDuration: "",
             returnAircraftType: "",
             returnTicketCost: "",
-            totalCost: ""
+            totalCost: "",
+            cabin: "",
+            returnCabin: ""
         }
     }
 
@@ -88,7 +90,9 @@ class Checkout extends Component {
                 returnArrivalTime: res.data[0].returnArrivalTime,
                 returnDuration: res.data[0].returnDuration,
                 returnAircraftType: res.data[0].returnAircraftType,
-                returnTicketCost: res.data[0].returnTicketCost})
+                returnTicketCost: res.data[0].returnTicketCost, 
+                cabin: res.data[0].cabin,
+                returnCabin: res.data[0].returnCabin})
         })
     }
 
@@ -110,7 +114,9 @@ class Checkout extends Component {
             returnArrivalTime,
             returnDuration,
             returnAircraftType,
-            returnTicketCost} = this.state
+            returnTicketCost,
+            cabin,
+            returnCabin} = this.state
 
         return (
             <div className='full-payment'>
@@ -205,7 +211,7 @@ class Checkout extends Component {
 
                     <div className='review-container-right'>
                         <div className='cabin-price'>
-                            <h2>Main Cabin</h2>
+                            <h2>{cabin}</h2>
                             <h2>${ticketCost}</h2>
                         </div>
 
@@ -301,7 +307,7 @@ class Checkout extends Component {
 
                     <div className='review-container-right'>
                         <div className='cabin-price'>
-                            <h2>Main Cabin</h2>
+                            <h2>{returnCabin}</h2>
                             <h2>${returnTicketCost}</h2>
                         </div>
 
