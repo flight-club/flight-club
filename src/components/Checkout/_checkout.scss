@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     font-family: $primary-font;
+    background: white;
 }
 
 .payment-container {
@@ -96,6 +97,7 @@
                 &--time {
                     display: flex;
                     align-items: flex-end;
+                    width: 160px;
 
                     p {
                         transform: translateY(-2.5px);
@@ -120,6 +122,8 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
+                    width: 95px;
+                    
 
                     h2 {
                         font-size: 17px;
@@ -175,6 +179,7 @@
                 &--time {
                     display: flex;
                     align-items: flex-end;
+                    width: 160px;
 
                     p {
                         transform: translateY(-2.5px);
@@ -197,7 +202,7 @@
 
                 .travel-time {
                     margin-left: 14px; 
-                    margin-right: 27px;
+                    width: 95px;
                 }
 
                 .duration {
@@ -225,6 +230,12 @@
             font-size: 18px;
             transform: rotate(-35deg);
         }
+    }
+
+    .city {
+        display: flex;
+        justify-content: flex-start;
+        width: 80px;
     }
 
     .blue-line {

@@ -35,7 +35,7 @@ app.use(session({
 app.post('/register', register)
 app.post('/login', login)
 app.post('/logout', logout)
-app.get('/member/:id', getMember)
+app.get('/member', getMember)
 app.get('/dashboard/:id', getDashboard)
 app.post('/test', req => console.log(req))
 

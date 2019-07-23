@@ -182,7 +182,11 @@ getFlightInfo(){
     
 
     render() {
-        // console.log(this.state)
+
+
+
+
+
         const values = queryString.parse(this.props.location.search)
    
             const {results} = this.state
