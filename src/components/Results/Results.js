@@ -31,15 +31,31 @@ class Results extends Component {
     }
 
    componentDidMount() {
-        const values = queryString.parse(this.props.location.search)
+        
 
-        axios
-        .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
-        .then(( results ) => { this.setState({ results: results.data })
-          })
-          .catch((err) => alert(err, "loading"))
+    this.getFlightInfo()
+
+        // axios
+        // .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
+        // .then(( results ) => { this.setState({ results: results.data })
+        //   })
+        //   .catch((err) => alert(err, "loading"))
     }
 
+getFlightInfo(){
+    const values = queryString.parse(this.props.location.search)
+    axios
+    .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
+    .then(( results ) => { this.setState({ results: results.data })
+      })
+      .catch((err) => alert(err, "loading"))
+}
+
+    componentDidUpdate(prevProps, prevState){
+    if (prevState.results !== this.state.results) {
+       this.getFlightInfo()
+    }
+    }
     // changeTime(time) {
     //         //var time = "12:23:39";
     //         var time = time.split(':');
@@ -137,7 +153,7 @@ class Results extends Component {
         returnTicketCost,
         cabin,
         returnCabin } = state
-        console.log(state)
+        // console.log(state)
         
         axios
         .post('/api/checkout', {
@@ -166,7 +182,11 @@ class Results extends Component {
     
 
     render() {
-        console.log(this.state.results)
+
+
+
+
+
         const values = queryString.parse(this.props.location.search)
    
             const {results} = this.state
@@ -190,7 +210,7 @@ class Results extends Component {
                         </div>
                     </div>
 
-                        {results.map((flight, index) =>
+                        {this.state.results && results.map((flight, index) =>
                             (
 
                                 <div className='flight-container' key={flight.id}>
@@ -251,7 +271,7 @@ class Results extends Component {
     </div>
 </div>
 
-    {results.map((flight, index) =>
+    {this.state.results && results.map((flight, index) =>
         (
 
             <div className='flight-container' key={flight.id}>
