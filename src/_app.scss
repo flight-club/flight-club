@@ -10,4 +10,12 @@
 @import './components/Results/results';
 @import './components/Footer/footer';
 @import './components/Checkout/checkout';
+@import './components/Dashboard/upcoming';
+@import './components/Dashboard/snapshot';
+@import './components/Dashboard/info';
 
+main {
+    background: $primary-color;
+    width: 100vw;
+    height: 100vh;
+}

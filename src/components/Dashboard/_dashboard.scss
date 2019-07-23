@@ -11,8 +11,10 @@
 
 .account-container {
     display: flex;
+    position: absolute;
     width: 950px;
     height: 800px;
+    top: 120px;
 
     .options {
         display: flex;
@@ -55,6 +57,14 @@
             height: 216px;
             border-top: 1px solid #4367AF;
             color: white;
+
+            button {
+                color: white;
+                background: $primary-color;
+                border: none;
+                font-size: 25px;
+                letter-spacing: 1px;
+            }
         }
     }
 
@@ -188,3 +198,4 @@
         }
     }
 }
+

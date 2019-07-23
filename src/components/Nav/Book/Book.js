@@ -9,6 +9,8 @@ import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
 
 
+
+
 class Book extends Component {
     constructor() {
         super();
@@ -28,9 +30,23 @@ class Book extends Component {
 
     onChange = date => this.setState({ startDate: date })
 
+    getDateFormat = (date) => {
+        let newDate = date.split('')
+        let cutTime = newDate.splice(0, 10)
+        let year = cutTime.splice(0, 4)
+        let month = cutTime.splice(1, 2)
+        let day = cutTime.splice(2, 2)
+  
+        let joinYear = year.join('')
+        let joinMonth = month.join('')
+        let joinDay = day.join('')
+  
+        return joinYear + '-' + joinDay + '-' + joinMonth
+      }
+
     
     render() {
-        console.log(this.state.startDate)
+        console.log(this.state.returnDate)
         return (
             <div className='book'>
                 <div className='logo'>
@@ -39,9 +55,61 @@ class Book extends Component {
 
                     <div className='fields'>
                         <div className='destination'>
-                            <input placeholder='DFW' name='origin' value={this.state.origin} onChange={this.handleChange}></input>
+                            <div className='destination--box'>
+                            <input list="airports" placeholder='DFW' name='origin' value={this.state.origin} onChange={this.handleChange}/>
+                                    <datalist id="airports">
+                                        <option value="ATL">Atlanta</option>
+                                        <option value="BOS">Boston</option>
+                                        <option value="CLT">Charlotte</option>
+                                        <option value="ORD">Chicago</option>
+                                        <option value="DFW">Dallas</option>
+                                        <option value="DEN">Denver</option>
+                                        <option value="FLL">Fort Lauderdale</option>
+                                        <option value="IAH">Houston</option>
+                                        <option value="LAS">Las Vegas</option>
+                                        <option value="LAX">Los Angeles</option>
+                                        <option value="MIA">Miami</option>
+                                        <option value="JFK">New York City</option>
+                                        <option value="MCO">Orlando</option>
+                                        <option value="PHX">Phoenix</option>
+                                        <option value="SAN">San Diego</option>
+                                        <option value="SFO">San Francisco</option>
+                                        <option value="SEA">Seattle</option>
+                                        <option value="SLC">Salt Lake City</option>
+                                        <option value="STL">St. Louis</option>
+                                        <option value="DCA">Washington, DC</option>
+                                    </datalist> 
+                                    <p>Origin</p>
+                                </div>
                             <i class="fas fa-exchange-alt"></i>
-                            <input placeholder='LAX' name='destination' value={this.state.destination} onChange={this.handleChange}></input>
+
+                            <div className='destination--box'>
+                            <input list="airports" placeholder='LAX' name='destination' value={this.state.destination} onChange={this.handleChange}/>
+                                <datalist id="airports">
+                                    <option value="ATL">Atlanta</option>
+                                    <option value="BOS">Boston</option>
+                                    <option value="CLT">Charlotte</option>
+                                    <option value="ORD">Chicago</option>
+                                    <option value="DFW">Dallas</option>
+                                    <option value="DEN">Denver</option>
+                                    <option value="FLL">Fort Lauderdale</option>
+                                    <option value="IAH">Houston</option>
+                                    <option value="LAS">Las Vegas</option>
+                                    <option value="LAX">Los Angeles</option>
+                                    <option value="MIA">Miami</option>
+                                    <option value="JFK">New York City</option>
+                                    <option value="MCO">Orlando</option>
+                                    <option value="PHX">Phoenix</option>
+                                    <option value="SAN">San Diego</option>
+                                    <option value="SFO">San Francisco</option>
+                                    <option value="SEA">Seattle</option>
+                                    <option value="SLC">Salt Lake City</option>
+                                    <option value="STL">St. Louis</option>
+                                    <option value="DCA">Washington, DC</option>
+                                </datalist> 
+
+                                <p>Destination</p>
+                            </div>
                         </div>
 
                         <div className='input-type-dropdown'>
@@ -51,22 +119,39 @@ class Book extends Component {
                             </Input>
                         </div>
 
-                        <div>
+                            {/* <div className='cal'>
+                                <input placeholder='Depart' className='calendar' placeholder='Depart' type='date' name='startDate' value={this.getDateFormat(this.state.startDate)} onChange={this.handleChange} dateFormat={"yyyy-MM-dd"}></input>
+                                <p>Depart</p>
+                            </div>
+
+                            <div className='cal'>
+                                <input placeholder='Return' type='date' name='returnDate' value={this.getDateFormat(this.state.returnDate)} onChange={this.handleChange} dateFormat={"yyyy-MM-dd"}></input>
+                                <p>Return</p>
+                            </div> */}
 
                             {/* <DateRangePicker
+                                className='date-picker'
                                 startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                                 startDateId="07-21-2019" // PropTypes.string.isRequired,
                                 endDate={this.state.returnDate} // momentPropTypes.momentObj or null,
                                 endDateId="07-23-2019" // PropTypes.string.isRequired,
                                 onDatesChange={({ startDate, returnDate }) => this.setState({ startDate, returnDate })} // PropTypes.func.isRequired,
                                 focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                                onFocusChange={focusedInput => this.setState({ focusedInput })}
+                                 // PropTypes.func.isRequired,
                             /> */}
 
-                            {/* <DatePicker 
+                            {/* {/* <DatePicker 
                                 onChange={this.onChange}
                                 value={this.state.startDate}
                                 dateFormat={"yyyy-MM-dd"}/> */}
+
+                            {/* <DatePicker 
+                                className='datePicker'
+                                onChange={this.onChange}
+                                value={this.state.returnDate}
+                                placeholder='Depart'/> */}
+
                             <div className='book'>
                                 <input className='calendar' name='startDate' value={this.state.startDate} onChange={this.handleChange}/>
                             </div>
@@ -74,7 +159,6 @@ class Book extends Component {
                             <div className='book'>
                                 <input className='calendar' name='returnDate' value={this.state.returnDate} onChange={this.handleChange}/>
                             </div>
-                        </div>
 
                         <div className='input-passenger-dropdown'>
                             <Input type='select' name='passengers' value={this.state.passengers} onChange={this.handleChange}>

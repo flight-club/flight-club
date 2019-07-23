@@ -2,16 +2,21 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getMember } from '../../redux/reducer';
+import Snapshot from './Snapshot';
+import Upcoming from './Upcoming';
+import Info from './Info';
 
 class Dashboard extends Component {
-    constructor() {
-        super() 
+    constructor(props) {
+        super(props) 
         this.state = {
-            member: []
+            member: [],
+            view: 'snapshot'
         }
     }
 
     componentDidMount() {
+        this.props.getMember()
         axios
         .get(`/dashboard/${this.props.match.params.id}`)
         .then(res=> {
@@ -20,7 +25,22 @@ class Dashboard extends Component {
         })
     }
 
+    getInfo = () => {
+        this.setState({ view: 'info'})
+    }
+
+    getUpcoming = () => {
+        this.setState({ view: 'upcoming' })
+    }
+
+    getSnapshot = () => {
+        this.setState({ view: 'snapshot' })
+    }
+
     render() {
+        const { view } = this.state;
+        console.log(this.state.member)
+
         return (
             <div className='dashboard'>
                 <div className='account-container'>
@@ -31,15 +51,15 @@ class Dashboard extends Component {
                         </div>
 
                         <div className='options--box'>
-                            <h1>Snapshot</h1>
+                            <button onClick={this.getSnapshot}>Snapshot</button>
                         </div>
 
                         <div className='options--box'>
-                            <h1>Upcoming Flights</h1>
+                            <button onClick={this.getUpcoming}>Upcoming Flights</button>
                         </div>
 
                         <div className='options--box'>
-                            <h1>Account Info</h1>
+                            <button onClick={this.getInfo}>Account Info</button>
                         </div>
                     </div>
 
@@ -56,39 +76,17 @@ class Dashboard extends Component {
                         </div>
 
                         <div className='account-info--bottom'>
-                            <div className='bottom-top'>
-                                <div className='bottom-top--title'>
-                                    <h2>Alpha-List, </h2>
-                                    <h3>here I come.</h3>
-                                </div>
-
-                                <div className='perks'>
-                                    <h4>Priority Boarding - Priority Checkin - Security Lane Access</h4>
-                                </div>
-
-                                <div className='donut-chart'>
-                                        <i class="fas fa-circle-notch"></i>
-                                        <i class="fas fa-circle-notch"></i>
-                                </div>
-                            </div>
-
-                            <div className='bottom-bottom'>
-                                <div className='bottom-bottom--title'>
-                                    <h2>Companion Pass, </h2>
-                                    <h3>on my way.</h3>
-                                </div>
-
-                                <div className='perks'>
-                                    <h4>Designate one person to fly with you anytime for a year.</h4>
-                                </div>
-
-                                <div className='donut-chart'>
-                                    <i class="fas fa-circle-notch"></i>
-                                    <i class="fas fa-circle-notch"></i>
-                                </div>
-                            </div>
+                            { view === 'snapshot' ? 
+                                < Snapshot member={this.state.member}/>    
+                                :
+                                view === 'upcoming' ?
+                                < Upcoming member={this.state.member}/>
+                                : 
+                                < Info member={this.state.member}/>
+                            }
                         </div>
                     </div>
+
                 </div>
             </div>
         )

@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs')
 
 module.exports = {
     register: async (req, res) => {
-        const {first_name, last_name, gender, birthdate, address, address2, city, state, zip, phone, email, username, password} = req.body
+        const {first_name, last_name, gender, DOBmonth, DOByear, DOBday, address, address2, city, state, zip, phone, email, username, password} = req.body
         const db = req.app.get('db')
         console.log(req.body)
 
@@ -51,12 +51,11 @@ module.exports = {
     },
 
     getMember: async (req, res) => {
-        const db = req.app.get('db')
-        let id = req.params.id
-        console.log(req.params.id)
-
-        const member = await db.getMember(id)
-        return res.status(200).json(member)
+        if(req.session.member) {
+        res.status(200).json(req.session.member)
+        } else {
+            console.log('error')
+        }
     },
 
     getDashboard: async (req, res) =>{

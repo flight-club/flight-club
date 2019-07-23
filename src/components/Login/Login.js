@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
-import {getMember} from '../../redux/reducer'
+import {getMember, setLoggedIn} from '../../redux/reducer'
 import {Redirect} from 'react-router-dom'
 
 class Login extends Component {
@@ -27,6 +27,7 @@ class Login extends Component {
         axios
         .post('/login', {username: username, password: password})
         .then((res) => {
+            this.props.setLoggedIn(true)
             this.setState({redirect: true, id: res.data.id})
         })
         .catch(() => {alert('Login Unsuccessful')})
@@ -84,4 +85,4 @@ const mapStateToProps = reduxState => {
     } 
 }
 
-export default connect(mapStateToProps,)(Login)
+export default connect(mapStateToProps, {setLoggedIn})(Login)

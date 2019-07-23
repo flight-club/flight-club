@@ -33,10 +33,12 @@
     display: flex;
     align-items: center;
 
+    &--box {
+
     input {
         background: none;
         border: none;
-        width: 160px;
+        width: 210px;
         height: 80px;
         outline: none;
         color: white;
@@ -45,6 +47,7 @@
         align-self: auto;
         text-align: center; 
     }
+}
 
     ::-webkit-input-placeholder { 
         color: white;
@@ -54,9 +57,26 @@
         text-align: center; 
       }
 
+    input::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+
     i {
         font-size: 40px;
         color: $secondary-color;
+    }
+
+    p {
+        color: white;
+        font-size: 15px;
+        font-family: $primary-font;
+    }
+
+    &--box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
 
@@ -76,29 +96,59 @@
     }
 }
 
-.calendar {
-    width: 220px;
-    height: 50px;
+.datePicker {
+    width: 150px;
+    height: 60px;
     background: $primary-color;
     border: none;
     color: white;
+
+    input {
+        color: white;
+    }
+}
+
+input[type="date" i] {
+    align-items: center;
+    display: -webkit-inline-flex;
+    font-family: monospace;
+    padding-inline-start: 1px;
+    cursor: default;
+    background: $primary-color;
+    border: none;
+    width: 195px;
+    color: white;
     font-size: 25px;
-    transform: translateY(-1px);
-    outline: none;
     font-family: $primary-font;
-    margin-left: 7px;
+    padding: 0px;
+}
 
-    input:focus {
-        background: $primary-color;
-        border: none;
-        color: white; 
-    }
+.calendar {
+    margin-left: 35px;
+}
 
-    input:-webkit-autofill:focus {
-        background: $primary-color;
-        border: none;
-        color: white; 
+.cal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(14px);
+
+    p {
+        color: white;
+        font-size: 15px;
+        font-family: $primary-font;
+        margin-top: 10px;
+        transform: translateX(-14px)
+        translateY(5px)
+        ;
     }
+}
+
+input::-webkit-calendar-picker-indicator {
+    display: block;
+    color: white;
+    font-size: 15px;
 }
 
 input:-internal-autofill-selected {
@@ -124,7 +174,7 @@ input:focus {
     border: none;
     margin-left: 15px;
     color: white;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 250;
     outline: none;
     }
@@ -147,4 +197,9 @@ input:focus {
     }
 }
 
+
+// #airports {
+//     background-color: red;
+//     display: inherit;
+// }
 
