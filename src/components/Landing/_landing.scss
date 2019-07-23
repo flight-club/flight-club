@@ -1,5 +1,6 @@
 .background {
     display: flex;
+    flex-direction: column;
     align-items: center;
     position: relative;
     width: 100vw;
@@ -7,6 +8,23 @@
     background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80');
     background-size: cover;
     background-position: center;
+
+    .text {
+        position: absolute;
+        left: 100px;
+        top: 150px;
+
+        h1 {
+            text-align: center;
+            line-height: 100px;
+            font-size: 90px;
+            font-family: $primary-font;
+            color: $primary-color;
+            font-weight: bolder;
+            letter-spacing: 5px;
+        }
+    }
+
 
     i {
         font-size: 60px;

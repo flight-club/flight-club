@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Input } from 'reactstrap';
 
-
-
-  
-
 class Checkout extends Component {
     constructor() {
         super()
@@ -30,7 +26,14 @@ class Checkout extends Component {
             returnTicketCost: "",
             totalCost: "",
             cabin: "",
-            returnCabin: ""
+            returnCabin: "",
+            cardType: '',
+            cardNumber: '',
+            expirationMonth: '',
+            expirationYear: '',
+            CVV: '',
+            cardFirstName: '',
+            cardLastName: ''
         }
     }
 
@@ -257,14 +260,6 @@ class Checkout extends Component {
                         </div>
                     </div>
 
-                    <div className='passenger-info-container'>
-
-                    </div>
-
-                    <div className='payment-info-container'>
-
-                    </div>
-
                     <div className='review-container-right'>
                         <div className='cabin-price'>
                             <h2>{cabin}</h2>
@@ -356,14 +351,6 @@ class Checkout extends Component {
                                 </div> 
                             </div>
                         </div>
-                    </div>
-
-                    <div className='passenger-info-container'>
-
-                    </div>
-
-                    <div className='payment-info-container'>
-
                     </div>
 
                     <div className='review-container-right'>
@@ -467,14 +454,82 @@ class Checkout extends Component {
                                         </Input>
                             </div>
                         </div>
+                    </div>
+
+                    <h2>Payment Method</h2>
 
                         <div className='passenger-info--row'>
+                    
                             <div>
-                                
-                            </div>        
+                                <div className='card-info'>
+                                        <div>
+                                            <h3>CARD TYPE</h3>
+                                            <Input className='card-type' type='select' value={this.state.cardType} onChange={this.handleChange}>
+                                                <option>Alpha Miles Visa Rewards</option>
+                                                <option>Visa</option>
+                                                <option>Mastervard</option>
+                                                <option>Discover</option>
+                                                <option>American Express</option>
+                                            </Input>
+                                        </div>
+
+                                        <div>
+                                            <h3>CREDIT/DEBIT CARD #</h3>
+                                            <input name='cardNumber' value={this.state.cardNumber} onChange={this.handleChange} />
+                                        </div>
+
+                                        <div>
+                                            <h3>EXPIRATION MONTH</h3>
+                                            <Input type='select' className='expiration-month' value={this.state.expirationMonth} onChange={this.handleChange}>
+                                                        <option>January</option>
+                                                        <option>February</option>
+                                                        <option>March</option>
+                                                        <option>April</option>
+                                                        <option>May</option>
+                                                        <option>June</option>
+                                                        <option>July</option>
+                                                        <option>August</option>
+                                                        <option>September</option>
+                                                        <option>October</option>
+                                                        <option>November</option>
+                                                        <option>December</option>
+                                            </Input>
+                                        </div>
+
+                                        <div className='short-input'>
+                                            <h3>YEAR</h3>
+                                            <input name='expirationYear' value={this.state.expirationYear} onChange={this.handleChange} />
+                                        </div>
+
+                                        <div className='short-input'>
+                                            <h3>CVV</h3>
+                                            <input name='expirationYear' value={this.state.CVV} onChange={this.handleChange} />
+                                        </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+
+                        <div className='passenger-info--row'>
+                            <div className='card-name-info'>
+                                <div>
+                                    <h3>FIRST NAME ON CARD</h3>
+                                    <input name='cardFirstName' value={this.state.cardFirstName} onChange={this.handleChange} />
+                                </div>
+
+                                <div>
+                                    <h3>LAST NAME ON CARD</h3>
+                                    <input name='cardLastName' value={this.state.cardLastName} onChange={this.handleChange} />
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div className='passenger-info--row--purchase'>
+                            <button>PURCHASE</button>
+                        </div>
+                    </div>        
+                
             </div>
             
 

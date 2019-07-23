@@ -91,4 +91,34 @@
             height: 52px;
         }
     }
+
+    .card-type {
+        width: 200px;
+    }
+
+    .expiration-month {
+        width: 150px;
+    }
+
+    .short {
+        width: 100px;
+    }
+}
+
+.card-row {
+    display: flex;
+    justify-content: flex-start;
+    width: 650px;
+
+    input {
+        margin-right: 30px;
+    }
+
+    Input {
+        margin-right: 30px;
+    }
+
+    select {
+        margin-right: 30px;
+    }
 }

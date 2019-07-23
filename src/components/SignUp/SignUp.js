@@ -25,6 +25,13 @@ class SignUp extends Component {
             email: "",
             username: "",
             password: "",
+            cardType: '',
+            cardNumber: '',
+            expirationMonth: '',
+            expirationYear: '',
+            CVV: '',
+            cardFirstName: '',
+            cardLastName: '',
             miles: 0,
             cardNumber:"",
             expirationMonth:"",
@@ -210,6 +217,74 @@ class SignUp extends Component {
 
                         <div className='about'>
                             <div>
+                                <h2>Keep a card on file.</h2>
+                            </div>
+
+
+                            <div className='card-row'>
+                                <div>
+                                    <h3>CARD TYPE</h3>
+                                    <Input className='card-type' type='select' value={this.state.cardType} onChange={this.handleChange}>
+                                        <option>Alpha Miles Visa Rewards</option>
+                                        <option>Visa</option>
+                                        <option>Mastervard</option>
+                                        <option>Discover</option>
+                                        <option>American Express</option>
+                                    </Input>
+                                </div>
+
+                                <div>
+                                    <h3>CREDIT/DEBIT CARD #</h3>
+                                    <input name='cardNumber' value={this.state.cardNumber} onChange={this.handleChange} />
+                                </div>
+
+                            </div>
+
+                            <div className='card-row'>
+                                <div>
+                                    <h3>EXPIRATION MONTH</h3>
+                                    <Input type='select' className='expiration-month' value={this.state.expirationMonth} onChange={this.handleChange}>
+                                                <option>January</option>
+                                                <option>February</option>
+                                                <option>March</option>
+                                                <option>April</option>
+                                                <option>May</option>
+                                                <option>June</option>
+                                                <option>July</option>
+                                                <option>August</option>
+                                                <option>September</option>
+                                                <option>October</option>
+                                                <option>November</option>
+                                                <option>December</option>
+                                    </Input>
+                                </div>
+
+                                <div>
+                                        <h3>YEAR</h3>
+                                        <input className='short' name='expirationYear' value={this.state.expirationYear} onChange={this.handleChange} />
+                                </div>
+
+                                <div>
+                                        <h3>CVV</h3>
+                                        <input className='short' name='expirationYear' value={this.state.CVV} onChange={this.handleChange} />
+                                </div>
+                            </div>
+
+                            <div className='card-row'>
+                                <div>
+                                    <h3>FIRST NAME ON CARD</h3>
+                                    <input name='cardFirstName' value={this.state.cardFirstName} onChange={this.handleChange} />
+                                </div>
+
+                                <div>
+                                    <h3>LAST NAME ON CARD</h3>
+                                    <input name='cardLastName' value={this.state.cardLastName} onChange={this.handleChange} />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='about'>
+                            <div>
                                 <h2>Create your username and password.</h2>
                             </div>
 
@@ -231,6 +306,8 @@ class SignUp extends Component {
                         </div>
 
                     </div>
+
+                    
 
                 </div>
         </div>
