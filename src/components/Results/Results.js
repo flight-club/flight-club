@@ -51,11 +51,11 @@ getFlightInfo(){
       .catch((err) => alert(err, "loading"))
 }
 
-    componentDidUpdate(prevProps, prevState){
-    if (prevState.results !== this.state.results) {
-       this.getFlightInfo()
-    }
-    }
+    // componentDidUpdate(prevProps, prevState){
+    // if (prevState.results !== this.state.results) {
+    //    this.getFlightInfo()
+    // }
+    // }
     // changeTime(time) {
     //         //var time = "12:23:39";
     //         var time = time.split(':');
