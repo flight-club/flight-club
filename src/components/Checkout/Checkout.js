@@ -33,7 +33,8 @@ class Checkout extends Component {
             expirationYear: '',
             CVV: '',
             cardFirstName: '',
-            cardLastName: ''
+            cardLastName: '', 
+            confirmation: ''
         }
     }
 
@@ -74,7 +75,7 @@ class Checkout extends Component {
         let middleTime = firstTime.splice(11, 5)
         let finalTime = middleTime.join('')
         let militaryTime = finalTime.split(':')
-        let endTime = (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (+militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM' : militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) == 2 ? militaryTime[0] + ':' + militaryTime[1] + ' P.M.' : militaryTime[0].charAt(0) == 0 && militaryTime[0].charAt(1) == 0 ? 12 + ':' + militaryTime[1] + ' AM' : militaryTime.join(':') + ' AM'
+        let endTime = (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (+militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM' : militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) == 2 ? militaryTime[0] + ':' + militaryTime[1] + ' PM' : militaryTime[0].charAt(0) == 0 && militaryTime[0].charAt(1) == 0 ? 12 + ':' + militaryTime[1] + ' AM' : militaryTime.join(':') + ' AM'
       
         let splitFinal = endTime.split('')
       
@@ -122,8 +123,19 @@ class Checkout extends Component {
         return parseFloat(newCost).toFixed(2)
     }
 
+    getConfirmation = (length) => {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+           result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        this.setState({confirmation: result});
+    }
+
     componentDidMount() {
         this.getYears()
+        this.getConfirmation(6)
         axios
         .get('/api/checkout')
         .then(res => {
@@ -148,6 +160,71 @@ class Checkout extends Component {
                 cabin: res.data[0].cabin,
                 returnCabin: res.data[0].returnCabin})
         })
+    }
+
+    purchase = (e) => {
+        e.preventDefault()
+        let {
+        flightNumber,
+        departureCity,
+        departureTime,
+        arrivalCity,
+        arrivalTime,
+        duration,
+        aircraftType,
+        ticketCost,
+        returnFlightNumber,
+        returnDepartureCity,
+        returnDepartureTime,
+        returnArrivalCity,
+        returnArrivalTime,
+        returnDuration,
+        returnAircraftType,
+        returnTicketCost,
+        totalCost,
+        cabin,
+        returnCabin,
+        cardType,
+        cardNumber,
+        expirationMonth,
+        expirationYear,
+        CVV,
+        cardFirstName,
+        cardLastName, 
+        confirmation} = this.state
+
+        axios
+        .post('/api/purchase', {
+            flightNumber: flightNumber,
+            departureCity: departureCity,
+            departureTime: departureTime,
+            arrivalCity: arrivalCity,
+            arrivalTime: arrivalTime,
+            duration: duration,
+            aircraftType: aircraftType,
+            ticketCost: ticketCost,
+            returnFlightNumber: returnFlightNumber,
+            returnDepartureCity: returnDepartureCity,
+            returnDepartureTime: returnDepartureTime,
+            returnArrivalCity: returnArrivalCity,
+            returnArrivalTime: returnArrivalTime,
+            returnDuration: returnDuration,
+            returnAircraftType: returnAircraftType,
+            returnTicketCost: returnTicketCost,
+            totalCost: totalCost,
+            cabin: cabin,
+            returnCabin: returnCabin,
+            cardType: cardType,
+            cardNumber: cardNumber,
+            expirationMonth: expirationMonth,
+            expirationYear: expirationYear,
+            CVV: CVV,
+            cardFirstName: cardFirstName,
+            cardLastName: cardLastName, 
+            confirmation: confirmation})
+            .then(res => {console.log(res.data)})
+            .then(() => {alert(`Thank you for flying with Alpha! Your confirmation code is ${confirmation}`)})
+            .catch(() => {alert('Please complete form to purchase')})
     }
 
     render() {
@@ -389,7 +466,8 @@ class Checkout extends Component {
 
                             <div>
                                 <h3>GENDER</h3>
-                                <Input type='select' name='gender' value={this.state.gender} onChange={this.handleChange}> 
+                                <Input type='select' name='gender' value={this.state.gender} onChange={this.handleChange}>
+                                    <option value="" disabled selected hidden>Please Choose</option> 
                                     <option>Female</option>
                                     <option>Male</option>
                                 </Input>
@@ -399,6 +477,7 @@ class Checkout extends Component {
                                 <h3>DATE OF BIRTH</h3>
                                     <div className='DOB'>
                                         <Input type='select' value={this.state.DOBmonth} onChange={this.handleChange}>
+                                            <option value="" disabled selected hidden>Month</option>
                                             <option>January</option>
                                             <option>February</option>
                                             <option>March</option>
@@ -414,6 +493,7 @@ class Checkout extends Component {
                                         </Input>
 
                                         <Input type='select' value={this.state.DOBday}>
+                                            <option value="" disabled selected hidden>Day</option>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -448,7 +528,9 @@ class Checkout extends Component {
                                         </Input>
 
                                         <Input type='select' value={this.state.DOByear}>
+                                            <option value="" disabled selected hidden>Year</option>
                                             {this.state.yearList.map((year, index) => (
+                                                    
                                                     <option>{year}</option>
                                                 ))}
                                         </Input>
@@ -465,6 +547,7 @@ class Checkout extends Component {
                                         <div>
                                             <h3>CARD TYPE</h3>
                                             <Input className='card-type' type='select' value={this.state.cardType} onChange={this.handleChange}>
+                                                <option value="" disabled selected hidden>Please Choose</option>
                                                 <option>Alpha Miles Visa Rewards</option>
                                                 <option>Visa</option>
                                                 <option>Mastervard</option>
@@ -481,6 +564,7 @@ class Checkout extends Component {
                                         <div>
                                             <h3>EXPIRATION MONTH</h3>
                                             <Input type='select' className='expiration-month' value={this.state.expirationMonth} onChange={this.handleChange}>
+                                                        <option value="" disabled selected hidden>Month</option>
                                                         <option>January</option>
                                                         <option>February</option>
                                                         <option>March</option>
@@ -498,12 +582,23 @@ class Checkout extends Component {
 
                                         <div className='short-input'>
                                             <h3>YEAR</h3>
-                                            <input name='expirationYear' value={this.state.expirationYear} onChange={this.handleChange} />
+                                            <Input type='select' name='expirationYear' value={this.state.expirationYear} onChange={this.handleChange}>
+                                                        <option value="" disabled selected hidden>Year</option>
+                                                        <option>2019</option>
+                                                        <option>2020</option>
+                                                        <option>2021</option>
+                                                        <option>2022</option>
+                                                        <option>2023</option>
+                                                        <option>2024</option>
+                                                        <option>2025</option>
+                                                        <option>2026</option>
+                                                        
+                                            </Input>
                                         </div>
 
                                         <div className='short-input'>
                                             <h3>CVV</h3>
-                                            <input name='expirationYear' value={this.state.CVV} onChange={this.handleChange} />
+                                            <input name='CVV' value={this.state.CVV} onChange={this.handleChange} />
                                         </div>
                                 </div>
                             </div>
@@ -526,7 +621,7 @@ class Checkout extends Component {
 
 
                         <div className='passenger-info--row--purchase'>
-                            <button>PURCHASE</button>
+                            <button onClick={this.purchase}>PURCHASE</button>
                         </div>
                     </div>        
                 
