@@ -14,7 +14,7 @@ module.exports = {
 
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
-        const regMember = await db.addMember(first_name, last_name, gender, birthdate, address, address2, city, state, zip, phone, email, username, hash)
+        const regMember = await db.addMember(first_name, last_name, gender, birthdate, address, address2, city, state, zip, phone, email, username, hash, cardNumber, expirationMonth, expirationYear, CVV, cardFirstName, cardLastName)
 
         if(regMember[0]){
             console.log('hit')
