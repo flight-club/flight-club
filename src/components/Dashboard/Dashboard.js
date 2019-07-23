@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import { getMember } from '../../redux/reducer';
 
 class Dashboard extends Component {
-    constructor() {
-        super() 
+    constructor(props) {
+        super(props) 
         this.state = {
             member: []
         }
     }
 
     componentDidMount() {
+        this.props.getMember()
         axios
         .get(`/dashboard/${this.props.match.params.id}`)
         .then(res=> {
