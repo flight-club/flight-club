@@ -122,9 +122,9 @@ class Book extends Component {
                             {/* <div className='cal'>
                                 <input placeholder='Depart' className='calendar' placeholder='Depart' type='date' name='startDate' value={this.getDateFormat(this.state.startDate)} onChange={this.handleChange} dateFormat={"yyyy-MM-dd"}></input>
                                 <p>Depart</p>
-                            </div>
+                            </div> */}
 
-                            <div className='cal'>
+                            {/* <div className='cal'>
                                 <input placeholder='Return' type='date' name='returnDate' value={this.getDateFormat(this.state.returnDate)} onChange={this.handleChange} dateFormat={"yyyy-MM-dd"}></input>
                                 <p>Return</p>
                             </div> */}

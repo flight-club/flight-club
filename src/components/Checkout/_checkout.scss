@@ -396,14 +396,34 @@
     h2 {
         font-size: 30px;
         font-weight: bold;
+        margin-top: 30px;
+        padding-bottom: 15px;
+        border-bottom: solid #E6E7E8 2px;
     }
 }
 
 .passenger-info--row {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     width: 900px;
     padding: 15px;
+
+    &--purchase {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+            width: 200px;
+            height: 60px;
+            background: $secondary-color;
+            font-size: 25px;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 40px;
+        }
+    }
 
     h2 {
         color: $primary-color;
@@ -470,4 +490,31 @@
             height: 52px;
         }
     }
+
+    .card-info {
+        display: flex;
+        justify-content: space-evenly;
+        width: 900px;
+        margin-left: -20px;
+
+        .short-input {
+            input {
+                width: 80px;
+            }
+        }
+
+        .expiration-month {
+            width: 150px;
+        }
+
+        .card-type {
+            width: 170px;
+        }
+    }
+
+    .card-name-info {
+        display: flex;
+        justify-content: flex-start;
+    }
+
 }
