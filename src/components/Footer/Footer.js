@@ -5,8 +5,10 @@ class Footer extends Component {
    render() {
        return (
             <div className='footer'>
-                <div>
+                <div className="contact">
                 <p>Contact Us</p>
+                <p>Earn Miles</p>
+                <p>Login Help</p>
                 </div>
 
                 <div className="container-contact">
@@ -22,8 +24,10 @@ class Footer extends Component {
                     <div className="copyright">&copy; 2019 ALPHA AIRLINES, Inc.</div>
                 </div>
 
-                    <div>
-                        <p>About</p>
+                    <div className="about">
+                        <p>About Us</p>
+                        <p>Careers</p>
+                        <p>New Routes</p>
                     </div>
 
             </div>
