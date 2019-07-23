@@ -71,6 +71,32 @@ getFlightInfo(){
 
         return mins
     }
+    changeTime = (time) => {
+        let hours = parseInt(time.substring(11, 13))
+        let mins = time.substring(14, 16)
+
+        if (hours == '00') hours = 12;
+        if (hours > '12') hours = hours - 12;
+
+        return hours + ':' + mins
+    }
+
+    getAM = (time) => {
+        let firstTime = time.split('')
+        let middleTime = firstTime.splice(11, 5)
+        let finalTime = middleTime.join('')
+        let militaryTime = finalTime.split(':')
+        let endTime = (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (+militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM' : militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) == 2 ? militaryTime[0] + ':' + militaryTime[1] + ' P.M.' : militaryTime[0].charAt(0) == 0 && militaryTime[0].charAt(1) == 0 ? 12 + ':' + militaryTime[1] + ' AM' : militaryTime.join(':') + ' AM'
+      
+        let splitFinal = endTime.split('')
+      
+        let splitMiddle = splitFinal.slice(1).slice(-2)
+      
+        let finalFinal = splitMiddle.join('')
+      
+        return finalFinal
+    }
+
 
     changeDuration = (minutes) => {
         var h = Math.floor(minutes / 60);
@@ -217,11 +243,20 @@ getFlightInfo(){
                                         </div>
 
                                         <div className='flight-left--two'>
-                                            <h3 className="departuretime">{this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime)}</h3>
+                                            <h3 className="departuretime">
+                                            {/* {this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime)} */}
+                                            <h1>{this.changeTime(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime)}
+                                                {this.getAM(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime)}</h1>
+                                           
+                                            </h3>
 
                                             <i class="fas fa-arrow-right"></i>
 
-                                            <h3 className="arrivaltime">{this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime)}</h3>
+                                            <h3 className="arrivaltime">
+                                                   {/* {this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime)} */}
+                                               <h1>{this.changeTime(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime)}
+                                                {this.getAM(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime)}</h1>
+                                            </h3>
 
                                             <p className="duration">{this.changeDuration(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ElapsedTime)}</p>
 
@@ -278,11 +313,19 @@ getFlightInfo(){
                     </div>
 
                     <div className='flight-left--two'>
-                        <h3 className="returnDeparturetime">{this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime)}</h3>
+                        <h3 className="returnDeparturetime">
+                        {/* {this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime)} */}
+                        <h1>{this.changeTime(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime)}
+                            {this.getAM(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime)}</h1>
+                        </h3>
 
                         <i class="fas fa-arrow-right"></i>
 
-                        <h3 className="returnArrivaltime">{this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime)}</h3>
+                        <h3 className="returnArrivaltime">
+                        {/* {this.changeDate(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime)} */}
+                        <h1>{this.changeTime(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime)}
+                            {this.getAM(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime)}</h1>
+                        </h3>
 
                         <p className="returnDuration">{this.changeDuration(flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ElapsedTime)}</p>
 

@@ -33,7 +33,7 @@ getResults = (req, res) => {
     console.log(req.query.origin, req.query.origin, req.query.departure, req.query.return)
     axios({
         method: 'GET',
-        url: `https://api-crt.cert.havail.sabre.com/v1/shop/flights?origin=${req.query.origin}&destination=${req.query.destination}&departuredate=${req.query.departure}&returndate=${req.query.return}&FlightSegment=1&StopQuantity=0&pointofsalecountry=US`,
+        url: `https://api-crt.cert.havail.sabre.com/v1/shop/flights?origin=${req.query.origin}&destination=${req.query.destination}&departuredate=${req.query.departure}&returndate=${req.query.return}&OperatingAirline=AA&FlightSegment=1&StopQuantity=0&pointofsalecountry=US`,
         data: 'grant_type=client_credentials',
         headers: {
             'Authorization': "Bearer " + `${token[0]}`,
