@@ -26,6 +26,12 @@ class SignUp extends Component {
             username: "",
             password: "",
             miles: 0,
+            cardNumber:"",
+            expirationMonth:"",
+            expirationYear: "",
+            CVV: "",
+            cardFirstName: "",
+            cardLastName: "",
             redirect: false
         }
         // this.signupMember = this.signupMember.bind(this)
@@ -54,7 +60,7 @@ class SignUp extends Component {
         // console.log(this.state)
         axios.post('/register', { first_name: this.state.first_name, last_name: this.state.last_name, gender: this.state.gender, DOBmonth: this.state.DOBmonth, DOBday: this.state.DOBday, DOByear: this.state.DOByear,
             address: this.state.address, address2: this.state.address2, city: this.state.city, state: this.state.state, zip: this.state.zip, phone: this.state.phone,
-            email: this.state.email, username: this.state.username, password: this.state.password})
+            email: this.state.email, username: this.state.username, password: this.state.password, cardNumber: this.state.cardNumber, expirationMonth: this.state.expirationMonth, expirationYear: this.state.expirationYear,  CVV: this.state. CVV, cardFirstName: this.state.cardFirstName,  cardLastName: this.state. cardLastName, })
         .then(() => this.setState({redirect: true})).catch((err) => alert(err, 'Username Taken'))
     }
 
