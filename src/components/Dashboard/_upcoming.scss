@@ -1,0 +1,80 @@
+.upcoming-top {
+    .upcoming-top-title {
+        h2 {
+            font-size: 40px;
+        }
+    }
+
+    .upcoming-info {
+        .next {
+            h4 {
+                margin-top: 20px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            h2 {
+                margin-top: 10px;
+                font-size: 25px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .flight-info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 40px;
+
+        .outbound {
+            display: flex;
+            flex-direction: column;
+            width: 100px;
+            h2 {
+                font-size: 35px;
+            }
+        }
+
+        h1 {
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        i {
+            align-self: center;
+            font-size: 30px;
+            color: $secondary-color;
+        }
+
+        .flight-time {
+            display: flex;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: baseline;
+
+            h3 {
+                font-size: 15px;
+                font-weight: bold;
+                font-style: normal;
+                margin: 0;
+            }
+
+            h2 {
+                align-self: baseline;
+                font-size: 12px;
+                margin-left: 5px;
+            }
+
+        }
+
+        .arrival {
+        }
+
+        .confirmation {
+            h2 {
+                font-size: 31px;
+            }
+        }
+    }
+}

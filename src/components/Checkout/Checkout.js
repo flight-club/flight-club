@@ -56,9 +56,45 @@ class Checkout extends Component {
         return mins
     }
 
-    // getDateFormat = (date) => {
+    changeTime = (time) => {
+        let hours = parseInt(time.substring(11, 13))
+        let mins = time.substring(14, 16)
 
-    // }
+        if (hours == '00') hours = 12;
+        if (hours > '12') hours = hours - 12;
+
+        return hours + ':' + mins
+    }
+
+    getAM = (time) => {
+        let firstTime = time.split('')
+        let middleTime = firstTime.splice(11, 5)
+        let finalTime = middleTime.join('')
+        let militaryTime = finalTime.split(':')
+        let endTime = (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (+militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM' : militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) == 2 ? militaryTime[0] + ':' + militaryTime[1] + ' P.M.' : militaryTime[0].charAt(0) == 0 && militaryTime[0].charAt(1) == 0 ? 12 + ':' + militaryTime[1] + ' AM' : militaryTime.join(':') + ' AM'
+      
+        let splitFinal = endTime.split('')
+      
+        let splitMiddle = splitFinal.slice(1).slice(-2)
+      
+        let finalFinal = splitMiddle.join('')
+      
+        return finalFinal
+    }
+
+    getDateFormat = (date) => {
+        let newDate = date.split('')
+        let cutTime = newDate.splice(0, 10)
+        let year = cutTime.splice(0, 4)
+        let month = cutTime.splice(1, 2)
+        let day = cutTime.splice(2, 2)
+  
+        let joinYear = year.join('')
+        let joinMonth = month.join('')
+        let joinDay = day.join('')
+  
+        return joinMonth + '-' + joinDay + '-' + joinYear
+      }
 
     changeDuration = (minutes) => {
         var h = Math.floor(minutes / 60);
@@ -75,6 +111,12 @@ class Checkout extends Component {
         let finalCost = ticketCost + returnTicketCost
 
         return parseFloat(finalCost).toFixed(2)
+    }
+
+    roundDecimals = (cost) => {
+        let newCost = cost
+
+        return parseFloat(newCost).toFixed(2)
     }
 
     componentDidMount() {
@@ -140,7 +182,7 @@ class Checkout extends Component {
                     <div className='review-container'>
                         <div className='departing-date'>
                             <h2>Departing</h2>
-                            <h3>{this.changeDate(departureTime)}</h3>
+                            <h3>{this.getDateFormat(departureTime)}</h3>
                         </div>
 
                         <div className='flight-details'>
@@ -164,10 +206,13 @@ class Checkout extends Component {
                             <div className='flight-details--right'>
                                 <div className='top'>
                                     <div className='top--time'>
-                                        <h1>{this.changeDate(departureTime)}</h1>
-                                        <p>AM</p>
+                                        <h1>{this.changeTime(departureTime)}</h1>
+                                        <p>{this.getAM(departureTime)}</p>
                                     </div>
-                                    <h1>{departureCity}</h1>
+
+                                    <div className='city'>
+                                        <h1>{departureCity}</h1>
+                                    </div>
 
                                     <div>
                                         <div>
@@ -190,11 +235,13 @@ class Checkout extends Component {
 
                                 <div className='bottom'>
                                         <div className='bottom--time'>
-                                                <h1>{this.changeDate(arrivalTime)}</h1>
-                                                <p>AM</p>
+                                                <h1>{this.changeTime(arrivalTime)}</h1>
+                                                <p>{this.getAM(arrivalTime)}</p>
                                         </div>
                                             
+                                        <div className='city'>
                                             <h1>{arrivalCity}</h1>
+                                        </div>
 
                                         <div className='travel-time'>
                                             <div>
@@ -221,12 +268,12 @@ class Checkout extends Component {
                     <div className='review-container-right'>
                         <div className='cabin-price'>
                             <h2>{cabin}</h2>
-                            <h2>${ticketCost}</h2>
+                            <h2>${this.roundDecimals(ticketCost)}</h2>
                         </div>
 
                         <div className='subtotal'>
                             <h3>SUBTOTAL</h3>
-                            <h2>${ticketCost}</h2>
+                            <h2>${this.roundDecimals(ticketCost)}</h2>
                         </div>
                     </div>
                 </div>
@@ -236,7 +283,7 @@ class Checkout extends Component {
                     <div className='review-container'>
                         <div className='departing-date'>
                             <h2>Returning</h2>
-                            <h3>{returnArrivalTime}</h3>
+                            <h3>{this.getDateFormat(returnArrivalTime)}</h3>
                         </div>
 
                         <div className='flight-details'>
@@ -260,10 +307,13 @@ class Checkout extends Component {
                             <div className='flight-details--right'>
                                 <div className='top'>
                                     <div className='top--time'>
-                                        <h1>{this.changeDate(returnDepartureTime)}</h1>
-                                        <p>AM</p>
+                                        <h1>{this.changeTime(returnDepartureTime)}</h1>
+                                        <p>{this.getAM(returnDepartureTime)}</p>
                                     </div>
-                                    <h1>{returnDepartureCity}</h1>
+
+                                    <div className='city'>
+                                        <h1>{returnDepartureCity}</h1>
+                                    </div>
 
                                     <div>
                                         <div>
@@ -286,11 +336,13 @@ class Checkout extends Component {
 
                                 <div className='return-bottom'>
                                         <div className='bottom--time'>
-                                                <h1>{this.changeDate(returnArrivalTime)}</h1>
-                                                <p>AM</p>
+                                                <h1>{this.changeTime(returnArrivalTime)}</h1>
+                                                <p>{this.getAM(returnArrivalTime)}</p>
                                         </div>
-                                            
+                                        
+                                        <div className='city'>
                                             <h1>{returnArrivalCity}</h1>
+                                        </div>
 
                                         <div className='travel-time'>
                                             <div>
@@ -317,12 +369,12 @@ class Checkout extends Component {
                     <div className='review-container-right'>
                         <div className='cabin-price'>
                             <h2>{returnCabin}</h2>
-                            <h2>${returnTicketCost}</h2>
+                            <h2>${this.roundDecimals(returnTicketCost)}</h2>
                         </div>
 
                         <div className='subtotal'>
                             <h3>SUBTOTAL</h3>
-                            <h2>${returnTicketCost}</h2>
+                            <h2>${this.roundDecimals(returnTicketCost)}</h2>
                         </div>
                     </div>
                 </div>
