@@ -51,12 +51,11 @@ module.exports = {
     },
 
     getMember: async (req, res) => {
-        const db = req.app.get('db')
-        let id = req.params.id
-        console.log(req.params.id)
-
-        const member = await db.getMember(id)
-        return res.status(200).json(member)
+        if(req.session.member) {
+        res.status(200).json(req.session.member)
+        } else {
+            console.log('error')
+        }
     },
 
     getDashboard: async (req, res) =>{

@@ -7,8 +7,8 @@ import Upcoming from './Upcoming';
 import Info from './Info';
 
 class Dashboard extends Component {
-    constructor() {
-        super() 
+    constructor(props) {
+        super(props) 
         this.state = {
             member: [],
             view: 'snapshot'
@@ -16,6 +16,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
+        this.props.getMember()
         axios
         .get(`/dashboard/${this.props.match.params.id}`)
         .then(res=> {
