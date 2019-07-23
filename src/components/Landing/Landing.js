@@ -6,7 +6,6 @@ class Landing extends Component {
     render() {
         return (
             <div>
-                < Book/>
                 <div className='background'>
                 </div>
 

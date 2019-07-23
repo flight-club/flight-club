@@ -75,4 +75,21 @@
             background: #8B2232;
         } 
     }
+
+    #log-out {
+        width: 90px;
+        height: 30px;
+        background: $secondary-color;
+        border: none;
+        margin-left: 15px;
+
+        &:hover {
+            background: #8B2232;
+        } 
+    }
+
+    #account {
+        background: none;
+        border: none;
+    }
 }
