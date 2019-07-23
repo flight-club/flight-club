@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Input } from 'reactstrap';
+import {connect} from 'react-redux'
+import {getMember} from '../../redux/reducer'
+import {Link} from 'react-router-dom'
 
 class Checkout extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state ={
             flight: {},
             yearList: [],
@@ -34,7 +37,8 @@ class Checkout extends Component {
             CVV: '',
             cardFirstName: '',
             cardLastName: '', 
-            confirmation: ''
+            confirmation: '',
+            memberId: 'null'
         }
     }
 
@@ -134,6 +138,8 @@ class Checkout extends Component {
     }
 
     componentDidMount() {
+        this.props.getMember()
+        this.getMemberId()
         this.getYears()
         this.getConfirmation(6)
         axios
@@ -162,9 +168,14 @@ class Checkout extends Component {
         })
     }
 
+    getMemberId = () => {
+        this.setState({memberId: this.props.member.id})
+    }
+
     purchase = (e) => {
         e.preventDefault()
-        let {
+        const {
+        memberId,
         flightNumber,
         departureCity,
         departureTime,
@@ -195,6 +206,7 @@ class Checkout extends Component {
 
         axios
         .post('/api/purchase', {
+            memberId: memberId,
             flightNumber: flightNumber,
             departureCity: departureCity,
             departureTime: departureTime,
@@ -229,6 +241,7 @@ class Checkout extends Component {
 
     render() {
         console.log(this.state)
+        console.log(this.props)
 
         let {flightNumber,
             departureCity,
@@ -546,8 +559,8 @@ class Checkout extends Component {
                                 <div className='card-info'>
                                         <div>
                                             <h3>CARD TYPE</h3>
-                                            <Input className='card-type' type='select' value={this.state.cardType} onChange={this.handleChange}>
-                                                <option value="" disabled selected hidden>Please Choose</option>
+                                            <Input className='card-type' name='cardType' type='select' value={this.state.cardType} onChange={this.handleChange}>
+                                                <option value=""disabled selected hidden>Please Choose</option>
                                                 <option>Alpha Miles Visa Rewards</option>
                                                 <option>Visa</option>
                                                 <option>Mastervard</option>
@@ -563,7 +576,7 @@ class Checkout extends Component {
 
                                         <div>
                                             <h3>EXPIRATION MONTH</h3>
-                                            <Input type='select' className='expiration-month' value={this.state.expirationMonth} onChange={this.handleChange}>
+                                            <Input type='select' className='expiration-month' name='expirationMonth' value={this.state.expirationMonth} onChange={this.handleChange}>
                                                         <option value="" disabled selected hidden>Month</option>
                                                         <option>January</option>
                                                         <option>February</option>
@@ -633,4 +646,11 @@ class Checkout extends Component {
     }
 }
 
-export default Checkout;
+const mapStateToProps = reduxState => {
+    const {member} = reduxState.reducer;
+    return {
+        member
+    }
+}
+
+export default connect( mapStateToProps, {getMember})(Checkout);

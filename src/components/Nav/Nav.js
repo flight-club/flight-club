@@ -62,6 +62,7 @@ class Nav extends Component {
     }
 
     render() {
+        console.log(this.props)
         console.log(window.location)
         const { view } = this.state
 
