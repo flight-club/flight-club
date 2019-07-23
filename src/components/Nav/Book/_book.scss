@@ -1,8 +1,11 @@
 .book {
     display: flex;
     background: $primary-color;
+    // position: absolute;
+    // top: 80px;
+    // z-index: 7;
+    // width: 100vw;
 }
-
 
 .logo {
     display: flex;

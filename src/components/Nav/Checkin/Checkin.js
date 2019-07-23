@@ -3,7 +3,9 @@ import React, {Component} from 'react';
 class Checkin extends Component {
     render() {
         return (
-            <h1>Checkin</h1>
+            <div className='check-in'>
+                <h1>Check In</h1>
+            </div>
         )
     }
 }
