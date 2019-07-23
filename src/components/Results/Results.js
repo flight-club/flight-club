@@ -166,7 +166,7 @@ class Results extends Component {
     
 
     render() {
-        console.log(this.state)
+        console.log(this.state.results)
         const values = queryString.parse(this.props.location.search)
    
             const {results} = this.state

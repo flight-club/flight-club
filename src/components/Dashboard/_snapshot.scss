@@ -1,0 +1,90 @@
+.top-left {
+    width: 325px;
+}
+
+.top-right {
+    display: flex;
+    flex-direction: column;
+    width: 325px;
+}
+
+.snapshot-bottom {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    h2 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h3 {
+        font-style: italic;
+        margin-left: 10px;
+        font-size: 20px;
+    }
+
+
+    h4 {
+        height: 20px;
+        margin-top: 7px;
+        font-size: 15px;
+        font-weight: bold;
+
+        color: rgb(122, 121, 121);
+    }
+    
+
+    .snapshot-top {
+        display: flex;
+        flex-direction: column;
+        height: 325px;
+
+        .snapshot-top-title {
+            display: flex;
+            height: 50px;
+        }
+
+        .donut-chart {
+            display: flex;
+            justify-content: space-around;
+            margin-left: 60px;
+            align-content: center;
+            align-items: center;
+            width: 450px;
+            height: 250px;
+
+            i {
+                font-size: 160px;
+                transform: rotate(180deg);
+                color: #4367AF;
+            }
+        }
+    }
+
+    .snapshot-snapshot {
+        display: flex;
+        flex-direction: column;
+        height: 325px;
+
+        &--title {
+            display: flex;
+        }
+
+        .donut-chart {
+            display: flex;
+            justify-content: space-around;
+            margin-left: 60px;
+            align-content: center;
+            align-items: center;
+            width: 450px;
+            height: 250px;
+
+            i {
+                font-size: 160px;
+                transform: rotate(180deg);
+                color: $secondary-color;
+            }
+        }
+    }
+}
