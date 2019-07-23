@@ -30,7 +30,7 @@ const auth = axios({
 
 
 getResults = (req, res) => {
-    console.log('hit')
+    // console.log('hit')
     axios({
         method: 'GET',
         url: `https://api-crt.cert.havail.sabre.com/v1/shop/flights?origin=${req.query.origin}&destination=${req.query.destination}&departuredate=${req.query.departure}&returndate=${req.query.return}&pointofsalecountry=US`,
