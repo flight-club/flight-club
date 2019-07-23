@@ -70,6 +70,14 @@ module.exports = {
         )
 
         res.status(200).json(purchase)
+    },
+
+    getFlight: async (req, res) => {
+        const db = req.app.get('db')
+        let {id} = req.session.member
+
+       const flight = await db.getFlight(id)
+        res.status(200).send(flight)
     }
 }
 

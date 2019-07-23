@@ -118,6 +118,7 @@ class Nav extends Component {
 
 
 const mapStateToProps = reduxState => {
+    // console.log(reduxState)
     const {member, loggedIn} = reduxState.reducer;
     return {
         member,
