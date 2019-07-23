@@ -21,8 +21,10 @@
     "rb-datepicker": "0.0.5",
     "react": "^16.8.6",
     "react-bootstrap-date-picker": "^5.1.0",
+    "react-date-range": "^0.9.4",
     "react-datepicker": "^2.8.0",
     "react-dates": "^20.2.5",
+    "react-day-picker": "^7.3.0",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
@@ -31,6 +33,7 @@
     "reactstrap": "^8.0.1",
     "redux": "^4.0.4",
     "redux-promise-middleware": "^6.1.1",
+    "rsuite": "^3.8.7",
     "sass": "^1.22.4",
     "stripe": "^7.4.0"
   },

@@ -1,6 +1,7 @@
 .book {
     display: flex;
     background: $primary-color;
+    height: 520px;
     // position: absolute;
     // top: 80px;
     // z-index: 7;
@@ -99,17 +100,17 @@
     }
 }
 
-.datePicker {
-    width: 150px;
-    height: 60px;
-    background: $primary-color;
-    border: none;
-    color: white;
+// .datePicker {
+//     width: 150px;
+//     height: 60px;
+//     background: $primary-color;
+//     border: none;
+//     color: white;
 
-    input {
-        color: white;
-    }
-}
+//     input {
+//         color: white;
+//     }
+// }
 
 input[type="date" i] {
     align-items: center;
@@ -128,43 +129,10 @@ input[type="date" i] {
 
 .calendar {
     margin-left: 35px;
+    height: 30px;
+    align-self: center;
 }
 
-.cal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(14px);
-
-    p {
-        color: white;
-        font-size: 15px;
-        font-family: $primary-font;
-        margin-top: 10px;
-        transform: translateX(-14px)
-        translateY(5px)
-        ;
-    }
-}
-
-input::-webkit-calendar-picker-indicator {
-    display: block;
-    color: white;
-    font-size: 15px;
-}
-
-input:-internal-autofill-selected {
-    background: $primary-color;
-    border: none;
-    color: white; 
-}
-
-input:focus {
-    background: $primary-color;
-    border: none;
-    color: white; 
-}
 
 .input-passenger-dropdown {
     display: flex;
