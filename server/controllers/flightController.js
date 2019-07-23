@@ -11,10 +11,63 @@ module.exports = {
         res.status(200).json(req.session.flight)
     },
 
-    purchase: (req, res) => {
-        const {confirmation, flightNumber, departureCity, departureTime, arrivalCity, arrivalTime, duration, aircraftType, returnFlightNumber, returnDepartureCity, returnDepartureTime, returnArrivalCity, returnArrivalTime, returnDuration, returnAircraftType, cabin, returnCabin, totalCost, cardType, cardNumber, expirationMonth, expirationYear, CVV, cardFirstName, cardLastName} = req.body
+    purchase: async (req, res) => {
+        console.log(req.body)
+        const {flightNumber,
+            departureCity,
+            departureTime,
+            arrivalCity,
+            arrivalTime,
+            duration,
+            aircraftType,
+            returnFlightNumber,
+            returnDepartureCity,
+            returnDepartureTime,
+            returnArrivalCity,
+            returnArrivalTime,
+            returnDuration,
+            returnAircraftType,
+            totalCost,
+            cabin,
+            returnCabin,
+            cardType,
+            cardNumber,
+            expirationMonth,
+            expirationYear,
+            CVV,
+            cardFirstName,
+            cardLastName, 
+            confirmation,
+            memberId} = req.body
 
-        const purchase = req.app.get('db').addFlightPurchase(confirmation, flightNumber, departureCity, departureTime, arrivalCity, arrivalTime, duration, aircraftType, returnFlightNumber, returnDepartureCity, returnDepartureTime, returnArrivalCity, returnArrivalTime, returnDuration, returnAircraftType, cabin, returnCabin, totalCost, cardType, cardNumber, expirationMonth, expirationYear, CVV, cardFirstName, cardLastName)
+        const purchase = await req.app.get('db').addFlightPurchase(
+            flightNumber,
+            departureCity,
+            departureTime,
+            arrivalCity,
+            arrivalTime,
+            duration,
+            aircraftType,
+            returnFlightNumber,
+            returnDepartureCity,
+            returnDepartureTime,
+            returnArrivalCity,
+            returnArrivalTime,
+            returnDuration,
+            returnAircraftType,
+            totalCost,
+            cabin,
+            returnCabin,
+            cardType,
+            cardNumber,
+            expirationMonth,
+            expirationYear,
+            CVV,
+            cardFirstName,
+            cardLastName, 
+            confirmation,
+            memberId
+        )
 
         res.status(200).json(purchase)
     }

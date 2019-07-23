@@ -62,6 +62,7 @@ class Nav extends Component {
     }
 
     render() {
+        console.log(this.props)
         console.log(window.location)
         const { view } = this.state
 
@@ -117,7 +118,6 @@ class Nav extends Component {
 
 
 const mapStateToProps = reduxState => {
-    // console.log(reduxState)
     const {member, loggedIn} = reduxState.reducer;
     return {
         member,
