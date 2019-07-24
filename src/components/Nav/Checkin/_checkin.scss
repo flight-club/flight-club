@@ -3,12 +3,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 100vw;
+    position: absolute;
     height: 120px;
+    width: 100vw;
     background: $primary-color;
     color: white;
     z-index: 10;
-    margin-left: 160px;
+    top: 70;
     font-family: $primary-font;
     color: white;
 
@@ -33,13 +34,14 @@
         text-align: center; 
     }
 
-    .confirmation {
+    .checkin-confirmation {
         display: flex;
         align-items: center;
 
         h1 {
             font-size: 25px;
             margin-right: 20px;
+            margin-left: 160px;
         }
     }
 
@@ -63,8 +65,8 @@
         color: $secondary-color;
         transform: 
         rotate(30deg)
-        translateX(-174px)
-        translateY(50px); 
+        translateX(-35px)
+        translateY(-30px); 
     }
 }
 

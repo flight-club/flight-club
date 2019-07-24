@@ -26,7 +26,8 @@ class Results extends Component {
             returnAircraftType: "",
             returnTicketCost: "",
             cabin: "",
-            returnCabin: ""
+            returnCabin: "",
+            destination: ""
         };
     }
     
@@ -51,14 +52,15 @@ class Results extends Component {
         this.getFlightInfo();
     }
 
-getFlightInfo(){
-    const values = queryString.parse(this.props.location.search)
-    axios
-    .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
-    .then(( results ) => { this.setState({ results: results.data })
-      })
-      .catch((err) => alert(err, "loading"))
-}
+    getFlightInfo(){
+        const values = queryString.parse(this.props.location.search)
+        axios
+        .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
+        .then(( results ) => { 
+            this.setState({ results: results.data, destination: values.destination })
+        })
+        .catch((err) => alert(err, "loading"))
+    }
 
     
 
@@ -200,9 +202,8 @@ getFlightInfo(){
     
 
     render() {
-        const values = queryString.parse(this.props.location.search)
-   
-            const {results} = this.state
+    const {results, destination} = this.state
+            console.log(this.state.values)
            
     
             return (
@@ -224,10 +225,8 @@ getFlightInfo(){
                     </div>
 
                         {this.state.results && results.map((flight, index) =>
-                            (
-
-                                <div className='flight-container' key={flight.id}>
-
+                            (                                   
+                                <div className='flight-container' key={flight.id}>                                  
                                     <div className='flight-left'>
                                         <div className='flight-left--one'>
                                             <h3 className="departurecity">{flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureAirport.LocationCode}</h3>
@@ -274,8 +273,11 @@ getFlightInfo(){
                                         <button onClick={() =>this.departureFirstClass(flight)}>${Math.round(flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99)}</button>
                                         </div>  
                                     </div>
-                            ))}
+                                    
+                            ))}   
                     </div>
+
+                         
 
 <div className="flight-flight">
 <div className='results-top-bar'>
