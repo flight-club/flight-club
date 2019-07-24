@@ -27,7 +27,8 @@ class Results extends Component {
             returnTicketCost: "",
             cabin: "",
             returnCabin: "",
-            destination: ""
+            destination: "",
+            origin: ""
         };
     }
     
@@ -57,7 +58,7 @@ class Results extends Component {
         axios
         .get(`/results?origin=${values.origin}&destination=${values.destination}&departure=${values.departure}&return=${values.return}`)
         .then(( results ) => { 
-            this.setState({ results: results.data, destination: values.destination })
+            this.setState({ results: results.data, destination: values.destination, origin: values.origin })
         })
         .catch((err) => alert(err, "loading"))
     }
@@ -202,7 +203,7 @@ class Results extends Component {
     
 
     render() {
-    const {results, destination} = this.state
+    const {results, destination, origin} = this.state
             console.log(this.state.values)
            
     
@@ -225,7 +226,8 @@ class Results extends Component {
                     </div>
 
                         {this.state.results && results.map((flight, index) =>
-                            (                                   
+                            (   
+                                  flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalAirport.LocationCode === destination ?                            
                                 <div className='flight-container' key={flight.id}>                                  
                                     <div className='flight-left'>
                                         <div className='flight-left--one'>
@@ -273,7 +275,9 @@ class Results extends Component {
                                         <button onClick={() =>this.departureFirstClass(flight)}>${Math.round(flight.AirItineraryPricingInfo.PTC_FareBreakdowns.PTC_FareBreakdown.PassengerFare.TotalFare.Amount * 1.99)}</button>
                                         </div>  
                                     </div>
-                                    
+                                   
+                                    :
+                                    <div></div>
                             ))}   
                     </div>
 
@@ -297,6 +301,8 @@ class Results extends Component {
 
     {this.state.results && results.map((flight, index) =>
         (
+
+            flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode === origin ?
 
             <div className='flight-container' key={flight.id}>
 
@@ -346,8 +352,8 @@ class Results extends Component {
                     </div>  
                 </div>
 
-                
-
+            : 
+            <div></div>
         ))}
 </div>
 

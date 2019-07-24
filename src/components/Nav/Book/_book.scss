@@ -1,26 +1,18 @@
 .book {
     display: flex;
     background: $primary-color;
-
-
     position: absolute;
     top: 70px;
     width: 100vw;
     height: 120px;
     z-index: 7;
-
     height: 120px;
-
-
-
-
     // width: 100vw;
 }
 
 .logo {
     display: flex;
     width: 100px;
-
 
     .fa-paper-plane {
         font-size: 90px;
@@ -45,8 +37,13 @@
 .destination {
     display: flex;
     align-items: center;
+    justify-content: center;
 
     &--box {
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
 
     input {
         background: none;
@@ -59,6 +56,11 @@
         font-weight: 300;
         align-self: auto;
         text-align: center; 
+    }
+
+    p {
+        font-family: $primary-font;
+        color: white;
     }
 }
 
@@ -93,33 +95,6 @@
     }
 }
 
-.input-type-dropdown {
-    display: flex;
-    align-items: center;
-
-    select {
-    width: 160px;
-    height: 70px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 28px;
-    font-weight: 250;
-    outline: none;
-    }
-}
-
-// .datePicker {
-//     width: 150px;
-//     height: 60px;
-//     background: $primary-color;
-//     border: none;
-//     color: white;
-
-//     input {
-//         color: white;
-//     }
-// }
 
 input[type="date" i] {
     align-items: center;
@@ -129,18 +104,62 @@ input[type="date" i] {
     cursor: default;
     background: $primary-color;
     border: none;
-    width: 195px;
+    width: 212px;
+    height: 50px;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-family: $primary-font;
     padding: 0px;
+    margin-bottom: 15px;
 }
 
-.calendar {
-    margin-left: 35px;
-    height: 30px;
-    align-self: center;
+.input {
+    &--box {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            justify-content: baseline;
+
+    
+        input {
+            background: none;
+            border: none;
+            width: 190.5px;
+            height: 40px;
+            outline: none;
+            color: white;
+            font-size: 20px;
+            font-weight: 300;
+            margin: 0;
+            margin-top: 10px;
+
+        }
+    
+        p {
+            font-family: $primary-font;
+            color: white;
+            height: 20px;
+            padding-top: 17px;
+            border-top: 1px white solid;
+            font-size: 14px;
+            width: 110px;
+            padding-left: 21px;
+        }
+    }
 }
+
+  input[type="date"]:before {
+    content: attr(placeholder) !important;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-right: 26px;
+  }
+//   input[type="date"]:focus:before,
+//   input[type="date"]:valid:after {
+//     display: none;
+//   }
+
 
 
 .input-passenger-dropdown {
@@ -182,4 +201,22 @@ input[type="date" i] {
 //     background-color: red;
 //     display: inherit;
 // }
+
+@media (max-width: 1180px) {
+
+    
+.logo {
+    display: flex;
+    width: 100px;
+    
+    .fa-paper-plane {
+        font-size: 90px;
+        color: $secondary-color;
+        transform: 
+        rotate(30deg)
+        translateX(-35px)
+        translateY(-15px); 
+    }
+}
+}
 
