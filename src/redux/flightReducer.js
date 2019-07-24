@@ -1,34 +1,35 @@
 import axios from 'axios';
 
 const initialState = {
-    results: [],
+    flight: [],
     loading: false
 };
 
-const GET_RESULTS = "GET_RESULTS";
+const GET_FLIGHT = "GET_FLIGHT";
 
-export function getResults() {
+export function getFlight() {
     return {
-        type: GET_RESULTS,
-        payload: axios.get("/results/").then(err => err)
+        type: GET_FLIGHT,
+        payload: axios.get("/api/flights/:id").then(err => err)
     };
 }
 
-export default function reducer(state = initialState, action) {
+export default function flightReducer(state = initialState, action) {
+  console.log(state)
     switch (action.type) {
-        case `${GET_RESULTS}_FULFILLED`:
+        case `${GET_FLIGHT}_FULFILLED`:
           return {
             ...state,
             loading: false,
             results: action.payload.data
           };
     
-        case `${GET_RESULTS}_PENDING`:
+        case `${GET_FLIGHT}_PENDING`:
           return {
             ...state,
             loading: true
           };
         default:
           return state;
-      }
+      };
 }
