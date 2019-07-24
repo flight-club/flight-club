@@ -78,9 +78,8 @@ class SignUp extends Component {
         }
         return (
             <div className='container'>
-                <div className="info-container">
+                <div className="signup-info-container">
                     <h1>Create Account</h1>
-                    <div>
 
                         <div className='about'>
                             <div>
@@ -304,12 +303,7 @@ class SignUp extends Component {
                                     <button className="signup-member" onClick={this.signupMember}>Create Account</button>
                                 </div>
                         </div>
-
                     </div>
-
-                    
-
-                </div>
         </div>
         )
     }

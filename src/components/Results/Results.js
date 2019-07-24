@@ -204,7 +204,7 @@ class Results extends Component {
 
     render() {
     const {results, destination, origin} = this.state
-            console.log(this.state.values)
+            console.log(this.state.results)
            
     
             return (
@@ -302,7 +302,7 @@ class Results extends Component {
     {this.state.results && results.map((flight, index) =>
         (
 
-            flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode === origin ?
+            flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalAirport.LocationCode === destination && flight.AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalAirport.LocationCode === origin ? 
 
             <div className='flight-container' key={flight.id}>
 
@@ -355,11 +355,11 @@ class Results extends Component {
             : 
             <div></div>
         ))}
+            <div>
+            <Link to='/checkout'><button className='purchase-button' onClick={() => this.addToCheckout(this.state)}>Book Flight!</button></Link> 
+            </div>
 </div>
 
-<div>
-  <Link to='/checkout'><button onClick={() => this.addToCheckout(this.state)}>Book Flight!</button></Link> 
-</div>
 
 </div>
                 

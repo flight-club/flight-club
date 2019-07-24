@@ -29,6 +29,17 @@ class Dashboard extends Component {
         })
     }
 
+    data = {
+        datasets: [{
+            data: [10]
+        }],
+    
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+            'Red',
+        ]
+    };
+
     getFlight = () => {
         this.setState({ flights: this.props.flight[0].element
         })
