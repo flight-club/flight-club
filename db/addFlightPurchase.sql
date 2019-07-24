@@ -13,7 +13,8 @@ return_arrival_city,
 return_arrival_time,
 return_duration,
 return_aircraft_type,
-total_cost,
+return_ticket_cost,
+ticket_cost,
 cabin,
 return_cabin,
 card_type,
@@ -24,6 +25,9 @@ cvv,
 card_first_name,
 card_last_name, 
 confirmation,
-member_id )
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26)
+member_id,
+miles,
+return_miles
+ )
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29)
 RETURNING *;

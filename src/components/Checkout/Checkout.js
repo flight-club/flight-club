@@ -38,7 +38,10 @@ class Checkout extends Component {
             cardFirstName: '',
             cardLastName: '', 
             confirmation: '',
-            memberId: 'null'
+            memberId: 'null', 
+            miles: '',
+            returnMiles: '',
+            totalMiles: ''
         }
     }
 
@@ -164,7 +167,9 @@ class Checkout extends Component {
                 returnAircraftType: res.data[0].returnAircraftType,
                 returnTicketCost: res.data[0].returnTicketCost, 
                 cabin: res.data[0].cabin,
-                returnCabin: res.data[0].returnCabin})
+                returnCabin: res.data[0].returnCabin,
+                miles: res.data[0].duration,
+                returnMiles: res.data[0].returnDuration})
         })
     }
 
@@ -202,7 +207,10 @@ class Checkout extends Component {
         CVV,
         cardFirstName,
         cardLastName, 
-        confirmation} = this.state
+        confirmation,
+        miles,
+        returnMiles,
+        totalMiles} = this.state
 
         axios
         .post('/api/purchase', {
@@ -233,7 +241,10 @@ class Checkout extends Component {
             CVV: CVV,
             cardFirstName: cardFirstName,
             cardLastName: cardLastName, 
-            confirmation: confirmation})
+            confirmation: confirmation,
+            miles: miles,
+            returnMiles: returnMiles,
+            totalMiles: totalMiles})
             .then(res => {console.log(res.data)})
             .then(() => {alert(`Thank you for flying with Alpha! Your confirmation code is ${confirmation}`)})
             .catch(() => {alert('Please complete form to purchase')})
