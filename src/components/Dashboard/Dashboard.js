@@ -46,7 +46,7 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log(this.props)
+        console.log(this.props && this.props.flight)
         const { view } = this.state;
         
         console.log(this.state.member)
