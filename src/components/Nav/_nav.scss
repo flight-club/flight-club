@@ -97,4 +97,44 @@
         background: none;
         border: none;
     }
+
+    .bottom-nav-2 {
+        display: none;
+    }
 }
+
+// @media (max-width: 1180px) {
+//     .nav--left {
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         font-weight: bold;
+    
+//         .page-links {
+//             display: none;
+//         }
+//     }
+
+//     .bottom-nav-2 {
+//         display: flex;
+//         height: 250px;
+//         width: 100vw;
+
+//         .page-links-2 {
+//             button {
+//                 width: 40px;
+//                 height: 20px;
+//                 color: white;
+//                 background: none;
+//                 border: none;
+//                 font-size: 16px;
+//                 margin-left: 15px;
+//                 outline: none;  
+//             }
+//         }
+//     }
+
+//     .fields {
+//         display: none;
+//     }
+// }

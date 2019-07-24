@@ -1,16 +1,7 @@
 import React, {Component} from 'react';
 import { Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import axios from 'axios';
-import Results from '../../Results/Results';
-import 'react-dates/initialize';
-import { DateRangePicker } from 'react-dates';
-import { DateRange } from 'react-date-range';
-// import { DateRangePicker } from 'rsuite';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
+
 
 
 
@@ -26,6 +17,20 @@ class Book extends Component {
             returnDate: '',
             passengers: ''
         }
+    }
+
+    startDateHandleChange = (e) => {
+        console.log(e.target.value)
+
+        this.setState({
+          startDate: e.target.value
+        })
+      }
+
+    returnDateHandleChange = (e) => {
+        this.setState({
+            returnDate: e.target.value
+        })
     }
 
     handleChange = (e) => {
@@ -47,11 +52,35 @@ class Book extends Component {
   
         return joinYear + '-' + joinDay + '-' + joinMonth
       }
+
+      getDate = (date) => {
+        let dateOne = date.split('')
+        let dateTwo = date.split('')
+        let dateThree = date.split('')
+
+        let year = dateOne.splice(6, 4)
+        let month = dateTwo.splice(0, 2)
+        let day = dateThree.splice(3, 2)
+
+  
+        let joinYear = year.join('')
+        let joinMonth = month.join('')
+        let joinDay = day.join('')
+  
+        return joinMonth + '-' + joinDay + '-' + joinYear
+      }
       
 
     
     render() {
-        console.log(this.state.returnDate)
+        // let fixedStartDate = ''
+        // let fixedReturnDate = ''
+        // const {startDate, returnDate} = this.state
+        // if(startDate && returnDate){
+        //     fixedStartDate = this.getDate(startDate)
+        //     fixedReturnDate = this.getDate(returnDate)
+        // }
+        console.log(this.state.startDate)
 
         return (
             <div className='book'>
@@ -125,13 +154,18 @@ class Book extends Component {
                             </Input>
                         </div> */}
 
-                            <div className='book-input'>
-                               <input className='calendar' name='startDate' value={this.state.startDate} onChange={this.handleChange}/>
+                            <div className='input--box'>
+                                <input type="date" placeholder='Depart Date' value={this.state.startDate} onChange={this.startDateHandleChange} />
+                                <p>{this.state.startDate}</p>
                            </div>
 
-                           <div className='book-input'>
-                               <input className='calendar' name='returnDate' value={this.state.returnDate} onChange={this.handleChange}/>
+                           <div className='input--box'>
+                            <input type='date' placeholder='Return Date ' value={this.state.returnDate} onChange={this.returnDateHandleChange} />
+                            <p>{this.state.returnDate}</p>
                            </div>
+
+
+
 
 
                         {/* <div className='input-passenger-dropdown'>
