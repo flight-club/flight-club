@@ -1,0 +1,69 @@
+.flight-status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100vw;
+    height: 120px;
+    background: $primary-color;
+    color: white;
+    z-index: 10;
+    margin-left: 160px;
+    font-family: $primary-font;
+    color: white;
+
+    h2 {
+        font-size: 15px;
+    }
+
+    input {
+        background: none;
+        border: none;
+        border-bottom: 1px solid gray;
+        width: 160px;
+        height: 40px;
+        margin-right: 20px;
+    }
+
+    ::-webkit-input-placeholder { 
+        color: rgb(139, 129, 129);
+        font-size: 20px;
+        font-weight: 300;
+        align-self: auto;
+        text-align: center; 
+    }
+
+    .status {
+        display: flex;
+        align-items: center;
+
+        h1 {
+            font-size: 25px;
+            margin-right: 20px;
+        }
+    }
+
+    button {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        border: none;
+        background: $secondary-color;
+        color: white;
+        margin-left: 20px;
+
+        i {
+            font-size: 25px;
+        }
+    }
+
+    .fa-paper-plane {
+        position: absolute;
+        font-size: 90px;
+        color: $secondary-color;
+        transform: 
+        rotate(30deg)
+        translateX(-174px)
+        translateY(50px); 
+    }
+}

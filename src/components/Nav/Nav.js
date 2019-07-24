@@ -62,8 +62,11 @@ class Nav extends Component {
     }
 
     render() {
-        console.log(this.props)
-        console.log(window.location)
+
+
+
+
+
         const { view } = this.state
 
         return (
@@ -76,9 +79,9 @@ class Nav extends Component {
                             </div>
 
                             <div className='page-links'>
-                                <p onClick={this.viewBook}>BOOK</p>
-                                <p onClick={this.viewCheckin}>CHECK-IN</p>
-                                <p onClick={this.viewFlightStatus}>FLIGHT STATUS</p>
+                                <button onClick={this.viewBook}>BOOK</button>
+                                <button onClick={this.viewCheckin}>CHECK-IN</button>
+                                <button onClick={this.viewFlightStatus}>FLIGHT STATUS</button>
                             </div>
                         </div>
 
