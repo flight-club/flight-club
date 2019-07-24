@@ -1,10 +1,19 @@
 .book {
     display: flex;
     background: $primary-color;
+
+
+    position: absolute;
+    top: 70px;
+    width: 100vw;
     height: 120px;
-    // position: absolute;
-    // top: 80px;
-    // z-index: 7;
+    z-index: 7;
+
+    height: 120px;
+
+
+
+
     // width: 100vw;
 }
 

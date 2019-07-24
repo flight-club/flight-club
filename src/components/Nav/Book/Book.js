@@ -125,11 +125,11 @@ class Book extends Component {
                             </Input>
                         </div> */}
 
-                            <div className='book'>
+                            <div className='book-input'>
                                <input className='calendar' name='startDate' value={this.state.startDate} onChange={this.handleChange}/>
                            </div>
 
-                           <div className='book'>
+                           <div className='book-input'>
                                <input className='calendar' name='returnDate' value={this.state.returnDate} onChange={this.handleChange}/>
                            </div>
 

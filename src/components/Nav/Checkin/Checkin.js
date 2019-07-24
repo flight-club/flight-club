@@ -6,7 +6,7 @@ class Checkin extends Component {
             <div className='check-in'>
                 
                 <i class="fas fa-paper-plane"></i>
-                <div className='confirmation'>
+                <div className='checkin-confirmation'>
                     <h1>Confirmation Number:</h1>
                     <input placeholder='SFT5RB'></input>
                     <input placeholder='Last Name'></input>
