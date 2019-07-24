@@ -36,7 +36,6 @@ export default function reducer(state = initialState, action) {
         loading: false,
         member: action.payload.data
       };
-
     case `${GET_MEMBER}_PENDING`:
       return {
         ...state,

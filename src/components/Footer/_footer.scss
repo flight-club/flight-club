@@ -7,6 +7,8 @@
     color: white;
     font-family: $primary-font;
     padding: 10px;
+    
+    
 }
 
 .container-contact {
@@ -15,10 +17,23 @@
     height: 85px;
     flex-direction: column;
     align-items: center;
+   
+}
+.contact{
+    margin-left: 130px;
+    color: grey;
+}
+
+.about {
+    margin-right: 130px;
+    color: grey;
+    
 }
 
 .footer-name {
     display: flex;
+   
+
 
     i {
         font-size: 13px;

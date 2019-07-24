@@ -28,9 +28,24 @@ class Results extends Component {
             cabin: "",
             returnCabin: ""
         };
-       
     }
+    
 
+//     let filteredDestination = []
+//     let results = response.data.values.destination
+    
+//     for(let i = 0; i < results.length; i++) {
+//         let index = filteredDestination.findIndex(obj => obj.values.destination === results[i].)
+        
+//         if(index === true){
+//             filteredDestination.push(results[i])
+//         }
+//     }
+    
+//     res.send(filteredFlights)
+// }
+// let destination = [arrivalCity]
+// let destination = destination.filter(destination => if (values.destination === true) destination);
 
     componentDidMount() {
         this.getFlightInfo();
@@ -45,24 +60,7 @@ getFlightInfo(){
       .catch((err) => alert(err, "loading"))
 }
 
-    // componentDidUpdate(prevProps, prevState){
-    // if (prevState.results !== this.state.results) {
-    //    this.getFlightInfo()
-    // }
-    // }
-    // changeTime(time) {
-    //         //var time = "12:23:39";
-    //         var time = time.split(':');
-    //         var hours = time[0];
-    //         var minutes = time[1];
-    //         var seconds = time[2];
-    //        .timeValue = "" + ((hours >12) ? hours -12 :hours);
-    //         $scope.timeValue += (minutes < 10) ? ":0" : ":" + minutes;
-    //         $scope.timeValue += (seconds < 10) ? ":0" : ":" + seconds;
-    //         $scope.timeValue += (hours >= 12) ? " P.M." : " A.M.";
-    //         //console.log( timeValue);
-    // }
-
+    
 
     changeDate = (str) => {
         let newStr = str.split('')

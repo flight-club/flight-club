@@ -62,6 +62,11 @@ class Nav extends Component {
     }
 
     render() {
+
+
+
+
+
         const { view } = this.state
 
         return (
