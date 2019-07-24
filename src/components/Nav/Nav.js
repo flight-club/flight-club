@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getMember, setLoggedIn } from '../../redux/reducer';
+import { getFlight } from '../../redux/flightReducer';
 import Book from './Book/Book';
 import Checkin from './Checkin/Checkin';
 import FlightStatus from './FlightStatus/FlightStatus'; 
@@ -19,14 +20,18 @@ class Nav extends Component {
     }
 
     componentDidMount(){
+        
+        this.props.getFlight(this.props.member.id)
         this.updateView()
         window.addEventListener("hashchange", this.updateView, false)
+        console.log(getFlight)
     }
 
 
     componentDidUpdate(prevProps){
         if(this.prevProps !== this.props.member) {
             this.props.getMember()
+            
         }
 
     }
@@ -123,10 +128,12 @@ class Nav extends Component {
 const mapStateToProps = reduxState => {
     // console.log(reduxState)
     const {member, loggedIn} = reduxState.reducer;
+    const {flight} = reduxState.flightReducer;
     return {
+        flight,
         member,
         loggedIn
     }
 }
 
-export default connect( mapStateToProps, {getMember, setLoggedIn})(Nav);
+export default connect( mapStateToProps, {getMember, getFlight, setLoggedIn})(Nav);

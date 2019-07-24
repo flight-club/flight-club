@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { getMember } from '../../redux/reducer';
+import { getFlight } from '../../redux/flightReducer';
 import Snapshot from './Snapshot';
 import Upcoming from './Upcoming';
 import Info from './Info';
@@ -16,12 +17,15 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        this.props.getMember()
+
+        this.props.getFlight(this.state.member.id)
+        
         axios
         .get(`/dashboard/${this.props.match.params.id}`)
         .then(res=> {
             console.log(res.data)
             this.setState({member: res.data[0]})
+            console.log(getFlight)
         })
     }
 
@@ -38,6 +42,7 @@ class Dashboard extends Component {
     }
 
     render() {
+        console.log(this.props.getFlight)
         const { view } = this.state;
         console.log(this.state.member)
 
@@ -95,9 +100,11 @@ class Dashboard extends Component {
 
 const mapStateToProps = reduxState => {
     const {member} = reduxState.reducer;
+    const {flight} = reduxState.flightReducer;
     return {
+        flight,
         member
     }
 }
 
-export default connect( mapStateToProps, {getMember})(Dashboard);
+export default connect( mapStateToProps, {getMember, getFlight})(Dashboard);
