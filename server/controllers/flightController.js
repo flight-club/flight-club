@@ -13,7 +13,8 @@ module.exports = {
 
     purchase: async (req, res) => {
         console.log(req.body)
-        const {flightNumber,
+        const {
+            flightNumber,
             departureCity,
             departureTime,
             arrivalCity,
@@ -27,7 +28,8 @@ module.exports = {
             returnArrivalTime,
             returnDuration,
             returnAircraftType,
-            totalCost,
+            returnTicketCost,
+            ticketCost,
             cabin,
             returnCabin,
             cardType,
@@ -38,7 +40,9 @@ module.exports = {
             cardFirstName,
             cardLastName, 
             confirmation,
-            memberId} = req.body
+            memberId,
+            miles,
+            returnMiles} = req.body
 
         const purchase = await req.app.get('db').addFlightPurchase(
             flightNumber,
@@ -55,7 +59,8 @@ module.exports = {
             returnArrivalTime,
             returnDuration,
             returnAircraftType,
-            totalCost,
+            returnTicketCost,
+            ticketCost,
             cabin,
             returnCabin,
             cardType,
@@ -66,7 +71,9 @@ module.exports = {
             cardFirstName,
             cardLastName, 
             confirmation,
-            memberId
+            memberId,
+            miles,
+            returnMiles
         )
 
         res.status(200).json(purchase)
