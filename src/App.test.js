@@ -20,7 +20,6 @@ test("Results Test", () => {
   expected(results).toContain("flightNumber");
 });
 
- 
 test("Results Test", () => {
 const h = Math.floor(minutes / 60);
 expect(120).toMatchSnapshot(2);
