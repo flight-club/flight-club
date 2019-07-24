@@ -11,6 +11,7 @@ class Dashboard extends Component {
     constructor(props) {
         super(props) 
         this.state = {
+            flights: [],
             member: [],
             view: 'snapshot'
         }
@@ -18,7 +19,8 @@ class Dashboard extends Component {
 
     componentDidMount() {
 
-        this.props.getFlight(this.state.member.id)
+        this.props.getFlight();
+    
         
         axios
         .get(`/dashboard/${this.props.match.params.id}`)
@@ -29,6 +31,10 @@ class Dashboard extends Component {
         })
     }
 
+    getFlight = () => {
+        this.setState({ flights: this.props.flight[0].element
+        })
+    }
     getInfo = () => {
         this.setState({ view: 'info'})
     }
@@ -42,8 +48,10 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log(this.props.getFlight)
+        console.log(this.props.flight)
+        console.log(this.state.flights)
         const { view } = this.state;
+        
         console.log(this.state.member)
 
         return (
@@ -82,12 +90,12 @@ class Dashboard extends Component {
 
                         <div className='account-info--bottom'>
                             { view === 'snapshot' ? 
-                                < Snapshot member={this.state.member}/>    
+                                < Snapshot member={this.state.member}flight={this.props.flight}/>    
                                 :
                                 view === 'upcoming' ?
-                                < Upcoming member={this.state.member}/>
+                                < Upcoming member={this.state.member}flight={this.props.flight}/>
                                 : 
-                                < Info member={this.state.member}/>
+                                < Info member={this.state.member}flight={this.props.flight}/>
                             }
                         </div>
                     </div>

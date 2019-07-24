@@ -12,7 +12,7 @@ const GET_MEMBER = "GET_MEMBER";
 const UPDATE_LOGGEDIN = 'UPDATE_LOGGEDIN'
 
 export function getMember() {
-  console.log()  
+  
   return {
 
         type: GET_MEMBER,
@@ -28,7 +28,7 @@ export function setLoggedIn(bool) {
 }
 
 export default function reducer(state = initialState, action) {
-  console.log(state)
+  
   switch (action.type) {
     case `${GET_MEMBER}_FULFILLED`:
       return {

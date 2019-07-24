@@ -7,6 +7,7 @@ it('renders without crashing', () => {
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
 test("Results Test", () => {
   let results = [flightNumber,
   departureCity,

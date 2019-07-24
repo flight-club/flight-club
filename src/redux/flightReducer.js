@@ -21,7 +21,7 @@ export default function flightReducer(state = initialState, action) {
           return {
             ...state,
             loading: false,
-            results: action.payload.data
+            flight: action.payload.data
           };
     
         case `${GET_FLIGHT}_PENDING`:
