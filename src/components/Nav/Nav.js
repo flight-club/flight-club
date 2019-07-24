@@ -68,7 +68,8 @@ class Nav extends Component {
 
     render() {
         const { view } = this.state
-
+const {flight} = this.props.flight
+console.log(this.props.flight)
         return (
             <div>
                     <div className='nav'>
