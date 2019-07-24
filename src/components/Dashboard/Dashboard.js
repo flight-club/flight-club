@@ -18,14 +18,13 @@ class Dashboard extends Component {
 
     componentDidMount() {
 
-        this.props.getFlight(this.state.member.id)
+        this.props.getFlight()
         
         axios
         .get(`/dashboard/${this.props.match.params.id}`)
         .then(res=> {
             console.log(res.data)
             this.setState({member: res.data[0]})
-            console.log(getFlight)
         })
     }
 
@@ -42,7 +41,7 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log(this.props.getFlight)
+        console.log(this.props)
         const { view } = this.state;
         console.log(this.state.member)
 
