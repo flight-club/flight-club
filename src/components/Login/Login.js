@@ -36,7 +36,6 @@ class Login extends Component {
     render() {
         console.log(this.props)
         if(this.state.redirect){
-            alert('Login successful!')
             return <Redirect to={`/dashboard/${this.state.id}`} />
         }
         return (
@@ -60,7 +59,7 @@ class Login extends Component {
 
                         <div>
                             <h3>Password</h3>
-                            <input className='password-input' name='password' value={this.state.password} onChange={this.handleChange}></input>
+                            <input type='password' className='password-input' name='password' value={this.state.password} onChange={this.handleChange}></input>
                         </div>
                     </div>
 

@@ -69,7 +69,7 @@ class Nav extends Component {
     render() {
         const { view } = this.state
 const {flight} = this.props.flight
-console.log(this.props.flight)
+console.log(this.props.member.id)
         return (
             <div>
                     <div className='nav'>
@@ -107,7 +107,7 @@ console.log(this.props.flight)
                                 < Book />
                                 : 
                                 view === 'checkin' ?
-                                < Checkin />
+                                < Checkin flight={this.props.flight}  />
                                 :
                                 view === 'flightStatus' ?
                                 < FlightStatus />
