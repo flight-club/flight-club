@@ -29,19 +29,8 @@ class Dashboard extends Component {
         })
     }
 
-    data = {
-        datasets: [{
-            data: [10]
-        }],
-    
-        // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: [
-            'Red',
-        ]
-    };
-
     getFlight = () => {
-        this.setState({ flights: this.props.flight[0].element
+        this.setState({ flights: this.props.flight[0]
         })
     }
     getInfo = () => {
@@ -57,7 +46,7 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log(this.props && this.props.flight)
+        console.log(this.props)
         const { view } = this.state;
         
         console.log(this.state.member)
@@ -98,12 +87,12 @@ class Dashboard extends Component {
 
                         <div className='account-info--bottom'>
                             { view === 'snapshot' ? 
-                                < Snapshot member={this.state.member}flight={this.props.flight}/>    
+                                < Snapshot member={this.state.member} flight={this.props.flight}/>    
                                 :
                                 view === 'upcoming' ?
-                                < Upcoming member={this.state.member}flight={this.props.flight}/>
+                                < Upcoming member={this.state.member} flight={this.props.flight}/>
                                 : 
-                                < Info member={this.state.member}flight={this.props.flight}/>
+                                < Info member={this.state.member} flight={this.props.flight}/>
                             }
                         </div>
                     </div>
