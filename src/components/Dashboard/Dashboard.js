@@ -59,7 +59,7 @@ class Dashboard extends Component {
         // console.log(this.props)
         const { view } = this.state;
     console.log(this.props.member.confirmation) 
-// console.log(this.props.flight[0].miles)     
+console.log(this.props.flight)     
 
         return (
             <div className='dashboard'>
@@ -88,11 +88,15 @@ class Dashboard extends Component {
                             <div className='top-left'>
                                 <h1>Alpha Miles Member</h1>
                             </div>
-
                             <div className='top-right'>
                                 <h4>Total Balance</h4>
-                                <h2>{this.getTotalMiles(this.props.flight, this.props.flight)}</h2>
+                            {this.props.flight[0] ?
+                                <h2>{this.getTotalMiles(this.props.flight[0].miles, this.props.flight[0].return_miles)}</h2>
+                            : 
+                            <div>None</div>
+                            }
                             </div>
+
                         </div>
 
                         <div className='account-info--bottom'>

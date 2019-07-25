@@ -81,7 +81,7 @@ module.exports = {
 
     getFlight: async (req, res) => {
         const db = req.app.get('db')
-        let {id} = req.session.member
+        let id = req.session.member
 
        const flight = await db.getFlight(id)
         res.status(200).send(flight)
