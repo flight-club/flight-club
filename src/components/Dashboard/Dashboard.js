@@ -78,11 +78,6 @@ class Dashboard extends Component {
                             <div className='top-left'>
                                 <h1>Alpha Miles Member</h1>
                             </div>
-
-                            <div className='top-right'>
-                                <h4>Total Balance</h4>
-                                <h2>{this.state.member.miles || 'None'}</h2>
-                            </div>
                         </div>
 
                         <div className='account-info--bottom'>

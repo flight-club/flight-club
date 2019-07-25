@@ -67,7 +67,7 @@ class SignUp extends Component {
         // console.log(this.state)
         axios.post('/register', { first_name: this.state.first_name, last_name: this.state.last_name, gender: this.state.gender, DOBmonth: this.state.DOBmonth, DOBday: this.state.DOBday, DOByear: this.state.DOByear,
             address: this.state.address, address2: this.state.address2, city: this.state.city, state: this.state.state, zip: this.state.zip, phone: this.state.phone,
-            email: this.state.email, username: this.state.username, password: this.state.password, cardNumber: this.state.cardNumber, expirationMonth: this.state.expirationMonth, expirationYear: this.state.expirationYear,  CVV: this.state. CVV, cardFirstName: this.state.cardFirstName,  cardLastName: this.state. cardLastName, })
+            email: this.state.email, username: this.state.username, password: this.state.password, cardNumber: this.state.cardNumber, expirationMonth: this.state.expirationMonth, expirationYear: this.state.expirationYear,  CVV: this.state. CVV, cardFirstName: this.state.cardFirstName,  cardLastName: this.state. cardLastName, cardType: this.state.cardType })
         .then(() => this.setState({redirect: true})).catch((err) => alert(err, 'Username Taken'))
     }
 
@@ -108,7 +108,7 @@ class SignUp extends Component {
                                 <div>
                                     <h3>DATE OF BIRTH</h3>
                                         <div className='DOB'>
-                                            <Input type='select' value={this.state.DOBmonth} onChange={this.handleChange}>
+                                            <Input type='select' name='DOBmonth' value={this.state.DOBmonth} onChange={this.handleChange}>
                                                 <option>January</option>
                                                 <option>February</option>
                                                 <option>March</option>
@@ -123,7 +123,7 @@ class SignUp extends Component {
                                                 <option>December</option>
                                             </Input>
 
-                                            <Input type='select' value={this.state.DOBday}>
+                                            <Input type='select' name='DOBday' value={this.state.DOBday} onChange={this.handleChange}>
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -157,7 +157,7 @@ class SignUp extends Component {
                                                 <option>31</option>
                                             </Input>
 
-                                            <Input type='select' value={this.state.DOByear}>
+                                            <Input type='select' name='DOByear' value={this.state.DOByear} onChange={this.handleChange}>
                                                 {this.state.yearList.map((year, index) => (
                                                         <option>{year}</option>
                                                     ))}
@@ -223,10 +223,10 @@ class SignUp extends Component {
                             <div className='card-row'>
                                 <div>
                                     <h3>CARD TYPE</h3>
-                                    <Input className='card-type' type='select' value={this.state.cardType} onChange={this.handleChange}>
+                                    <Input className='card-type' name='cardType' type='select' value={this.state.cardType} onChange={this.handleChange}>
                                         <option>Alpha Miles Visa Rewards</option>
                                         <option>Visa</option>
-                                        <option>Mastervard</option>
+                                        <option>Mastercard</option>
                                         <option>Discover</option>
                                         <option>American Express</option>
                                     </Input>
@@ -242,19 +242,19 @@ class SignUp extends Component {
                             <div className='card-row'>
                                 <div>
                                     <h3>EXPIRATION MONTH</h3>
-                                    <Input type='select' className='expiration-month' value={this.state.expirationMonth} onChange={this.handleChange}>
-                                                <option>January</option>
-                                                <option>February</option>
-                                                <option>March</option>
-                                                <option>April</option>
-                                                <option>May</option>
-                                                <option>June</option>
-                                                <option>July</option>
-                                                <option>August</option>
-                                                <option>September</option>
-                                                <option>October</option>
-                                                <option>November</option>
-                                                <option>December</option>
+                                    <Input type='select' className='expiration-month' name='expirationMonth' value={this.state.expirationMonth} onChange={this.handleChange}>
+                                                <option>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                                <option>04</option>
+                                                <option>05</option>
+                                                <option>06</option>
+                                                <option>07</option>
+                                                <option>08</option>
+                                                <option>09</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
                                     </Input>
                                 </div>
 
