@@ -11,6 +11,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-daterangepicker": "^3.0.5",
     "chart.js": "^2.8.0",
+    "cypress": "^3.4.0",
     "dayjs": "^1.8.15",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
