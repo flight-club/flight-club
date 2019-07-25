@@ -15,7 +15,6 @@ export function getFlight() {
 }
 
 export default function flightReducer(state = initialState, action) {
-  console.log(state)
     switch (action.type) {
         case `${GET_FLIGHT}_FULFILLED`:
           return {
