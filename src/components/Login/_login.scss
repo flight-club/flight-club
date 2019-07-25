@@ -4,8 +4,9 @@
     align-items: center;
     overflow: hidden;
     width: 100vw;
-    height: 92vh;
+    height: 100vh;
     background-image: url('https://images.unsplash.com/photo-1495611869653-166316536321?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80');
+    background-size: 100%;
     background-size: cover;
     background-position: center;
     font-family: $primary-font;

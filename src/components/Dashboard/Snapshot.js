@@ -41,7 +41,7 @@ class Snapshot extends Component {
     
 
     componentDidMount() {
-        
+
         this.props.getFlight()
 
         setInterval(() => {
@@ -51,8 +51,6 @@ class Snapshot extends Component {
     }
 
     render() {
-        console.log(this.props.flight)
-        console.log(this.state)
         return (
             <div className='snapshot'>
                         <div className='snapshot-bottom'>

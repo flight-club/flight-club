@@ -60,7 +60,7 @@ class Results extends Component {
         .then(( results ) => { 
             this.setState({ results: results.data, destination: values.destination, origin: values.origin })
         })
-        .catch((err) => alert(err, "loading"))
+        .catch((err) => console.log(err))
     }
 
     
@@ -208,7 +208,14 @@ class Results extends Component {
            
     
             return (
+                !this.state.results ?
+                    <div>
+                        <h1>We're sorry, there are no flight results.</h1>
+                    </div> 
+                    :
                 <div>
+                    
+
                 <div className="flight-flight">
                     <div className='results-top-bar'>
                         <div>
@@ -281,7 +288,7 @@ class Results extends Component {
                             ))}   
                     </div>
 
-                         
+         
 
 <div className="flight-flight">
 <div className='results-top-bar'>
@@ -359,6 +366,8 @@ class Results extends Component {
             <Link to='/checkout'><button className='purchase-button' onClick={() => this.addToCheckout(this.state)}>Book Flight!</button></Link> 
             </div>
 </div>
+
+       
 
 
 </div>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Input } from 'reactstrap';
 import {connect} from 'react-redux'
 import {getMember} from '../../redux/reducer'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 class Checkout extends Component {
     constructor(props) {
@@ -41,7 +41,8 @@ class Checkout extends Component {
             memberId: 'null', 
             miles: '',
             returnMiles: '',
-            totalMiles: ''
+            totalMiles: '',
+            redirect: false
         }
     }
 
@@ -106,6 +107,7 @@ class Checkout extends Component {
   
         return joinMonth + '-' + joinDay + '-' + joinYear
       }
+
 
     changeDuration = (minutes) => {
         var h = Math.floor(minutes / 60);
@@ -244,15 +246,18 @@ class Checkout extends Component {
             confirmation: confirmation,
             miles: miles,
             returnMiles: returnMiles,
-            totalMiles: totalMiles})
-            .then(res => {console.log(res.data)})
-            .then(() => {alert(`Thank you for flying with Alpha! Your confirmation code is ${confirmation}`)})
+            totalMiles: totalMiles,
+            })
+            .then(res => {console.log(res.data)
+                this.setState({ redirect: true})
+            })
             .catch(() => {alert('Please complete form to purchase')})
     }
 
     render() {
-        console.log(this.state)
-        console.log(this.props)
+        if(this.state.redirect) {
+            return  <Redirect to={`/confirmation/${this.state.confirmation}`}/>
+          } 
 
         let {flightNumber,
             departureCity,
@@ -647,8 +652,7 @@ class Checkout extends Component {
                         <div className='passenger-info--row--purchase'>
                             <button onClick={this.purchase}>PURCHASE</button>
                         </div>
-                    </div>        
-                
+                    </div>       
             </div>
             
 
