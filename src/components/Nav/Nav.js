@@ -105,7 +105,7 @@ const {flight} = this.props.flight
                                 < Book />
                                 : 
                                 view === 'checkin' ?
-                                < Checkin />
+                                < Checkin flight={this.props.flight}  />
                                 :
                                 view === 'flightStatus' ?
                                 < FlightStatus />

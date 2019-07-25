@@ -13,7 +13,7 @@ class Dashboard extends Component {
         this.state = {
             flights: [],
             member: [],
-            view: 'snapshot'
+            view: 'snapshot',
         }
     }
 
@@ -21,12 +21,22 @@ class Dashboard extends Component {
 
         this.props.getFlight()
         
+
         axios
         .get(`/dashboard/${this.props.match.params.id}`)
         .then(res=> {
             console.log(res.data)
             this.setState({member: res.data[0]})
         })
+    }
+
+    getTotalMiles = (cost1, cost2) => {
+        let ticketCost = Number(cost1)
+        let returnTicketCost = Number(cost2)
+
+        let finalCost = ticketCost + returnTicketCost
+
+        return finalCost
     }
 
     getFlight = () => {
@@ -46,10 +56,10 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         const { view } = this.state;
-        
-        console.log(this.state.member)
+    console.log(this.props.member.confirmation) 
+// console.log(this.props.flight[0].miles)     
 
         return (
             <div className='dashboard'>
@@ -77,6 +87,10 @@ class Dashboard extends Component {
                         <div className='account-info--top'>
                             <div className='top-left'>
                                 <h1>Alpha Miles Member</h1>
+                            </div>
+                            <div className='top-right'>
+                                <h4>Total Balance</h4>
+                                <h2>{this.getTotalMiles(this.props.flight, this.props.flight)}</h2>
                             </div>
                         </div>
 
