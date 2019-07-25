@@ -88,7 +88,6 @@ class Dashboard extends Component {
                             <div className='top-left'>
                                 <h1>Alpha Miles Member</h1>
                             </div>
-
                             <div className='top-right'>
                                 <h4>Total Balance</h4>
                                 <h2>{this.getTotalMiles(this.props.flight, this.props.flight)}</h2>

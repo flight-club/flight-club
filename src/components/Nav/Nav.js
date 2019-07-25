@@ -24,7 +24,6 @@ class Nav extends Component {
         this.props.getFlight(this.props.member.id)
         this.updateView()
         window.addEventListener("hashchange", this.updateView, false)
-        console.log(getFlight)
     }
 
 
@@ -50,7 +49,6 @@ class Nav extends Component {
         .post('/logout')
         .then(res => {
             this.props.setLoggedIn(false)
-            console.log(res.data)
         })
     }
 
@@ -69,7 +67,7 @@ class Nav extends Component {
     render() {
         const { view } = this.state
 const {flight} = this.props.flight
-console.log(this.props.member.id)
+
         return (
             <div>
                     <div className='nav'>
@@ -122,7 +120,6 @@ console.log(this.props.member.id)
 
 
 const mapStateToProps = reduxState => {
-    // console.log(reduxState)
     const {member, loggedIn} = reduxState.reducer;
     const {flight} = reduxState.flightReducer;
     return {

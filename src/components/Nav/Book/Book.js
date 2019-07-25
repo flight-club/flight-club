@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import { Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-
-
-
-
 class Book extends Component {
     constructor() {
         super();
@@ -36,51 +32,9 @@ class Book extends Component {
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     } 
-
-    onChange = date => this.setState({ startDate: date })
-
-    getDateFormat = (date) => {
-        let newDate = date.split('')
-        let cutTime = newDate.splice(0, 10)
-        let year = cutTime.splice(0, 4)
-        let month = cutTime.splice(1, 2)
-        let day = cutTime.splice(2, 2)
-  
-        let joinYear = year.join('')
-        let joinMonth = month.join('')
-        let joinDay = day.join('')
-  
-        return joinYear + '-' + joinDay + '-' + joinMonth
-      }
-
-      getDate = (date) => {
-        let dateOne = date.split('')
-        let dateTwo = date.split('')
-        let dateThree = date.split('')
-
-        let year = dateOne.splice(6, 4)
-        let month = dateTwo.splice(0, 2)
-        let day = dateThree.splice(3, 2)
-
-  
-        let joinYear = year.join('')
-        let joinMonth = month.join('')
-        let joinDay = day.join('')
-  
-        return joinMonth + '-' + joinDay + '-' + joinYear
-      }
       
-
     
     render() {
-        // let fixedStartDate = ''
-        // let fixedReturnDate = ''
-        // const {startDate, returnDate} = this.state
-        // if(startDate && returnDate){
-        //     fixedStartDate = this.getDate(startDate)
-        //     fixedReturnDate = this.getDate(returnDate)
-        // }
-        console.log(this.state.startDate)
 
         return (
             <div className='book'>
