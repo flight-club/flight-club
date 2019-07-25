@@ -9,7 +9,7 @@ import Info from './components/Dashboard/Info';
 import Upcoming from './components/Dashboard/Upcoming';
 import Results from './components/Results/Results';
 import Checkout from './components/Checkout/Checkout';
-import Confirmation from './components/Confirmation/Confirmation';
+import Confirmation from './components/Checkout/Confirmation'
 
 
 export default (
@@ -23,6 +23,6 @@ export default (
         <Route path='/upcoming' exact component={ Upcoming }/>
         <Route path='/results/' component={ Results }/>
         <Route path='/checkout' exact component={ Checkout }/>
-        <Route path='/confirmation' exact component={ Confirmation }/>
+        <Route path='/confirmation/:confirmation' component={ Confirmation }/>
     </Switch>
 )

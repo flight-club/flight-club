@@ -155,7 +155,7 @@
                     justify-content: flex-end;
 
                     h1 {
-                        font-size: 35px;
+                        font-size: 30px;
                         font-style: italic;
                         align-self: flex-end;
                     }
@@ -168,6 +168,7 @@
                     p {
                         font-size: 35px;
                         margin-top: 40px;
+                        margin-right: 10px;
                     }
                 }
 
@@ -200,7 +201,14 @@
                     font-size: 28px;
                     margin-top: 15px;
                 }
+            }
 
+            .add-card {
+                h3 {
+                    margin-top: 15px;
+                    font-style: normal;
+                    font-size: 15px;
+                }
             }
         }
     }
