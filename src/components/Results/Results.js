@@ -208,14 +208,7 @@ class Results extends Component {
            
     
             return (
-                !this.state.results ?
-                    <div>
-                        <h1>We're sorry, there are no flight results.</h1>
-                    </div> 
-                    :
                 <div>
-                    
-
                 <div className="flight-flight">
                     <div className='results-top-bar'>
                         <div>

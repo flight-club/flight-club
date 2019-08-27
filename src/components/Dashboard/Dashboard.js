@@ -89,12 +89,15 @@ console.log(this.props.flight)
                                 <h1>Alpha Miles Member</h1>
                             </div>
                             <div className='top-right'>
+                                {/* <div>
                                 <h4>Total Balance</h4>
+
                             {this.props.flight[0] ?
                                 <h2>{this.getTotalMiles(this.props.flight[0].miles, this.props.flight[0].return_miles)}</h2>
                             : 
-                            <div>None</div>
-                            }
+                            <div>900 miles</div>
+                            } */}
+                                {/* </div> */}
                             </div>
 
                         </div>
